@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-
+// Middleware auth user
 Route::middleware('auth')->namespace('User')->prefix('user')->name('user.')->group(function () {
 
-
+    // Rotta home
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
