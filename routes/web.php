@@ -27,3 +27,11 @@ Route::middleware('auth')->namespace('User')->prefix('user')->name('user.')->gro
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+// Middleware auth admin
+Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+
+    // Rotta home
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
