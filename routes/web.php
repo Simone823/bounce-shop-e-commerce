@@ -20,15 +20,15 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-// Middleware auth user
-Route::middleware('auth')->namespace('User')->prefix('user')->name('user.')->group(function () {
+// Middleware auth role user
+Route::middleware(['auth' ,'role:user'])->namespace('User')->prefix('user')->name('user.')->group(function () {
 
     // Rotta home
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
-// Middleware auth admin
-Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+// Middleware auth  role superadminstrator
+Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     // Rotta home
     Route::get('/home', 'HomeController@index')->name('home');
