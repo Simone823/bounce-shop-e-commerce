@@ -21,7 +21,7 @@ class UserController extends Controller
         $user_auth = Auth::user();
 
         // All users
-        $users = User::orderBy('created_at', 'asc')->get();
+        $users = User::orderBy('created_at', 'desc')->get();
 
         // return view admin users index
         return view('admin.users.index', compact('user_auth', 'users'));
