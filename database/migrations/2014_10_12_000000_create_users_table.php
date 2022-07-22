@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('city', 100);
             $table->string('address', 255);
             $table->string('image')->nullable();
-            $table->boolean('super_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         // array user super admin
-        $super_admin_users = [
+        $users = [
             [
                 'name' => 'Simone',
                 'surname' => 'Daglio',
@@ -22,12 +22,12 @@ class UserSeeder extends Seeder
                 'address' => 'Via Dante',
                 'email' => 'simone.daglio823@outlook.com',
                 'password' => 'prova1234',
-                'super_admin' => 1
+                'role' => 'superadministrator'
             ]
         ];
 
         // Foreach array super admin users
-        foreach ($super_admin_users as $user) {
+        foreach ($users as $user) {
             
             // Creo un nuovo utente
             $new_user = new User();
@@ -39,10 +39,20 @@ class UserSeeder extends Seeder
             $new_user->address = $user['address'];
             $new_user->email = $user['email'];
             $new_user->password = Hash::make($user['password']);
-            $new_user->super_admin = $user['super_admin'];
 
             // Save user
             $new_user->save();
+
+            if($user['role'] == 'superadministrator') {
+                
+                // Attach role superadministrator
+                $new_user->attachRole('superadministrator');
+                
+            } else if($user['role'] == 'user') {
+
+                // Attach role user
+                $new_user->attachRole('user');
+            }
         }
     }
 }
