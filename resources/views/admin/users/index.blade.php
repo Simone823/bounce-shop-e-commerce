@@ -38,8 +38,9 @@
                                 </div>
     
                                 {{-- Btn --}}
-                                <div class="buttons">
+                                <div class="buttons d-flex gap-3 flex-wrap">
                                     <a href="{{route('admin.users.show', $user)}}" class="btn btn-primary text-white">Visualizza Utente</a>
+                                    <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary text-white">Modifica ruolo utente</a>
                                 </div>
                             </div>
                         </div>
