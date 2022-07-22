@@ -33,7 +33,7 @@
 
                                     {{-- Foreach user role --}}
                                     @foreach ($user->roles as $role)
-                                        <p class="card-text mb-0">Ruolo: <span>{{$role->name}}</span></p>
+                                        <p class="card-text mb-0">Ruolo: <span>{{$role->display_name}}</span></p>
                                     @endforeach
                                 </div>
     
