@@ -39,7 +39,7 @@
     
                                 {{-- Btn --}}
                                 <div class="buttons">
-                                    <a href="#" class="btn btn-primary text-white">Visualizza Utente</a>
+                                    <a href="{{route('admin.users.show', $user)}}" class="btn btn-primary text-white">Visualizza Utente</a>
                                 </div>
                             </div>
                         </div>
