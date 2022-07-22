@@ -17,12 +17,12 @@ class UserController extends Controller
     public function index()
     {
         // Auth user
-        $user = Auth::user();
+        $user_auth = Auth::user();
 
         // All users
         $users = User::orderBy('created_at', 'asc')->get();
 
-        return view('admin.users.index', compact('user', 'users'));
+        return view('admin.users.index', compact('user_auth', 'users'));
     }
 
     /**
@@ -54,7 +54,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
+        // User auth
+        $user_auth = Auth::user();
+
+        return view('admin.users.show', compact('user_auth'));
     }
 
     /**
