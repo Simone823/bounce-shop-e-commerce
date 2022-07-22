@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('header')
+
+    @include('components.adminHeader')
+
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
