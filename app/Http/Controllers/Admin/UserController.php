@@ -76,7 +76,7 @@ class UserController extends Controller
         $user_auth = Auth::user();
 
         // Roles
-        $roles = Role::all();
+        $roles = Role::orderBy('name', 'asc')->get();
 
         // return view admin users edit
         return view('admin.users.edit', compact('user_auth', 'user', 'roles'));
