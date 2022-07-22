@@ -1,7 +1,6 @@
 <?php
 
 use App\Product;
-use App\User;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -19,7 +18,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Prodotto 1',
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
-                'image'=> '',
+                'image' => '',
                 'visibility' => 1
             ],
 
@@ -80,10 +79,10 @@ class ProductSeeder extends Seeder
             ],
         ];
 
-        
+
         // foreach products
         foreach ($products as $key => $product) {
-        
+
             // Creo nuovo prodotto
             $new_product = new Product();
 
