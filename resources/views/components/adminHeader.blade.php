@@ -30,7 +30,7 @@
                 {{-- Dropdown user profile --}}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{$user->name}} {{$user->surname}}
+                        {{$user_auth->name}} {{$user_auth->surname}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
