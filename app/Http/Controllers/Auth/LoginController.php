@@ -28,6 +28,7 @@ class LoginController extends Controller
      * @var string
      */
 
+    // Authenticated function if role
     protected function authenticated(Request $request, $user)
     {
         if($user->hasRole('superadministrator')) {

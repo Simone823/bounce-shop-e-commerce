@@ -78,6 +78,7 @@ class RegisterController extends Controller
             'image' => $data['image'],
         ]);
 
+        // attach role user
         $user->attachRole('user');
 
         return $user;
