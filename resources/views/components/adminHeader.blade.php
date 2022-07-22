@@ -14,10 +14,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fs-5" aria-current="page" href="/admin/home">Dashboard</a>
+                        <a class="nav-link @if(Route::is('admin.home'))active @endif fs-5" aria-current="page" href="{{route('admin.home')}}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="#">Utenti</a>
+                        <a class="nav-link fs-5 @if(Route::is('admin.users.index'))active @endif" href="{{route('admin.users.index')}}">Utenti</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="#">Prodotti</a>
