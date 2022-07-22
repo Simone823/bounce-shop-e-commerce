@@ -52,13 +52,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
 
         // User auth
         $user_auth = Auth::user();
 
-        return view('admin.users.show', compact('user_auth'));
+        return view('admin.users.show', compact('user_auth', 'user'));
     }
 
     /**
