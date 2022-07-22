@@ -32,6 +32,9 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
 
     // Rotta home
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // Rotta users
+    Route::resource('/users', 'UserController');
 });
 
 
