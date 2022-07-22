@@ -46,7 +46,7 @@
                                         <label class="mb-2" for="roles">Ruolo</label>
                                         <select name="roles" id="roles" class="form-select w-25 mx-auto" aria-label="Default select example">
                                             @foreach ($roles as $role)
-                                                <option {{$user->roles->contains($role) ? 'selected' : ''}} value="{{$role->id}}">{{$role->name}}</option>
+                                                <option {{$user->roles->contains($role) ? 'selected' : ''}} value="{{$role->id}}">{{$role->display_name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
