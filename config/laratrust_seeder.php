@@ -4,15 +4,17 @@ return [
     'role_structure' => [
         'superadministrator' => [
             'users' => 'c,r,u,d',
-            'acl' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'category' => 'c,r,u,d',
+            'products' => 'c,r,u,d',
+            'orders' => 'r,u'
         ],
         'administrator' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'user' => [
-            'profile' => 'r,u'
+            'profile' => 'r,u',
+            'orders' => 'r,u'
         ],
     ],
     'permission_structure' => [
