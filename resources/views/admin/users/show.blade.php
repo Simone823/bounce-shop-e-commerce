@@ -46,28 +46,41 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Elimina
-                                    </button>
+                                    {{-- buttons --}}
+                                    <div class="buttons d-flex justify-content-center gap-4">
 
-                                    <!-- Modal confirm delete user-->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Sei sicuro di voler ELIMINARE questo utente? <br>
-                                                    Una volta confermata questa azione non si potrà tornare indietro!
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                                    <button type="submit" class="btn btn-primary text-white">Conferma</button>
+                                        {{-- Modfica ruolo btn --}}
+                                        <div class="update_roles">
+                                            <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary text-white">Modifica ruolo utente</a>
+                                        </div>
+
+                                        {{-- delete btn --}}
+                                        <div class="delete_btn">
+                                            <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Elimina
+                                            </button>
+
+                                            <!-- Modal confirm delete user-->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Sei sicuro di voler ELIMINARE questo utente? <br>
+                                                            Una volta confermata questa azione non si potrà tornare indietro!
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                                            <button type="submit" class="btn btn-primary text-white">Conferma</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                 </form>
