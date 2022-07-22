@@ -22,6 +22,7 @@ class UserController extends Controller
         // All users
         $users = User::orderBy('created_at', 'asc')->get();
 
+        // return view admin users index
         return view('admin.users.index', compact('user_auth', 'users'));
     }
 
@@ -58,6 +59,7 @@ class UserController extends Controller
         // User auth
         $user_auth = Auth::user();
 
+        // return view admin users show
         return view('admin.users.show', compact('user_auth', 'user'));
     }
 
@@ -90,8 +92,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+
+        // User delete
+        $user->delete();
+
+        // redirect route admin users index
+        return redirect()->route('admin.users.index');
     }
 }
