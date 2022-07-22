@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Middleware auth role user
+Route::middleware(['auth' ,'role:user'])->namespace('User')->prefix('user')->name('user.')->group(function () {
+
+    // Rotta home
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+// Middleware auth  role superadminstrator
+Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+
+    // Rotta home
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+
