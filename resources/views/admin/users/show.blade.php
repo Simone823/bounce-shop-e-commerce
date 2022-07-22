@@ -47,7 +47,7 @@
                                     @method('DELETE')
 
                                     {{-- buttons --}}
-                                    <div class="buttons d-flex justify-content-center gap-4">
+                                    <div class="buttons d-flex justify-content-center gap-4 flex-wrap">
 
                                         {{-- Modfica ruolo btn --}}
                                         <div class="update_roles">
