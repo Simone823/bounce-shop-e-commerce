@@ -69,9 +69,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        // user auth
+        $user_auth = Auth::user();
+
+        // return view admin porducts edit
+        return view('admin.products.edit', compact('user_auth', 'product'));
     }
 
     /**
