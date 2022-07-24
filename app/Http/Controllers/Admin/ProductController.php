@@ -53,9 +53,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        // User auth
+        $user_auth = Auth::user();
+
+        // return view admin products show
+        return view('admin.products.show', compact('user_auth', 'product'));
+
     }
 
     /**
@@ -87,8 +92,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        //delete product
+        $product->delete();
+
+        // return redirect admin products index
+        return redirect()->route('admin.products.index');
     }
 }
