@@ -47,6 +47,11 @@
                     </div>
                 @endforeach
 
+                {{-- Links paginate --}}
+                <div class="link_paginate col-12 d-flex justify-content-center">
+                    {{$users->links()}}
+                </div>
+
             </div>
         </div>
 
