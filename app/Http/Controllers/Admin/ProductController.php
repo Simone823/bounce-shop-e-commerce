@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -49,8 +50,43 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // data reuqest all
+        $data = $request->all();
 
-        
+        // request validate
+        $request->validate([
+            'product_name' => 'required|unique:products,product_name|string|min:4|max:250',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'visibility' => 'required|boolean',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ]);
+
+        $user_auth = Auth::user();
+
+        // Creo nuovo prodotto
+        $new_product = new Product();
+
+        // Slug product name
+        $slug = Str::slug($data['product_name']);
+
+        // Slug base
+        $slug_base = $slug;
+
+        // product slug
+        $new_product->slug = $slug_base;
+
+        // fill data
+        $new_product->fill($data);
+
+        // user_id
+        $new_product->user_id = $user_auth->id;
+
+        // new product save
+        $new_product->save();
+
+        // return redirect route admin products index
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -98,11 +134,11 @@ class ProductController extends Controller
 
         // Validazione request
         $request->validate([
-            'product_name' => 'required', 'string' ,'min:3', 'max:250', 
+            'product_name' => 'required|string|min:4|max:250',
             'description' => 'required',
-            'price' => 'required', 'numeric',
-            'visibility' => 'required', 'boolean',
-            'image' => 'nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'price' => 'required|numeric',
+            'visibility' => 'required|boolean',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
         ]);
 
         // Slug product name
