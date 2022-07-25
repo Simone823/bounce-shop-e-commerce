@@ -23,6 +23,9 @@
                         <a class="nav-link fs-5 @if(Route::is('admin.users.index'))active @endif" href="{{route('admin.users.index')}}">Utenti</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link fs-5 @if(Route::is('admin.categories.index'))active @endif" href="{{route('admin.categories.index')}}">Categorie</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
                     </li>
                     <li class="nav-item">
