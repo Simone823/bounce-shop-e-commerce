@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -99,9 +100,25 @@ class ProductController extends Controller
             'visibility' => 'required', 'boolean',
             'image' => 'nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg|max:2048', 
         ]);
-            
-        // slug
-        $slug = $data['product_name'];
+
+        // Slug product name
+        $slug = Str::slug($data['product_name']);
+
+        // Slug base
+        $slug_base = $slug;
+
+        // Counter slug
+        $counter = 1;
+
+        // Product present
+        $product_present = Product::where('slug', $slug)->first();
+
+        // While post present
+        while ($product_present) {
+            $slug = $slug_base . '-' . $counter;
+            $counter++;
+            $product_present = Product::where('slug', $slug)->first();
+        }
 
         // product slug
         $product->slug = $slug;
