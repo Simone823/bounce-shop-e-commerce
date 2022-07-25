@@ -60,6 +60,18 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ],
+        [
+            'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
+            'product_name.unique' => 'Il Nome del prodotto è già esistente.',
+            'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'description.required' => 'Il campo Descrizione è obbligatorio',
+            'price.required' => 'Il campo Prezzo è obbligatorio',
+            'price.numeric' => 'Il campo Prezzo deve essere un numero',
+            'visibility.required' => 'Il campo Visibile è obbligatorio',
+            'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
         ]);
 
         $user_auth = Auth::user();
@@ -139,6 +151,17 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ],
+        [
+            'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
+            'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'description.required' => 'Il campo Descrizione è obbligatorio',
+            'price.required' => 'Il campo Prezzo è obbligatorio',
+            'price.numeric' => 'Il campo Prezzo deve essere un numero',
+            'visibility.required' => 'Il campo Visibile è obbligatorio',
+            'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
         ]);
 
         // Slug product name
