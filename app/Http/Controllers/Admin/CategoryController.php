@@ -50,7 +50,56 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // data request all
+        $data =  $request->all();
+
+        // request validate
+        $request->validate(
+            [
+                'category_name' => 'required|string|unique:categories,category_name|min:3|max:250',
+            ],
+            [
+                'category_name.required' => 'Il campo Nome categoria è obbligatorio.',
+                'category_name.string' => 'Il campo Nome categoria deve essere una stringa',
+                'category_name.unique' => 'Il Nome della categoria è già esistente.',
+                'category_name.min' => 'Il nome della categoria deve essere composto da almeno 4 caratteri.',
+                'category_name.max' => 'Il nome della categoria può contenere al massimo 250 caratteri.',
+            ]
+        );
+
+        // creo una nuova categoria
+        $new_category = new Category();
+
+        // $new category fill data
+        $new_category->fill($data);
+
+        // Slug category name
+        $slug = Str::slug($data['category_name']);
+
+        // Slug base
+        $slug_base = $slug;
+
+        // Counter slug
+        $counter = 1;
+
+        // Product present
+        $product_present = Category::where('slug', $slug)->first();
+
+        // While post present
+        while ($product_present) {
+            $slug = $slug_base . '-' . $counter;
+            $counter++;
+            $product_present = Category::where('slug', $slug)->first();
+        }
+
+        // category slug
+        $new_category->slug = $slug;
+
+        // new category save
+        $new_category->save();
+
+        // return redirect route admin categories index
+        return redirect()->route('admin.categories.index');
     }
 
     /**
