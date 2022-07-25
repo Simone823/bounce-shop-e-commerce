@@ -22,7 +22,7 @@ class ProductController extends Controller
         $user_auth = Auth::user();
 
         // Products
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::orderBy('created_at', 'desc')->paginate(6);
 
         // return view admin products index
         return view('admin.products.index', compact('user_auth', 'products'));
