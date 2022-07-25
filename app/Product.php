@@ -13,6 +13,13 @@ class Product extends Model
         'description',
         'price',
         'visibility',
-        'image'
+        'image',
+        'user_id'
     ];
+
+    // Funzione relazione tabella user
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
