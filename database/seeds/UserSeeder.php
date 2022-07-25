@@ -39,6 +39,7 @@ class UserSeeder extends Seeder
             $new_user->address = $user['address'];
             $new_user->email = $user['email'];
             $new_user->password = Hash::make($user['password']);
+            $new_user->image = 'uploads/user_logo.svg';
 
             // Save user
             $new_user->save();

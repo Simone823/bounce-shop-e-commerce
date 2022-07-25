@@ -33,14 +33,15 @@
 
                 {{-- Dropdown user profile --}}
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{$user_auth->name}} {{$user_auth->surname}}
+                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="user_logo" src="{{asset('storage/'.$user_auth->image)}}" alt="">
+                        {{$user_auth->name}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Disconnetti') }}
                             </a>
                         </li>
                         <li>
