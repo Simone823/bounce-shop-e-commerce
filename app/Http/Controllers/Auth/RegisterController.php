@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg', 'max:2048'],
         ]);
     }
 
@@ -75,7 +74,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'image' => $data['image'],
+            'image' => 'uploads/user_logo.svg',
         ]);
 
         // attach role user
