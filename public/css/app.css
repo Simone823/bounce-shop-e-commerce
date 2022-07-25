@@ -12154,3 +12154,8 @@ fieldset:disabled .btn {
   }
 }
 
+.user_logo {
+  width: 35px;
+  height: 35px;
+}
+
