@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -67,6 +68,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        // Valore data image
+        $data['image'] = 'uploads/user_logo.svg';
+
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -74,7 +79,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'image' => 'uploads/user_logo.svg',
+            'image' => $data['image'],
         ]);
 
         // attach role user
