@@ -16,7 +16,7 @@
 
                     {{-- Link pagina lista categorie --}}
                     <div class="mb-4">
-                        <a href="{{route('admin.products.index')}}" class="text-decoration-none">
+                        <a href="{{route('admin.categories.index')}}" class="text-decoration-none">
                             <span>&#x21fd; Torna alla lista categorie</span>
                         </a>
                     </div>
