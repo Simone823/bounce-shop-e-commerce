@@ -1,7 +1,9 @@
 <?php
 
 use App\Product;
+use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -79,6 +81,8 @@ class ProductSeeder extends Seeder
             ],
         ];
 
+        // superAdministrator user
+        $admin = User::where('email', '=', 'superadministrator@app.com')->first();
 
         // foreach products
         foreach ($products as $key => $product) {
@@ -86,12 +90,21 @@ class ProductSeeder extends Seeder
             // Creo nuovo prodotto
             $new_product = new Product();
 
+            // Slug product name
+            $slug = Str::slug($product['name']);
+
+            // Slug base
+            $slug_base = $slug;
+
+            // product slug
+            $new_product->slug = $slug_base;
+
             // propripetà
             $new_product->product_name = $product['name'];
-            $new_product->slug = $product['name'];
             $new_product->description = $product['description'];
             $new_product->price = $product['price'];
             $new_product->visibility = $product['visibility'];
+            $new_product->user_id = $admin->id;
 
             // salvo il nuovo prodotto
             $new_product->save();

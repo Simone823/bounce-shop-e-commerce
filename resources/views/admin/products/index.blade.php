@@ -22,7 +22,7 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="card h-100">
-                            <img src="https://picsum.photos/720/480" class="card-img-top" alt="...">
+                            <img src="https://picsum.photos/400/400" class="card-img-top" alt="...">
 
                             <div class="card-body d-flex flex-column justify-content-between gap-3">
                                 
@@ -36,7 +36,7 @@
 
                                 {{-- Btn --}}
                                 <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                    <a href="{{route('admin.products.show', $product)}}" class="btn btn-primary text-white">Visualizza prodotto</a>
+                                    <a href="{{route('admin.products.show', $product)}}" class="btn btn-primary text-white">Visualizza</a>
                                     <a href="{{route('admin.products.edit', $product)}}" class="btn btn-primary text-white">Modifica</a>
                                     <form action="{{route('admin.products.destroy', $product)}}" method="POST">
 
