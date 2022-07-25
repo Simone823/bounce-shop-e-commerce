@@ -106,7 +106,7 @@ class UserController extends Controller
         }
 
         // Aggiorno i dati
-        $user->update();
+        $user->update($data);
 
         // redirect route admin users show
         return redirect()->route('admin.users.show', compact('user'));
