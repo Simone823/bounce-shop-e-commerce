@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -81,9 +82,49 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        // data request all
+        $data = $request->all();
+
+        // reuest validate
+        $request->validate([
+            'category_name' => 'required|string|min:3|max:250',
+        ],
+        [
+            'category_name.required' => 'Il campo Nome categoria è obbligatorio.',
+            'category_name.string' => 'Il campo Nome categoria deve essere una stringa',
+            'category_name.min' => 'Il nome della categoria deve essere composto da almeno 4 caratteri.',
+            'category_name.max' => 'Il nome della categoria può contenere al massimo 250 caratteri.',
+        ]);
+
+        // Slug category name
+        $slug = Str::slug($data['category_name']);
+
+        // Slug base
+        $slug_base = $slug;
+
+        // Counter slug
+        $counter = 1;
+
+        // Product present
+        $product_present = Category::where('slug', $slug)->first();
+
+        // While post present
+        while ($product_present) {
+            $slug = $slug_base . '-' . $counter;
+            $counter++;
+            $product_present = Category::where('slug', $slug)->first();
+        }
+
+        // category slug
+        $category->slug = $slug;
+
+        // category update data
+        $category->update($data);
+
+        // retur redirect route admin categories index
+        return redirect()->route('admin.categories.index');
     }
 
     /**
