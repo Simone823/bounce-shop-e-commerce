@@ -49,6 +49,10 @@
                                                 <option {{$user->roles->contains($role) ? 'selected' : ''}} value="{{$role->id}}">{{$role->display_name}}</option>
                                             @endforeach
                                         </select>
+
+                                        @error('roles')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     {{-- update btn --}}
