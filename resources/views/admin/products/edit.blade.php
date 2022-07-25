@@ -42,12 +42,21 @@
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Nome Prodotto" value="{{old('product_name', $product->product_name)}}">
                                             <label for="product_name">Nome Prodotto</label>
+
+                                            @error('product_name')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- Description --}}
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Descrizione" id="description" name="descritpion" style="height: 100px">{{old('description', $product->description)}}</textarea>
+                                            <textarea class="form-control" placeholder="Descrizione" id="description" name="description" style="height: 100px">{{old('description', $product->description)}}</textarea>
                                             <label for="description">Descrizione</label>
+
+
+                                            @error('description')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
 
@@ -55,6 +64,10 @@
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $product->price)}}">
                                             <label for="price">Prezzo</label>
+
+                                            @error('price')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- visibile --}}
@@ -64,12 +77,20 @@
                                                <option {{$product->visibility == 0 ? 'selected' : old('visibility')}} value="0">No</option>
                                                <option {{$product->visibility == 1 ? 'selected' : old('visibility')}} value="1">Si</option>
                                             </select>
+
+                                            @error('visibility')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- Image --}}
                                         <div class="form-group mb-3">
                                             <label for="image" class="col-md-4 col-form-label text-md-right">Immagine</label>
                                             <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+
+                                            @error('image')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                     </div>
