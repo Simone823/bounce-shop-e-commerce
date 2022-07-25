@@ -7,7 +7,7 @@
 @section('content')
 
     {{-- section users_index --}}
-    <section id="#section_users_index">
+    <section id="users_index">
 
         <div class="container">
             <div class="row gy-5">
