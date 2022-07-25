@@ -25,6 +25,10 @@
                     <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 @if(Route::is('admin.products.create'))active @endif" href="{{route('admin.products.create')}}">Aggiungi Prodotto</a>
+                    </li>
+
                 </ul>
 
                 {{-- Dropdown user profile --}}
