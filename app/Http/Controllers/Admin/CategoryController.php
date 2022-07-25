@@ -79,21 +79,8 @@ class CategoryController extends Controller
         // Slug base
         $slug_base = $slug;
 
-        // Counter slug
-        $counter = 1;
-
-        // Product present
-        $product_present = Category::where('slug', $slug)->first();
-
-        // While post present
-        while ($product_present) {
-            $slug = $slug_base . '-' . $counter;
-            $counter++;
-            $product_present = Category::where('slug', $slug)->first();
-        }
-
         // category slug
-        $new_category->slug = $slug;
+        $new_category->slug = $slug_base;
 
         // new category save
         $new_category->save();
