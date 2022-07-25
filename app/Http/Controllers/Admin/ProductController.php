@@ -123,6 +123,9 @@ class ProductController extends Controller
         // product slug
         $product->slug = $slug;
 
+        // Auth id superadministrator account
+        $product->user_id = Auth::id();
+
         // product update
         $product->update($data);
 
