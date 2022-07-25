@@ -57,7 +57,7 @@
                                         {{-- Price --}}
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price')}}">
-                                            <label for="price">Prezzo</label>
+                                            <label for="price">Prezzo (XX.XX)</label>
 
                                             @error('price')
                                                 <div class="alert alert-danger">{{ $message }}</div>
