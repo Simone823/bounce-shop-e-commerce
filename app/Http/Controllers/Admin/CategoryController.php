@@ -33,13 +33,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
         // user auth
         $user_auth = Auth::user();
 
         // return view admin categories create
-        return view('admin.categories.create', compact('user_auth'));
+        return view('admin.categories.create', compact('user_auth', 'category'));
     }
 
     /**
