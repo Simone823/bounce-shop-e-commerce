@@ -65,9 +65,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        //user auth
+        $user_auth = Auth::user();
+
+        // return view admin categories edit
+        return view('admin.categories.edit', compact('user_auth', 'category'));
     }
 
     /**
@@ -88,8 +92,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        //category delete
+        $category->delete();
+
+        // return redirect route admin categories index
+        return redirect()->route('admin.categories.index');
     }
 }
