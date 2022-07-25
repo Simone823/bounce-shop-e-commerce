@@ -69,7 +69,7 @@
                                             <label for="visibility" class="mb-2 form-label">Visibile</label>
                                             <select class="form-select" id="visibility" name="visibility" aria-label="Default select example">
                                                 <option {{old('visibility') ? 'selected' : ''}} value="0">No</option>
-                                                <option {{old('visibility') ? 'selected' : ''}} value="1">Si</option>
+                                                <option {{old('visibility') ? 'selected' : 'selected'}} value="1">Si</option>
                                             </select>
 
                                             @error('visibility')
