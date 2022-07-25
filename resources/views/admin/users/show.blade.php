@@ -51,7 +51,7 @@
 
                                         {{-- Modfica ruolo btn --}}
                                         <div class="update_roles">
-                                            <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary text-white">Modifica ruolo utente</a>
+                                            <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary text-white">Modifica ruolo</a>
                                         </div>
 
                                         {{-- delete btn --}}
