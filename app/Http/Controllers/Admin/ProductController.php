@@ -44,7 +44,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        
     }
 
     /**
@@ -85,9 +86,31 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        // data request
+        $data = $request->all();
+
+        // Validazione request
+        $request->validate([
+            'product_name' => 'required', 'string' ,'min:3', 'max:250', 
+            'description' => 'required',
+            'price' => 'required', 'numeric',
+            'visibility' => 'required', 'boolean',
+            'image' => 'nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ]);
+            
+        // slug
+        $slug = $data['product_name'];
+
+        // product slug
+        $product->slug = $slug;
+
+        // product update
+        $product->update($data);
+
+        // return redirect route admin products index
+        return redirect()->route('admin.products.index');
     }
 
     /**
