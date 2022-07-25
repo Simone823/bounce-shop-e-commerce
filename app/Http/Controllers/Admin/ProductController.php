@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ class ProductController extends Controller
         $user_auth = Auth::user();
 
         // Products
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::orderBy('created_at', 'desc')->paginate(6);
 
         // return view admin products index
         return view('admin.products.index', compact('user_auth', 'products'));
@@ -32,9 +33,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        //
+        // user auth
+        $user_auth = Auth::user();
+
+        //return view admin products create
+        return view('admin.products.create', compact('user_auth', 'product'));
     }
 
     /**
@@ -45,8 +50,55 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // data reuqest all
+        $data = $request->all();
 
-        
+        // request validate
+        $request->validate([
+            'product_name' => 'required|unique:products,product_name|string|min:4|max:250',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'visibility' => 'required|boolean',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ],
+        [
+            'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
+            'product_name.unique' => 'Il Nome del prodotto è già esistente.',
+            'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'description.required' => 'Il campo Descrizione è obbligatorio',
+            'price.required' => 'Il campo Prezzo è obbligatorio',
+            'price.numeric' => 'Il campo Prezzo deve essere un numero',
+            'visibility.required' => 'Il campo Visibile è obbligatorio',
+            'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
+        ]);
+
+        $user_auth = Auth::user();
+
+        // Creo nuovo prodotto
+        $new_product = new Product();
+
+        // Slug product name
+        $slug = Str::slug($data['product_name']);
+
+        // Slug base
+        $slug_base = $slug;
+
+        // product slug
+        $new_product->slug = $slug_base;
+
+        // fill data
+        $new_product->fill($data);
+
+        // user_id
+        $new_product->user_id = $user_auth->id;
+
+        // new product save
+        $new_product->save();
+
+        // return redirect route admin products index
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -94,11 +146,22 @@ class ProductController extends Controller
 
         // Validazione request
         $request->validate([
-            'product_name' => 'required', 'string' ,'min:3', 'max:250', 
+            'product_name' => 'required|string|min:4|max:250',
             'description' => 'required',
-            'price' => 'required', 'numeric',
-            'visibility' => 'required', 'boolean',
-            'image' => 'nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'price' => 'required|numeric',
+            'visibility' => 'required|boolean',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+        ],
+        [
+            'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
+            'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'description.required' => 'Il campo Descrizione è obbligatorio',
+            'price.required' => 'Il campo Prezzo è obbligatorio',
+            'price.numeric' => 'Il campo Prezzo deve essere un numero',
+            'visibility.required' => 'Il campo Visibile è obbligatorio',
+            'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
         ]);
 
         // Slug product name

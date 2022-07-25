@@ -77,6 +77,11 @@
                     
                 @endforeach
 
+                {{-- Link paginate --}}
+                <div class="link_paginate col-12 d-flex justify-content-center">
+                    {{$products->links()}}
+                </div>
+
             </div>
         </div>
 
