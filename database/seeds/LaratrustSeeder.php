@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class LaratrustSeeder extends Seeder
@@ -57,11 +58,12 @@ class LaratrustSeeder extends Seeder
             // Create default user for each role
             $user = \App\User::create([
                 'name' => ucwords(str_replace('_', ' ', $key)),
-                'surname' => 'ufvnbujvn',
+                'surname' => 'bounce shop',
                 'city' => 'fvujhbn',
                 'address' => 'hnvhfn',
                 'email' => $key.'@app.com',
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
+                'image' => 'uploads/user_logo.svg',
             ]);
 
             $user->attachRole($role);
@@ -83,6 +85,7 @@ class LaratrustSeeder extends Seeder
                         'email' => $key.'@app.com',
                         'password' => bcrypt('password'),
                         'remember_token' => Str::random(10),
+                        'image' => 'uploads/user_logo.svg',
                     ]);
                     $permissions = [];
 
