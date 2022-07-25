@@ -24,9 +24,8 @@
 
                     {{-- Card --}}
                     <div class="card text-center">
-                        {{-- <img src="https://picsum.photos/720/480" class="img-fluid" alt="..."> --}}
                         <figure class="figure">
-                            <img src="https://picsum.photos/720/480" class="figure-img img-fluid rounded" alt="...">
+                            <img src="https://picsum.photos/400/400" class="figure-img img-fluid rounded" alt="...">
                         </figure>
 
 
