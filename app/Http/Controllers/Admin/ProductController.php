@@ -32,9 +32,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        //
+        // user auth
+        $user_auth = Auth::user();
+
+        //return view admin products create
+        return view('admin.products.create', compact('user_auth', 'product'));
     }
 
     /**
