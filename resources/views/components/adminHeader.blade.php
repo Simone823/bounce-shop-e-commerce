@@ -26,10 +26,10 @@
                         <a class="nav-link fs-5 @if(Route::is('admin.categories.index'))active @endif" href="{{route('admin.categories.index')}}">Categorie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
+                        <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
+                        <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.products.create'))active @endif" href="{{route('admin.products.create')}}">Aggiungi Prodotto</a>
