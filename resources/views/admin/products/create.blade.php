@@ -25,7 +25,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.store', $product)}}" method="POST">
+                                <form action="{{route('admin.products.store')}}" method="POST">
 
                                     @csrf
 

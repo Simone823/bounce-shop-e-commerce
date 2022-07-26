@@ -36,9 +36,9 @@
 
                                 {{-- Btn --}}
                                 <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                    <a href="{{route('admin.products.show', $product)}}" class="btn btn-primary text-white">Visualizza</a>
-                                    <a href="{{route('admin.products.edit', $product)}}" class="btn btn-primary text-white">Modifica</a>
-                                    <form action="{{route('admin.products.destroy', $product)}}" method="POST">
+                                    <a href="{{route('admin.products.show', $product->id)}}" class="btn btn-primary text-white">Visualizza</a>
+                                    <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-primary text-white">Modifica</a>
+                                    <form action="{{route('admin.products.destroy', $product->id)}}" method="POST">
 
                                         @csrf
                                         @method('DELETE')

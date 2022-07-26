@@ -26,7 +26,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.categories.store', $category)}}" method="POST">
+                                <form action="{{route('admin.categories.store')}}" method="POST">
 
                                     @csrf
 

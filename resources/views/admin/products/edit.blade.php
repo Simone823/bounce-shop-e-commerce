@@ -30,7 +30,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.update', $product)}}" method="POST">
+                                <form action="{{route('admin.products.update', $product->id)}}" method="POST">
 
                                     @csrf
                                     @method('PUT')
