@@ -8,6 +8,7 @@ use App\Product;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -95,6 +96,13 @@ class ProductController extends Controller
         // product slug
         $new_product->slug = $slug_base;
 
+        // Se esiste il valore del campo image
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('uploads', $data['image']);
+
+            $data['image'] = $img_path;
+        } 
+        
         // fill data
         $new_product->fill($data);
 
