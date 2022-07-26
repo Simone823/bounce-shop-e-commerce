@@ -83,6 +83,21 @@
                                             @enderror
                                         </div>
 
+                                        {{-- categories --}}
+                                        <div class="categories_select mb-4">
+                                            <label class="mb-2" for="roles">Categoria</label>
+                                            <select name="categories" id="categories" class="form-select mx-auto" aria-label="Default select example">
+                                                <option selected disabled value="">Seleziona una Categoria</option>
+                                                @foreach ($categories as $category)
+                                                    <option {{$product->categories->contains($category) ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('categories')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
                                         {{-- Image --}}
                                         <div class="form-group mb-3">
                                             <label for="image" class="col-md-4 col-form-label text-md-right">Immagine</label>
