@@ -224,7 +224,7 @@ class ProductController extends Controller
 
             $data['image'] = $img_path;
         } else {
-            $img_path = 'uploads/no_image_icon.svg';
+            $img_path = $product->image;
 
             $data['image'] = $img_path;
         }
