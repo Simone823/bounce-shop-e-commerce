@@ -11,4 +11,10 @@ class Category extends Model
         'category_name',
         'slug',
     ];
+
+    // relazione products table
+    public function products()
+    {
+        return $this->belongsToMany('App\Product');
+    }
 }
