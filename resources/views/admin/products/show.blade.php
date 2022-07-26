@@ -37,6 +37,9 @@
                                 <p class="card-text mb-3">{{$product->description}}</p>
                                 <p class="card-text mb-3">{{$product->price}}€</p>
                                 <p class="card-text mb-3">Visibile: <span>{{$product->visibility == 1 ? 'Si' : 'No'}}</span></p>
+                                @foreach ($product->categories as $category)
+                                    <p class="card-text">Categoria: {{$category->category_name}}</p>
+                                @endforeach
                             </div>
 
                             {{-- Btn --}}
@@ -47,14 +50,14 @@
 
                                     {{-- edit btn  --}}
                                     <div class="edit_btn">
-                                        <a href="{{route('admin.products.edit', $product)}}" class="btn btn-primary text-white">Modifica</a>
+                                        <a href="{{route('admin.products.edit', $product->id)}}" class="btn btn-primary text-white">Modifica</a>
                                     </div>
 
 
                                     {{-- delete btn --}}
                                     <div class="delete_btn">
                                         
-                                        <form action="{{route('admin.products.destroy', $product)}}" method="POST">
+                                        <form action="{{route('admin.products.destroy', $product->id)}}" method="POST">
         
                                             @csrf
                                             @method('DELETE')

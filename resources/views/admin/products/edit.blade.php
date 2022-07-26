@@ -30,7 +30,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.update', $product)}}" method="POST">
+                                <form action="{{route('admin.products.update', $product->id)}}" method="POST">
 
                                     @csrf
                                     @method('PUT')
@@ -80,6 +80,21 @@
 
                                             @error('visibility')
                                                 <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        {{-- categories --}}
+                                        <div class="categories_select mb-4">
+                                            <label class="mb-2" for="roles">Categoria</label>
+                                            <select name="categories" id="categories" class="form-select mx-auto" aria-label="Default select example">
+                                                <option selected disabled value="">Seleziona una Categoria</option>
+                                                @foreach ($categories as $category)
+                                                    <option {{$product->categories->contains($category) ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('categories')
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
