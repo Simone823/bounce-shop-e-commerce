@@ -20,7 +20,6 @@
 
                     {{-- Card input --}}
                     <div class="card text-center">
-
                         <div class="card-body">
 
                             {{-- Btn --}}
@@ -95,7 +94,7 @@
                                         {{-- Image --}}
                                         <div class="form-group mb-3">
                                             <label for="image" class="col-md-4 col-form-label text-md-right">Immagine</label>
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{old('image')}}">
+                                            <input accept="image/*" onchange="filePreview(event);" id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{old('image')}}">
 
                                             @error('image')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -103,7 +102,11 @@
                                         </div>
 
                                     </div>
-
+                                    
+                                    {{-- Box image preview file--}}
+                                    <div id="image_preview" class="mb-3">
+                                        <img id="file_preview" src="" alt="">
+                                    </div>
 
                                     {{-- create btn --}}
                                     <div class="create_btn">
@@ -122,5 +125,31 @@
         </div>
 
     </section>
+
+    {{-- Script javascript --}}
+    <script type="text/javascript">
+
+        // function show file preview input image
+        function filePreview(event) {
+
+            if(event.target.files.length > 0) {
+
+                // src create file preview
+                let src = URL.createObjectURL(event.target.files[0]);
+
+                // Preview box
+                const boxPreview = document.getElementById("image_preview");
+
+                // Preview tag img
+                const preview = document.getElementById("file_preview");
+
+                // tag img src
+                preview.src = src;
+
+                // tag img display block
+                boxPreview.style.display = 'block';
+            }
+        }
+    </script>
 
 @endsection
