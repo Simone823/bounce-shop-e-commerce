@@ -8,6 +8,7 @@ use App\Product;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -64,14 +65,14 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'categories' => 'required|exists:categories,id',
-            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg,image/webp|max:3000', 
         ],
         [
             'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
             'product_name.unique' => 'Il Nome del prodotto è già esistente.',
             'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
-            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
-            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno :min caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo :max caratteri.',
             'description.required' => 'Il campo Descrizione è obbligatorio',
             'price.required' => 'Il campo Prezzo è obbligatorio',
             'price.numeric' => 'Il campo Prezzo deve essere un numero',
@@ -95,6 +96,17 @@ class ProductController extends Controller
         // product slug
         $new_product->slug = $slug_base;
 
+        // Se esiste il valore del campo image
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('uploads', $data['image']);
+
+            $data['image'] = $img_path;
+        } else {
+            $img_path = 'uploads/no_image_icon.svg';
+
+            $data['image'] = $img_path;
+        }
+        
         // fill data
         $new_product->fill($data);
 
@@ -168,13 +180,13 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'categories' => 'required|exists:categories,id',
-            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg,image/webp|max:3000', 
         ],
         [
             'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
             'product_name.string' => 'Il campo Nome prodotto deve essere una stringa',
-            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno 4 caratteri.',
-            'product_name.max' => 'Il nome del prodotto può contenere al massimo 250 caratteri.',
+            'product_name.min' => 'Il nome del prodotto deve essere composto da almeno :min caratteri.',
+            'product_name.max' => 'Il nome del prodotto può contenere al massimo :max caratteri.',
             'description.required' => 'Il campo Descrizione è obbligatorio',
             'price.required' => 'Il campo Prezzo è obbligatorio',
             'price.numeric' => 'Il campo Prezzo deve essere un numero',
@@ -205,6 +217,17 @@ class ProductController extends Controller
 
         // product slug
         $product->slug = $slug;
+
+        // Se esiste il valore del campo image
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('uploads', $data['image']);
+
+            $data['image'] = $img_path;
+        } else {
+            $img_path = $product->image;
+
+            $data['image'] = $img_path;
+        }
 
         // Auth id superadministrator account
         $product->user_id = Auth::id();

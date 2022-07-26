@@ -22,15 +22,11 @@
 
                     {{-- Card input --}}
                     <div class="card text-center">
-                        <figure class="figure">
-                            <img src="https://picsum.photos/400/400" class="figure-img img-fluid rounded" alt="...">
-                        </figure>
-
                         <div class="card-body">
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.update', $product->id)}}" method="POST">
+                                <form action="{{route('admin.products.update', $product->id)}}" method="POST" enctype="multipart/form-data">
 
                                     @csrf
                                     @method('PUT')
@@ -101,11 +97,16 @@
                                         {{-- Image --}}
                                         <div class="form-group mb-3">
                                             <label for="image" class="col-md-4 col-form-label text-md-right">Immagine</label>
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+                                            <input onchange="filePreview(event)" id="image" type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
 
                                             @error('image')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
+                                        </div>
+
+                                        {{-- Box image preview --}}
+                                        <div class="image_preview">
+                                            <img id="file_preview" src="{{asset('storage/'.$product->image)}}" class="figure-img img-fluid rounded" alt="...">
                                         </div>
 
                                     </div>
@@ -148,5 +149,25 @@
         </div>
 
     </section>
+
+    {{-- Script javascript --}}
+    <script type="text/javascript">
+        // function show file preview input image
+        function filePreview(event) {
+
+            if (event.target.files.length > 0) {
+
+                // src create file preview
+                let src = URL.createObjectURL(event.target.files[0]);
+
+                // Preview tag img
+                const preview = document.getElementById("file_preview");
+
+                // tag img src
+                preview.src = src;
+            }
+        }
+    </script>
+
 
 @endsection
