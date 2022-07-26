@@ -25,9 +25,8 @@
                     {{-- Card --}}
                     <div class="card text-center">
                         <figure class="figure">
-                            <img src="{{asset('storage/'.$product->image)}}" class="figure-img img-fluid rounded" alt="...">
+                            <img src="{{asset('storage/'.$product->image)}}" class="figure-img img-fluid rounded product_image" alt="...">
                         </figure>
-
 
                         <div class="card-body">
 
