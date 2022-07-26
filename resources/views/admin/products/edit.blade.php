@@ -97,7 +97,7 @@
                                         {{-- Image --}}
                                         <div class="form-group mb-3">
                                             <label for="image" class="col-md-4 col-form-label text-md-right">Immagine</label>
-                                            <input accept="image/*" onchange="filePreview(event)" id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+                                            <input onchange="filePreview(event)" id="image" type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
 
                                             @error('image')
                                                 <div class="alert alert-danger">{{ $message }}</div>
