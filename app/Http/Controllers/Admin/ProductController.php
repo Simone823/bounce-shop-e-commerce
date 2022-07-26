@@ -101,7 +101,11 @@ class ProductController extends Controller
             $img_path = Storage::put('uploads', $data['image']);
 
             $data['image'] = $img_path;
-        } 
+        } else {
+            $img_path = 'uploads/no_image_icon.svg';
+
+            $data['image'] = $img_path;
+        }
         
         // fill data
         $new_product->fill($data);
@@ -213,6 +217,17 @@ class ProductController extends Controller
 
         // product slug
         $product->slug = $slug;
+
+        // Se esiste il valore del campo image
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('uploads', $data['image']);
+
+            $data['image'] = $img_path;
+        } else {
+            $img_path = 'uploads/no_image_icon.svg';
+
+            $data['image'] = $img_path;
+        }
 
         // Auth id superadministrator account
         $product->user_id = Auth::id();
