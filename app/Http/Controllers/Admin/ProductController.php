@@ -39,6 +39,7 @@ class ProductController extends Controller
         // user auth
         $user_auth = Auth::user();
 
+        // Categories
         $categories = Category::orderBy('category_name', 'asc')->get();
 
         //return view admin products create
@@ -106,7 +107,7 @@ class ProductController extends Controller
         
         // Controllo se esiste la categoria
         if (array_key_exists('categories', $data)) {
-            // Sync
+            // categories attach
             $new_product->categories()->attach($data['categories']);
         }
 
@@ -141,8 +142,11 @@ class ProductController extends Controller
         // user auth
         $user_auth = Auth::user();
 
+        // Categories
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
         // return view admin porducts edit
-        return view('admin.products.edit', compact('user_auth', 'product'));
+        return view('admin.products.edit', compact('user_auth', 'product', 'categories'));
     }
 
     /**
@@ -163,6 +167,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
+            'categories' => 'required|exists:categories,id',
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
         ],
         [
@@ -175,6 +180,8 @@ class ProductController extends Controller
             'price.numeric' => 'Il campo Prezzo deve essere un numero',
             'visibility.required' => 'Il campo Visibile è obbligatorio',
             'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
+            'categories.required' => 'Il campo categoria è obbligatorio',
+            'categories.exists' => 'Il campo selezionato non esiste',
         ]);
 
         // Slug product name
@@ -201,6 +208,12 @@ class ProductController extends Controller
 
         // Auth id superadministrator account
         $product->user_id = Auth::id();
+
+        // Controllo se esiste la categoria
+        if (array_key_exists('categories', $data)) {
+            // categories sync
+            $product->categories()->sync($data['categories']);
+        }
 
         // product update
         $product->update($data);
