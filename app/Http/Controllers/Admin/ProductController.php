@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Auth\Events\Validated;
@@ -38,8 +39,10 @@ class ProductController extends Controller
         // user auth
         $user_auth = Auth::user();
 
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
         //return view admin products create
-        return view('admin.products.create', compact('user_auth', 'product'));
+        return view('admin.products.create', compact('user_auth', 'product', 'categories'));
     }
 
     /**
@@ -59,6 +62,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
+            'categories' => 'required|exists:categories,id',
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
         ],
         [
@@ -72,6 +76,8 @@ class ProductController extends Controller
             'price.numeric' => 'Il campo Prezzo deve essere un numero',
             'visibility.required' => 'Il campo Visibile è obbligatorio',
             'visibility.boolean' => 'Il campo visibile deve essere un valore vero o falso',
+            'categories.required' => 'Il campo categoria è obbligatorio',
+            'categories.exists' => 'Il campo selezionato non esiste',
         ]);
 
         $user_auth = Auth::user();
@@ -94,8 +100,15 @@ class ProductController extends Controller
         // user_id
         $new_product->user_id = $user_auth->id;
 
+        
         // new product save
         $new_product->save();
+        
+        // Controllo se esiste la categoria
+        if (array_key_exists('categories', $data)) {
+            // Sync
+            $new_product->categories()->attach($data['categories']);
+        }
 
         // return redirect route admin products index
         return redirect()->route('admin.products.index');
