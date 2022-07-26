@@ -26,10 +26,10 @@
                         <a class="nav-link fs-5 @if(Route::is('admin.categories.index'))active @endif" href="{{route('admin.categories.index')}}">Categorie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
+                        <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
+                        <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.products.create'))active @endif" href="{{route('admin.products.create')}}">Aggiungi Prodotto</a>
@@ -38,7 +38,7 @@
 
                 {{-- Dropdown user profile --}}
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-dark dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="user_logo" src="{{asset('storage/'.$user_auth->image)}}" alt="">
                         {{$user_auth->name}}
                     </button>
