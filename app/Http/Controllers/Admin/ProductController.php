@@ -65,7 +65,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'categories' => 'required|exists:categories,id',
-            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg,image/webp|max:3000', 
         ],
         [
             'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
@@ -180,7 +180,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'visibility' => 'required|boolean',
             'categories' => 'required|exists:categories,id',
-            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg|max:2048', 
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/svg,image/webp|max:3000', 
         ],
         [
             'product_name.required' => 'Il campo Nome Prodotto è obbligatorio.',
