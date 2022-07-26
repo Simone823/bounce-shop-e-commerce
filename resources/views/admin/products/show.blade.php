@@ -37,6 +37,9 @@
                                 <p class="card-text mb-3">{{$product->description}}</p>
                                 <p class="card-text mb-3">{{$product->price}}€</p>
                                 <p class="card-text mb-3">Visibile: <span>{{$product->visibility == 1 ? 'Si' : 'No'}}</span></p>
+                                @foreach ($product->categories as $category)
+                                    <p class="card-text">Categoria: {{$category->category_name}}</p>
+                                @endforeach
                             </div>
 
                             {{-- Btn --}}
