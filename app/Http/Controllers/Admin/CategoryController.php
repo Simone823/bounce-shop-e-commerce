@@ -62,8 +62,8 @@ class CategoryController extends Controller
                 'category_name.required' => 'Il campo Nome categoria è obbligatorio.',
                 'category_name.string' => 'Il campo Nome categoria deve essere una stringa',
                 'category_name.unique' => 'Il Nome della categoria è già esistente.',
-                'category_name.min' => 'Il nome della categoria deve essere composto da almeno 4 caratteri.',
-                'category_name.max' => 'Il nome della categoria può contenere al massimo 250 caratteri.',
+                'category_name.min' => 'Il nome della categoria deve essere composto da almeno :min caratteri.',
+                'category_name.max' => 'Il nome della categoria può contenere al massimo :max caratteri.',
             ]
         );
 
@@ -134,8 +134,8 @@ class CategoryController extends Controller
         [
             'category_name.required' => 'Il campo Nome categoria è obbligatorio.',
             'category_name.string' => 'Il campo Nome categoria deve essere una stringa',
-            'category_name.min' => 'Il nome della categoria deve essere composto da almeno 4 caratteri.',
-            'category_name.max' => 'Il nome della categoria può contenere al massimo 250 caratteri.',
+            'category_name.min' => 'Il nome della categoria deve essere composto da almeno :min caratteri.',
+            'category_name.max' => 'Il nome della categoria può contenere al massimo :max caratteri.',
         ]);
 
         // Slug category name
