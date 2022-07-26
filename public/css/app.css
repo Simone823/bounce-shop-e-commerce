@@ -12183,3 +12183,11 @@ fieldset:disabled .btn {
      object-position: center;
 }
 
+#product_show .product_image {
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
