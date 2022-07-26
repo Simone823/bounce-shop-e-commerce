@@ -24,7 +24,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.store')}}" method="POST">
+                                <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
 
                                     @csrf
 
