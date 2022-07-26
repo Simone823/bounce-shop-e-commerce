@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Product;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,18 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        // Categoria magliette
+        $category_magliette = Category::where('category_name', '=', 'Magliette')->first();
+
+        // Categoria felpe
+        $category_felpe = Category::where('category_name', '=', 'Felpe')->first();
+
+        // Categoria cappelli
+        $category_cappelli = Category::where('category_name', '=', 'Cappelli')->first();
+
+        // Categoria toppe
+        $category_toppe = Category::where('category_name', '=', 'Toppe')->first(); 
+
         // array products
         $products = [
             [
@@ -21,7 +34,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_magliette['id']
             ],
 
             [
@@ -29,7 +43,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_magliette['id']
             ],
 
             [
@@ -37,7 +52,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_felpe['id']
             ],
 
             [
@@ -45,7 +61,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_felpe['id']
             ],
 
             [
@@ -53,7 +70,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_cappelli['id']
             ],
 
             [
@@ -61,7 +79,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_cappelli['id']
             ],
 
             [
@@ -69,7 +88,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_toppe['id']
             ],
 
             [
@@ -77,7 +97,8 @@ class ProductSeeder extends Seeder
                 'description' => 'hvbehvbhveb',
                 'price' => 3.99,
                 'image' => '',
-                'visibility' => 1
+                'visibility' => 1,
+                'category' => $category_toppe['id']
             ],
         ];
 
@@ -108,6 +129,9 @@ class ProductSeeder extends Seeder
 
             // salvo il nuovo prodotto
             $new_product->save();
+
+            // new product categories attach 
+            $new_product->categories()->attach($product['category']);
         }
     }
 }

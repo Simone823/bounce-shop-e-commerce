@@ -25,7 +25,7 @@
 
                             {{-- Btn --}}
                             <div class="buttons">
-                                <form action="{{route('admin.products.store', $product)}}" method="POST">
+                                <form action="{{route('admin.products.store')}}" method="POST">
 
                                     @csrf
 
@@ -73,6 +73,21 @@
                                             </select>
 
                                             @error('visibility')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        {{-- categories --}}
+                                        <div class="categories_select mb-4">
+                                            <label class="mb-2" for="roles">Categoria</label>
+                                            <select name="categories" id="categories" class="form-select mx-auto" aria-label="Default select example">
+                                                <option selected disabled value="">Seleziona una Categoria</option>
+                                                @foreach ($categories as $category)
+                                                    <option {{old('categories') ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('categories')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
