@@ -28,7 +28,7 @@
 
                                 {{-- Btn --}}
                                 <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                    <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-primary text-white">Modifica</a>
+                                    <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-primary text-white">Modifica</a>
                                     <form action="{{route('admin.categories.destroy', $category->id)}}" method="POST">
 
                                         @csrf
