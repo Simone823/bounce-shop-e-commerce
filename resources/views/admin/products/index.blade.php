@@ -22,7 +22,10 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="card h-100">
-                            <img src="{{asset('storage/'.$product->image)}}" class="card-img-top product_image" alt="">
+
+                            <figure class="wrapper_image">
+                                <img src="{{asset('storage/'.$product->image)}}" alt="">
+                            </figure>
 
                             <div class="card-body d-flex flex-column justify-content-between gap-3">
                                 

@@ -1,9 +1,17 @@
 // section id products index
 #products_index {
 
-    .product_image {
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        object-position: center;
+    .wrapper_image {
+        width: 100%;
+        height: 300px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
     }
+
 }
