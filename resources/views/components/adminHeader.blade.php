@@ -1,5 +1,5 @@
-<div class="container-fluid bg-primary">
-    <nav class="navbar navbar-expand-xxl navbar-dark bg-primary">
+<div class="container-fluid bg-dark">
+    <nav class="navbar navbar-expand-xxl navbar-dark">
         <div class="container-fluid">
 
             {{-- nav brand icon --}}
@@ -41,7 +41,7 @@
 
                 {{-- Dropdown user profile --}}
                 <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="user_logo" src="{{asset('storage/'.$user_auth->image)}}" alt="">
                         {{$user_auth->name}}
                     </button>
