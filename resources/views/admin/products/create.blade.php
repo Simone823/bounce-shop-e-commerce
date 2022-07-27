@@ -104,7 +104,7 @@
                                     </div>
                                     
                                     {{-- Box image preview file--}}
-                                    <div id="image_preview" class="mb-3">
+                                    <div id="image_preview" class="wrapper_image mb-3">
                                         <img id="file_preview" src="" alt="">
                                     </div>
 
