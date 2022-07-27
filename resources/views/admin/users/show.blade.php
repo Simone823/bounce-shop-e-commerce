@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('metaTitle')
+    | Utente {{$user->id}}
+@endsection
+
 @section('header')
     @include('components.adminHeader')
 @endsection
