@@ -30,7 +30,7 @@
                                 {{-- User description --}}
                                 <div class="user_description mb-3">
                                     <h6 class="card-title mb-3">{{$user->id}}</h6>
-                                    <h4 class="card-title mb-3">{{$user->name}} {{$user->surname}}</h4>
+                                    <h4 class="card-title mb-3 fw-bolder">{{$user->name}} {{$user->surname}}</h4>
                                     <p class="card-text mb-3">Registrato <span>{{\Carbon\Carbon::create($user->created_at)->diffForHumans()}}</span></p>
 
                                     {{-- Foreach user role --}}
