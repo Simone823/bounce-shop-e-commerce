@@ -7,28 +7,36 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Meta Title --}}
+    <title>{{config('app.name')}} @yield('metaTitle')</title>
 </head>
 <body>
+
+    {{-- App --}}
     <div id="app">
 
+        {{-- Header --}}
         <header>
             @yield('header')
         </header>
 
+        {{-- Main --}}
         <main>
             @yield('content')
         </main>
+
     </div>
+    
 </body>
 </html>
