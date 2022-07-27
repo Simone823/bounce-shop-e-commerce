@@ -42,6 +42,9 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
 
     // Rotta resource products
     Route::resource('/products', 'ProductController');
+
+    // Rotta resource orders
+    Route::resource('/orders', 'OrderController');
 });
 
 
