@@ -26,7 +26,7 @@
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bolder">{{$category->category_name}}</h5>
-                                <p class="card-text"> Creato il {{$category->created_at}}</p>
+                                <p class="card-text"> Creato {{\Carbon\Carbon::create($category->created_at)->diffForHumans()}}</p>
 
                                 {{-- Btn --}}
                                 <div class="buttons d-flex flex-wrap justify-content-center gap-3">
