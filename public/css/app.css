@@ -12206,6 +12206,10 @@ section {
      object-position: center;
 }
 
+#categories_index .card {
+  background-color: #efefef;
+}
+
 #products_index .card {
   background-color: #efefef;
   border: none;
