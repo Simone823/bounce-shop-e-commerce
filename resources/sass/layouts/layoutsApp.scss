@@ -1,0 +1,22 @@
+// {{-- layouts app--}}
+
+
+// header
+header {
+    width: 100%;
+    height: 66px;
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+}
+
+
+// section
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px 0;
+    padding-top: 90px;
+}
