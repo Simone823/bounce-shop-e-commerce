@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('metaTitle')
+    | Modifica Utente {{$user->id}}
+@endsection
+
 @section('header')
     @include('components.adminHeader')
 @endsection
@@ -16,7 +20,7 @@
 
                     {{-- Link pagina lista utenti --}}
                     <div class="mb-4">
-                        <a href="{{route('admin.users.index')}}" class="text-decoration-none">
+                        <a href="{{route('admin.users.index')}}" class="text-decoration-none link-light">
                             <span>&#x21fd; Torna alla lista utenti</span>
                         </a>
                     </div>
@@ -27,11 +31,21 @@
 
                             {{-- User description --}}
                             <div class="user_description mb-4">
-                                <h4 class="card-title mb-3">{{$user->name}} {{$user->surname}}</h4>
-                                <p class="card-text mb-3">Email: <span>{{$user->email}}</span></p>
-                                <p class="card-text mb-3">Città: <span>{{$user->city}}</span></p>
-                                <p class="card-text mb-3">Indirizzo: <span>{{$user->address}}</span></p>
-                                <p class="card-text mb-3">Creato il: <span>{{$user->created_at}}</span></p>
+                                <h6 class="card-title mb-3">{{$user->id}}</h6>
+                                <h4 class="card-title mb-3 fw-bolder">{{$user->name}} {{$user->surname}}</h4>
+                                <p class="card-text mb-3">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>{{$user->email}}</span>
+                                </p>
+                                <p class="card-text mb-3">
+                                    <i class="fa-solid fa-city"></i>
+                                    <span>{{$user->city}}</span>
+                                </p>
+                                <p class="card-text mb-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>{{$user->address}}</span>
+                                </p>
+                                <p class="card-text mb-3">Registrato {{\Carbon\Carbon::create($user->created_at)->diffForHumans()}}</span></p>
                             </div>
 
                             {{-- Btn --}}
@@ -64,17 +78,17 @@
                                         <!-- Modal confirm update user role-->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
+                                                <div class="modal-content shadow-lg">
+                                                    <div class="modal-header bg-warning border-0">
                                                         <h5 class="modal-title" id="exampleModalLabel">Conferma modifica ruolo utente</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div class="modal-body bg-dark border-0 text-white">
                                                         Sei sicuro di voler MODIFICARE il ruolo a questo utente? <br>
-                                                        Il ruolo potrà essere sempre modificabile
+                                                        Il ruolo potrà è sempre modificabile
                                                     </div>
-                                                    <div class="modal-footer justify-content-center">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                                    <div class="modal-footer justify-content-center bg-dark border-0">
+                                                        <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Chiudi</button>
                                                         <button type="submit" class="btn btn-primary text-white">Conferma</button>
                                                     </div>
                                                 </div>
