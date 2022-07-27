@@ -36,7 +36,7 @@
                                     <p class="card-text">{{$product->price}}€</p>
                                     <p class="card-text">Visibile: {{$product->visibility == 1 ? 'Si' : 'No'}}</p>
                                     @foreach ($product->categories as $category)
-                                        <p class="badge bg-dark fs-6">{{$category->category_name}}</p>
+                                        <p class="badge bg-dark fs-6 fw-light">{{$category->category_name}}</p>
                                     @endforeach
                                 </div>
 
