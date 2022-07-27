@@ -105,8 +105,8 @@
                                         </div>
 
                                         {{-- Box image preview --}}
-                                        <div class="image_preview">
-                                            <img id="file_preview" src="{{asset('storage/'.$product->image)}}" class="figure-img img-fluid rounded" alt="...">
+                                        <div class="image_preview wrapper_image">
+                                            <img id="file_preview" src="{{asset('storage/'.$product->image)}}" alt="">
                                         </div>
 
                                     </div>
