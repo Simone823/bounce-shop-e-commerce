@@ -1,5 +1,5 @@
-<div class="container-fluid bg-primary">
-    <nav class="navbar navbar-expand-xxl navbar-dark bg-primary">
+<div class="container-fluid bg-dark">
+    <nav class="navbar navbar-expand-xxl navbar-dark">
         <div class="container-fluid">
 
             {{-- nav brand icon --}}
