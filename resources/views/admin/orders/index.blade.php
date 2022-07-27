@@ -10,7 +10,7 @@
     <section id="orders_index">
 
         <div class="container">
-            <div class="row">
+            <div class="row h-100 align-items-center">
 
 
                 {{-- If orders lenght 0 --}}
