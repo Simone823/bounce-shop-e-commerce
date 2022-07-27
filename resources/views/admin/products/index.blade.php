@@ -13,7 +13,7 @@
             <div class="row gy-5">
 
                 {{-- Title --}}
-                <div class="col-12 title text-center">
+                <div class="col-12 title text-center text-white">
                     <h1>Lista Prodotti</h1>
                 </div>
 
