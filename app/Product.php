@@ -28,4 +28,10 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Category');
     }
+
+    // relazione tabella orders
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order');
+    }
 }

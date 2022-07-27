@@ -1,5 +1,5 @@
 <div class="container-fluid bg-primary">
-    <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-xxl navbar-dark bg-primary">
         <div class="container-fluid">
 
             {{-- nav brand icon --}}
@@ -27,6 +27,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 @if(Route::is('admin.orders.index'))active @endif" href="{{route('admin.orders.index')}}">Ordini</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
