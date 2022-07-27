@@ -34,10 +34,15 @@
                                     <h5 class="card-title">{{$product->product_name}}</h5>
                                     <p class="card-text">{{$product->description}}</p>
                                     <p class="card-text">{{$product->price}}€</p>
-                                    <p class="card-text">Visibile: {{$product->visibility == 1 ? 'Si' : 'No'}}</p>
+
                                     @foreach ($product->categories as $category)
                                         <p class="badge bg-dark fs-6 fw-light">{{$category->category_name}}</p>
                                     @endforeach
+                                    
+                                    <div class="card-text d-flex flex-wrap gap-2">
+                                        <p class="badge bg-success fs-6 fw-light text-uppercase {{$product->visibility == 1 ? 'opacity-100' : 'opacity-25'}}">Visibile</p>
+                                        <p class="badge bg-danger fs-6 fw-light text-uppercase {{$product->visibility == 0 ? 'opacity-100' : 'opacity-25'}}">Non Visibile</p>
+                                    </div>
                                 </div>
 
                                 {{-- Btn --}}
