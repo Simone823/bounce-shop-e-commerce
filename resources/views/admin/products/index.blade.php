@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('metaTitle', '| Lista Prodotti')
+
 @section('header')
     @include('components.adminHeader')
 @endsection
@@ -14,7 +16,7 @@
 
                 {{-- Title --}}
                 <div class="col-12 title text-center text-white">
-                    <h1>Lista Prodotti</h1>
+                    <h1 class="mb-0">Lista Prodotti</h1>
                 </div>
 
                 {{-- foreach products --}}
@@ -23,7 +25,7 @@
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="card h-100">
 
-                            <figure class="wrapper_image">
+                            <figure class="wrapper_image shadow">
                                 <img src="{{asset('storage/'.$product->image)}}" alt="">
                             </figure>
 
@@ -31,14 +33,14 @@
                                 
                                 {{-- Description --}}
                                 <div class="description">
-                                    <h5 class="card-title">{{$product->product_name}}</h5>
+                                    <h5 class="card-title fw-bolder">{{$product->product_name}}</h5>
                                     <p class="card-text">{{$product->description}}</p>
                                     <p class="card-text">{{$product->price}}€</p>
 
                                     @foreach ($product->categories as $category)
                                         <p class="badge bg-dark fs-6 fw-light">{{$category->category_name}}</p>
                                     @endforeach
-                                    
+
                                     <div class="card-text d-flex flex-wrap gap-2">
                                         <p class="badge bg-success fs-6 fw-light text-uppercase {{$product->visibility == 1 ? 'opacity-100' : 'opacity-25'}}">Visibile</p>
                                         <p class="badge bg-danger fs-6 fw-light text-uppercase {{$product->visibility == 0 ? 'opacity-100' : 'opacity-25'}}">Non Visibile</p>
