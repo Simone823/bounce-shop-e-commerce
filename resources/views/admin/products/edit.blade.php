@@ -85,8 +85,23 @@
                                             @enderror
                                         </div>
 
+                                        {{-- categories --}}
+                                        <div class="form-floating mb-4">
+                                            <select class="form-select" id="categories" name="categories" aria-label="Floating label select example">
+                                                <option disabled>Seleziona una categoria</option>
+                                                @foreach ($categories as $category)
+                                                    <option {{old('categories', $product->categories->contains($category)) ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="floatingSelect">Categoria</label>
+
+                                            @error('categories')
+                                                <div class="alert alert-danger">{{$message}}</div>
+                                            @enderror
+                                        </div>
+
                                         {{-- visibile --}}
-                                        <div class="form-group mb-4 d-flex flex-wrap justify-content-center gap-2">
+                                        <div class="form-group d-flex flex-wrap justify-content-center gap-2">
                                             <input type="radio" name="visibility" id="visibility-1" value="1" {{old('visibility', $product->visibility == 1) ? 'checked' : ''}}>
                                             <input type="radio" name="visibility" id="visibility-2" value="0" {{old('visibility', $product->visibility == 0) ? 'checked' : ''}}>
                                             <label for="visibility-1" class="option bg-success visibility-1">
@@ -98,21 +113,6 @@
 
                                             @error('visibility')
                                                 <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        {{-- categories --}}
-                                        <div class="categories_select mb-4">
-                                            <label class="mb-2" for="roles">Categoria</label>
-                                            <select name="categories" id="categories" class="form-select mx-auto" aria-label="Default select example">
-                                                <option selected disabled value="">Seleziona una Categoria</option>
-                                                @foreach ($categories as $category)
-                                                    <option {{$product->categories->contains($category) ? 'selected' : ''}} value="{{$category->id}}">{{$category->category_name}}</option>
-                                                @endforeach
-                                            </select>
-
-                                            @error('categories')
-                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
