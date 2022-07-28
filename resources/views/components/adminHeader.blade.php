@@ -3,9 +3,11 @@
         <div class="container-fluid">
 
             {{-- nav brand icon --}}
-            <a class="navbar-brand fs-3" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+            <figure class="logo_nav mb-0">
+                <a class="navbar-brand fs-3" href="{{ url('/') }}">
+                    <img src="{{asset('img/bounce_shop_logo.svg')}}" alt="">
+                </a>
+            </figure>
 
             {{-- Icon hamburger menu --}}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

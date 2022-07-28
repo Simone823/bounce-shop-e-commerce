@@ -1,15 +1,42 @@
 // section product edit
 #product_edit {
-    .wrapper_image {
-        width: 100%;
-        height: 300px;
 
-        img {
+    .card {
+        background-color: $gray-1;
+        border: none;
+        border-radius: 5px;
+        overflow: hidden;
+
+        .wrapper_image {
             width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: center;
+            height: 300px;
+    
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+    
+        .option {
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border: none;
+            opacity: 0.42;
+            transition: all 0.3s ease;
+        }
+    
+        #visibility-1:checked~.visibility-1,
+        #visibility-2:checked~.visibility-2 {
+            opacity: 1;
         }
     }
+
 }
