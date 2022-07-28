@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('metaTitle', '| Lista Utenti')
+
 @section('header')
     @include('components.adminHeader')
 @endsection
@@ -10,11 +12,11 @@
     <section id="users_index">
 
         <div class="container">
-            <div class="row gy-5">
+            <div class="row gy-5 gx-sm-5 gx-lg-5">
 
                 {{-- Title --}}
-                <div class="col-12 title text-center">
-                    <h1>Lista Utenti</h1>
+                <div class="col-12 title text-center text-white">
+                    <h1 class="mb-0">Lista Utenti</h1>
                 </div>
     
                 {{-- foreach users --}}
@@ -23,22 +25,22 @@
 
                         {{-- Card --}}
                         <div class="card h-100">
-                            <div class="card-body d-flex flex-column gap-4 justify-content-between">
+                            <div class="card-body">
     
                                 {{-- User description --}}
-                                <div class="user_description">
+                                <div class="user_description mb-3">
                                     <h6 class="card-title mb-3">{{$user->id}}</h6>
-                                    <h4 class="card-title mb-3">{{$user->name}} {{$user->surname}}</h4>
-                                    <p class="card-text mb-3">Creato il: <span>{{$user->created_at}}</span></p>
+                                    <h4 class="card-title mb-3 fw-bolder">{{$user->name}} {{$user->surname}}</h4>
+                                    <p class="card-text mb-3">Registrato <span>{{\Carbon\Carbon::create($user->created_at)->diffForHumans()}}</span></p>
 
                                     {{-- Foreach user role --}}
                                     @foreach ($user->roles as $role)
-                                        <p class="card-text mb-0">Ruolo: <span>{{$role->display_name}}</span></p>
+                                        <p class="badge bg-dark fs-6 fw-light">{{$role->display_name}}</p>
                                     @endforeach
                                 </div>
     
                                 {{-- Btn --}}
-                                <div class="buttons d-flex gap-3 flex-wrap">
+                                <div class="buttons d-flex gap-3 flex-wrap justify-content-center">
                                     <a href="{{route('admin.users.show', $user)}}" class="btn btn-primary text-white">Visualizza</a>
                                     <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary text-white">Modifica ruolo</a>
                                 </div>
