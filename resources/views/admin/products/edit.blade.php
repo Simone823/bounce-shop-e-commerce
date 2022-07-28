@@ -112,7 +112,7 @@
                                             </label>
 
                                             @error('visibility')
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                <div class="col-12 alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
 
