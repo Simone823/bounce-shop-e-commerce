@@ -12,7 +12,7 @@
     <section id="categories_index">
 
         <div class="container">
-            <div class="row gy-5">
+            <div class="row gy-5 gx-sm-5 gx-lg-5">
 
                 {{-- Title --}}
                 <div class="col-12 title text-center text-white">
