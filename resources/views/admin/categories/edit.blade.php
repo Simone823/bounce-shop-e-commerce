@@ -44,6 +44,8 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+
+                                        <p class="card-text"> Creato {{\Carbon\Carbon::create($category->created_at)->diffForHumans()}}</p>
                                     </div>
 
                                     {{-- update btn --}}
