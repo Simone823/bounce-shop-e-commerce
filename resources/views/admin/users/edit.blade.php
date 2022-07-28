@@ -56,7 +56,7 @@
                                     @method('PUT')
 
                                     {{-- Select role user --}}
-                                    <div class="role_select mb-4">
+                                    <div class="role_select mb-4 w-75 mx-auto">
                                         <label class="mb-2" for="roles">Ruolo</label>
                                         <select name="roles" id="roles" class="form-select mx-auto" aria-label="Default select example">
                                             @foreach ($roles as $role)
