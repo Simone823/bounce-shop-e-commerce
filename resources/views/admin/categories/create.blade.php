@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('metaTitle', '| Crea Prodotto')
+@section('metaTitle', '| Crea Categoria')
 
 @section('header')
     @include('components.adminHeader')
@@ -12,14 +12,14 @@
     <section id="category_create">
 
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center gy-5">
+
+                {{-- Title --}}
+                <div class="col-12 title text-center text-white">
+                    <h1 class="mb-0">Aggiungi Categoria</h1>
+                </div>
 
                 <div class="col-12 col-sm-8">
-
-                    {{-- Title --}}
-                    <div class="col-12 title text-center mb-4 text-white">
-                        <h1 class="mb-0">Aggiungi Categoria</h1>
-                    </div>
 
                     {{-- Card input --}}
                     <div class="card text-center">
