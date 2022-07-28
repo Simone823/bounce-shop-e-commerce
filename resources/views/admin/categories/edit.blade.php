@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('metaTitle')
+    | Modifica Categoria {{$category->id}}
+@endsection
+
 @section('header')
     @include('components.adminHeader')
 @endsection
