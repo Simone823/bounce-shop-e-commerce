@@ -12306,8 +12306,8 @@ section {
   transition: all 0.3s ease;
 }
 
-#product_edit .card #option-1:checked:checked ~ .option-1,
-#product_edit .card #option-2:checked:checked ~ .option-2 {
+#product_edit .card #visibility-1:checked ~ .visibility-1,
+#product_edit .card #visibility-2:checked ~ .visibility-2 {
   opacity: 1;
 }
 

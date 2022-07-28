@@ -33,8 +33,8 @@
             transition: all 0.3s ease;
         }
     
-        #option-1:checked:checked~.option-1,
-        #option-2:checked:checked~.option-2 {
+        #visibility-1:checked~.visibility-1,
+        #visibility-2:checked~.visibility-2 {
             opacity: 1;
         }
     }

@@ -87,12 +87,12 @@
 
                                         {{-- visibile --}}
                                         <div class="form-group mb-4 d-flex flex-wrap justify-content-center gap-2">
-                                            <input type="radio" name="visibility" id="option-1" value="1" {{$product->visibility == 1 ? 'checked' : ''}}>
-                                            <input type="radio" name="visibility" id="option-2" value="0" {{$product->visibility == 0 ? 'checked' : ''}}>
-                                            <label for="option-1" class="option bg-success option-1">
+                                            <input type="radio" name="visibility" id="visibility-1" value="1" {{old('visibility', $product->visibility == 1) ? 'checked' : ''}}>
+                                            <input type="radio" name="visibility" id="visibility-2" value="0" {{old('visibility', $product->visibility == 0) ? 'checked' : ''}}>
+                                            <label for="visibility-1" class="option bg-success visibility-1">
                                                 <span class="text-uppercase text-white">Visibile</span>
                                             </label>
-                                            <label for="option-2" class="option bg-danger option-2">
+                                            <label for="visibility-2" class="option bg-danger visibility-2">
                                                 <span class="text-uppercase text-white">Non Visibile</span>
                                             </label>
 
