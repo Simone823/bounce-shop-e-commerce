@@ -12222,6 +12222,10 @@ section {
   background-color: #efefef;
 }
 
+#category_edit .card {
+  background-color: #efefef;
+}
+
 #products_index .card {
   background-color: #efefef;
   border: none;
