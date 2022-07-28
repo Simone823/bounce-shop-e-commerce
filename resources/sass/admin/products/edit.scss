@@ -19,5 +19,24 @@
                 object-position: center;
             }
         }
+
+        input[type="radio"] {
+            display: none;
+        }
+    
+        .option {
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border: none;
+            opacity: 0.42;
+            transition: all 0.3s ease;
+        }
+    
+        #option-1:checked:checked~.option-1,
+        #option-2:checked:checked~.option-2 {
+            opacity: 1;
+        }
     }
+
 }

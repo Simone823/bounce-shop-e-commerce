@@ -86,12 +86,15 @@
                                         </div>
 
                                         {{-- visibile --}}
-                                        <div class="form-group mb-4">
-                                            <label for="visibility" class="mb-2 form-label">Visibile</label>
-                                            <select class="form-select" id="visibility" name="visibility" aria-label="Default select example">
-                                               <option {{$product->visibility == 0 ? 'selected' : old('visibility')}} value="0">No</option>
-                                               <option {{$product->visibility == 1 ? 'selected' : old('visibility')}} value="1">Si</option>
-                                            </select>
+                                        <div class="form-group mb-4 d-flex flex-wrap justify-content-center gap-2">
+                                            <input type="radio" name="visibility" id="option-1" value="1" {{$product->visibility == 1 ? 'checked' : ''}}>
+                                            <input type="radio" name="visibility" id="option-2" value="0" {{$product->visibility == 0 ? 'checked' : ''}}>
+                                            <label for="option-1" class="option bg-success option-1">
+                                                <span class="text-uppercase text-white">Visibile</span>
+                                            </label>
+                                            <label for="option-2" class="option bg-danger option-2">
+                                                <span class="text-uppercase text-white">Non Visibile</span>
+                                            </label>
 
                                             @error('visibility')
                                                 <div class="alert alert-danger">{{ $message }}</div>
