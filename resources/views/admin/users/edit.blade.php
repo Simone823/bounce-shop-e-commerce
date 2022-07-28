@@ -56,16 +56,17 @@
                                     @method('PUT')
 
                                     {{-- Select role user --}}
-                                    <div class="role_select mb-4 w-75 mx-auto">
-                                        <label class="mb-2" for="roles">Ruolo</label>
-                                        <select name="roles" id="roles" class="form-select mx-auto" aria-label="Default select example">
+                                    <div class="form-floating mb-4 w-75 mx-auto">
+                                        <select class="form-select" id="roles" name="roles" aria-label="Floating label select example">
+                                            <option disabled>Seleziona un ruolo</option>
                                             @foreach ($roles as $role)
-                                                <option {{$user->roles->contains($role) ? 'selected' : ''}} value="{{$role->id}}">{{$role->display_name}}</option>
+                                                <option {{old('roles', $user->roles->contains($role)) ? 'selected' : ''}} value="{{$role->id}}">{{$role->display_name}}</option>
                                             @endforeach
                                         </select>
+                                        <label for="floatingSelect">Ruolo</label>
 
-                                        @error('roles')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @error('categories')
+                                        <div class="alert alert-danger">{{$message}}</div>
                                         @enderror
                                     </div>
 
