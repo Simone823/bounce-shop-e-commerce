@@ -12248,13 +12248,20 @@ section {
      object-position: center;
 }
 
-#product_show .wrapper_image {
-  width: 80%;
+#product_show .card {
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#product_show .card .wrapper_image {
+  width: 100%;
   height: 300px;
   margin: 0 auto;
 }
 
-#product_show .wrapper_image img {
+#product_show .card .wrapper_image img {
   width: 100%;
   height: 100%;
   display: block;

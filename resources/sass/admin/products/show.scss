@@ -3,6 +3,9 @@
 
     .card {
         background-color: $gray-1;
+        border: none;
+        border-radius: 5px;
+        overflow: hidden;
         
         .wrapper_image {
             width: 100%;
