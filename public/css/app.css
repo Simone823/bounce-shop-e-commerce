@@ -12338,3 +12338,21 @@ section {
      object-position: center;
 }
 
+#product_create input[type=radio] {
+  display: none;
+}
+
+#product_create .option {
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border: none;
+  opacity: 0.42;
+  transition: all 0.3s ease;
+}
+
+#product_create #visibility-1:checked ~ .visibility-1,
+#product_create #visibility-2:checked ~ .visibility-2 {
+  opacity: 1;
+}
+

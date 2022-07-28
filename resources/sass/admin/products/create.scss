@@ -12,4 +12,22 @@
             object-position: center;
         }
     }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    .option {
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 8px 10px;
+        border: none;
+        opacity: 0.42;
+        transition: all 0.3s ease;
+    }
+
+    #visibility-1:checked~.visibility-1,
+    #visibility-2:checked~.visibility-2 {
+        opacity: 1;
+    }
 }
