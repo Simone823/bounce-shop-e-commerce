@@ -12220,10 +12220,18 @@ section {
 
 #categories_index .card {
   background-color: #efefef;
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 #category_edit .card {
   background-color: #efefef;
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 #category_create .card {
