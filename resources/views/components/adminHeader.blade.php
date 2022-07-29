@@ -5,7 +5,7 @@
             {{-- nav brand icon --}}
             <figure class="logo_nav mb-0">
                 <a class="navbar-brand fs-3" href="{{ url('/') }}">
-                    <img src="{{asset('img/bounce_shop_logo.svg')}}" alt="">
+                    <img src="{{asset('img/bounce_shop_logo.png')}}" alt="">
                 </a>
             </figure>
 
