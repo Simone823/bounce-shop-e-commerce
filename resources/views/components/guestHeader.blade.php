@@ -18,14 +18,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fs-5" aria-current="page" href="/">HomePage</a>
-
+                        <a class="nav-link fs-5" aria-current="page" href="/">Homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link fs-5" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,7 +49,7 @@
                                         <img class="user_logo" src="{{asset('storage/'.Auth::user()->image)}}" alt="">
                                         {{Auth::user()->name}}
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ul class="dropdown-menu bg-primary dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
                                         <li>
                                             @if (Auth::user()->hasRole('superadministrator'))
                                                 <a class="dropdown-item" href="{{route('admin.home')}}">
@@ -76,18 +75,17 @@
                                         </li>
                                     </ul>
                                 </div>
-    
-                                
-                            @else
+                            
+                                @else
 
-                                {{-- Links login register --}}
-                                <div class="links d-flex gap-3">
-                                    <a class="link-light btn btn-primary" href="{{ route('login') }}">Accedi</a>
-        
-                                    @if (Route::has('register'))
-                                        <a class="link-light btn btn-primary" href="{{ route('register') }}">Registrati</a>
-                                    @endif
-                                </div>
+                                    {{-- Links login register --}}
+                                    <div class="links d-flex gap-3">
+                                        <a class="link-light btn btn-primary" href="{{ route('login') }}">Accedi</a>
+            
+                                        @if (Route::has('register'))
+                                            <a class="link-light btn btn-primary" href="{{ route('register') }}">Registrati</a>
+                                        @endif
+                                    </div>
                             @endauth
                         </div>
     
