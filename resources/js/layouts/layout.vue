@@ -1,10 +1,10 @@
 <template>
 
-    <!-- Layout default -->
-    <div id="layout_default">
+    <!-- App -->
+    <div id="app">
 
         <!-- Main slot -->
-        <main>
+        <main class="main_slot">
             <slot/>
         </main>
 
