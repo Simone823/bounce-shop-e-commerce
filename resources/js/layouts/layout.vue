@@ -3,6 +3,11 @@
     <!-- Layout default -->
     <div id="layout_default">
 
+        <!-- Main slot -->
+        <main>
+            <slot/>
+        </main>
+
     </div>
 
 </template>
