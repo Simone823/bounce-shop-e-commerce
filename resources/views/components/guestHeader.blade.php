@@ -45,7 +45,7 @@
                             @auth
                                 {{-- Dropdown tbn --}}
                                 <div class="dropdown">
-                                    <button class="btn btn-primary text-white dropdown-toggle d-flex align-items-center gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-primary text-white dropdown-toggle d-flex align-items-center flex-wrap gap-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img class="user_logo" src="{{asset('storage/'.Auth::user()->image)}}" alt="">
                                         {{Auth::user()->name}}
                                     </button>
