@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('metaTitle', '| Admin Dashboard')
+
 @section('header')
 
     @include('components.adminHeader')

@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes(['verify' => true]);
 
@@ -46,5 +46,10 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
     // Rotta resource orders
     Route::resource('/orders', 'OrderController');
 });
+
+// Creo una rotta di fallback che restiturà guest.home view
+route::get('{any}', function () {
+    return view('guest.home');
+})->where('any', '.*');
 
 
