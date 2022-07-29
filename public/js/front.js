@@ -5115,12 +5115,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pages_home_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/home.vue */ "./resources/js/pages/home.vue");
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    home: _pages_home_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  name: 'App'
 });
 
 /***/ }),
@@ -5173,7 +5169,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("router-view")], 1);
+  return _c("router-view");
 };
 
 var staticRenderFns = [];
