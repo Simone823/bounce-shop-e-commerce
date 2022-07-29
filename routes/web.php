@@ -47,4 +47,9 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
     Route::resource('/orders', 'OrderController');
 });
 
+// Creo una rotta di fallback che restiturà guest.home view
+route::get('{any}', function () {
+    return view('guest.home');
+})->where('any', '.*');
+
 
