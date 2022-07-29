@@ -3,8 +3,8 @@
     <!-- App -->
     <div id="app">
 
-        <!-- Main slot -->
-        <main class="main_slot">
+
+        <main>
             <slot/>
         </main>
 
@@ -14,7 +14,7 @@
 
 <script>
     export default {
-        name: layout,
+        name: 'layout',
     }
 </script>
 
