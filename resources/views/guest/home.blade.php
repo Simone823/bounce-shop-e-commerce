@@ -22,10 +22,15 @@
 </head>
 <body>
 
+    {{-- Header guest --}}
+    @include('components.guestHeader')
+
+
     {{-- Root --}}
     <div id="root">
 
     </div>
+
 
     {{-- Script js front --}}
     <script src="{{asset('js/front.js')}}"></script>
