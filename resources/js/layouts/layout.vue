@@ -8,13 +8,22 @@
             <slot/>
         </main>
 
+        <!-- Footer -->
+        <MyFooter/>
+
     </div>
 
 </template>
 
 <script>
+import MyFooter from '../components/MyFooter.vue';
+
     export default {
         name: 'layout',
+
+        components: {
+            MyFooter,
+        }
     }
 </script>
 
@@ -46,7 +55,7 @@
     // main
     main {
         width: 100%;
-        height: 100%;
+        min-height: 100%;
 
         // section
         section {
