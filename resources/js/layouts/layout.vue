@@ -8,13 +8,22 @@
             <slot/>
         </main>
 
+        <!-- Footer -->
+        <MyFooter/>
+
     </div>
 
 </template>
 
 <script>
+import MyFooter from '../components/MyFooter.vue';
+
     export default {
         name: 'layout',
+
+        components: {
+            MyFooter,
+        }
     }
 </script>
 
@@ -23,11 +32,18 @@
 // App vue
 #app {
     height: calc(100vh - 75px);
+    background: url('/img/background_dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     color: white;
+    overflow-y: auto;
 
     ul,
     ol {
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     img {
@@ -39,19 +55,13 @@
     // main
     main {
         width: 100%;
-        height: 100%;
-        background: url('/img/background_dark.jpg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        overflow: hidden;
+        min-height: 100%;
 
         // section
         section {
             width: 100%;
             height: 100%;
             padding: 24px 0;
-            overflow-y: auto;
         }
     }
 }
