@@ -5124,6 +5124,28 @@ __webpack_require__.r(__webpack_exports__);
   name: 'home',
   components: {
     layout: _layouts_layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      // array categories
+      categories: []
+    };
+  },
+  methods: {
+    // Fetch categories
+    fetchCategories: function fetchCategories() {
+      var _this = this;
+
+      axios.get('/api/categories').then(function (res) {
+        // array categories res data categories
+        _this.categories = res.data.categories;
+      })["catch"](function (err) {
+        console.warn(err);
+      });
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.fetchCategories();
   }
 });
 
@@ -5192,7 +5214,28 @@ var render = function render() {
     attrs: {
       id: "home"
     }
-  }, [_c("h1", [_vm._v("HOMEPAGE")])])]);
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-12"
+  }, [_c("div", {
+    staticClass: "title mb-4 text-center"
+  }, [_c("h1", {
+    staticClass: "mb-0"
+  }, [_vm._v("Top Categorie")])]), _vm._v(" "), _c("ul", {
+    staticClass: "category_list d-flex flex-wrap justify-content-center gap-4"
+  }, _vm._l(_vm.categories, function (category) {
+    return _c("router-link", {
+      key: category.id,
+      staticClass: "btn btn-primary text-white px-5",
+      attrs: {
+        tag: "li",
+        to: ""
+      }
+    }, [_vm._v("\n                            " + _vm._s(category.category_name) + "\n                        ")]);
+  }), 1)])])])])]);
 };
 
 var staticRenderFns = [];
