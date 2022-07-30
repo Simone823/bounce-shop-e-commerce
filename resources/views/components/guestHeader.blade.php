@@ -86,3 +86,14 @@
         </nav>
     </div>
 </header>
+
+<style>
+    header{
+        width: 100%;
+        height: 75px;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 999999;
+    }
+</style>
