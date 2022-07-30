@@ -28,7 +28,7 @@
                 <div class="row services_wrapper">
                     <div class="col-12">
                         <!-- service list -->
-                        <ul class="service_list d-flex flex-wrap">
+                        <ul class="service_list d-flex flex-wrap justify-content-center">
                             <li class="col-12 col-sm-6 col-md-4 col-lg-4" v-for="(service, index) in services" :key="index">
                                 <figure class="icon">
                                     <img :src="service.icon" alt="">
