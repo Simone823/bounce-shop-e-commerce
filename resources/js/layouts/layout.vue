@@ -25,6 +25,17 @@
     height: calc(100vh - 75px);
     color: white;
 
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
     // main
     main {
         width: 100%;
