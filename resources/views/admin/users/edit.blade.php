@@ -13,7 +13,7 @@
     {{-- Section user_edit --}}
     <section id="user_edit">
 
-        <div class="container">
+        <div class="container h-100">
             <div class="row justify-content-center align-items-center h-100">
 
                 <div class="col-12 col-sm-8">
