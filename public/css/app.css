@@ -12154,6 +12154,13 @@ fieldset:disabled .btn {
   }
 }
 
+#login_page .card {
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 #app {
   height: 100vh;
 }
