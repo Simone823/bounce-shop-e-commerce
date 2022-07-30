@@ -11,7 +11,7 @@
     {{-- section orders index --}}
     <section id="orders_index">
 
-        <div class="container">
+        <div class="container h-100">
             <div class="row h-100 align-items-center">
 
 
