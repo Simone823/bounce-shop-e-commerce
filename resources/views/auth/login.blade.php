@@ -16,10 +16,7 @@
                 <div class="col-12 col-sm-8 col-md-5">
 
                     {{-- Link pagina homepage --}}
-                    <div class="mb-4 d-flex align-items-center justify-content-between flex-wrap gap-4">
-                        <a href="/" class="text-decoration-none link-light">
-                            <span>&#x21fd; Torna alla Homepage</span>
-                        </a>
+                    <div class="mb-4 text-end">
                         <a href="{{route('register')}}" class="text-decoration-none link-light">
                             <span>Vai alla pagina di registrazione &#x21fe;</span>
                         </a>
