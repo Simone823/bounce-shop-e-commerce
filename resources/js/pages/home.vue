@@ -5,12 +5,10 @@
 
         <!-- Home -->
         <section id="home">
-            
             <div class="container">
 
                 <!-- Row categories -->
                 <div class="row">
-
                     <!-- Category wrapper col -->
                     <div class="col-12">
 
@@ -26,10 +24,9 @@
                             </router-link>
                         </ul>
                     </div>
-
                 </div>
-            </div>
 
+            </div>
         </section>
 
     </layout>
