@@ -23,4 +23,7 @@ Route::namespace('Api')->group(function () {
  
     // Rotta categories
     Route::get('/categories', 'CategoryController@index');
+
+    // Rotta products
+    Route::get('/products', 'ProductController@index');
 });
