@@ -5192,6 +5192,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // array categories
       categories: [],
+      // array products
+      products: [],
       // array services
       services: [{
         icon: __webpack_require__(/*! /public/img/delivery_truck_icon.svg */ "./public/img/delivery_truck_icon.svg"),
@@ -5219,11 +5221,25 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.warn(err);
       });
+    },
+    // fetch products
+    fetchProducts: function fetchProducts() {
+      var _this2 = this;
+
+      axios.get('/api/products').then(function (res) {
+        // array products res data products
+        _this2.products = res.data.products;
+        console.log(_this2.products);
+      })["catch"](function (err) {
+        console.warn(err);
+      });
     }
   },
   beforeMount: function beforeMount() {
     // Richiamo funzione fetch categories
-    this.fetchCategories();
+    this.fetchCategories(); // Richiamo funzione fetch products
+
+    this.fetchProducts();
   }
 });
 
@@ -5444,8 +5460,6 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row categories_wrapper"
   }, [_c("div", {
-    staticClass: "col-12"
-  }, [_c("div", {
     staticClass: "title mb-5 text-center"
   }, [_c("h2", {
     staticClass: "mb-0 text-uppercase"
@@ -5459,11 +5473,39 @@ var render = function render() {
         tag: "li",
         to: ""
       }
-    }, [_vm._v("\n                            " + _vm._s(category.category_name) + "\n                        ")]);
-  }), 1)])]), _vm._v(" "), _c("div", {
-    staticClass: "row services_wrapper"
+    }, [_vm._v("\n                        " + _vm._s(category.category_name) + "\n                    ")]);
+  }), 1)]), _vm._v(" "), _c("div", {
+    staticClass: "row products_wrapper"
   }, [_c("div", {
-    staticClass: "col-12"
+    staticClass: "title mb-5 text-center"
+  }, [_c("h2", {
+    staticClass: "mb-0 text-uppercase"
+  }, [_vm._v("Ultimi prodotti aggiunti")])]), _vm._v(" "), _c("ul", {
+    staticClass: "product_list d-flex flex-wrap"
+  }, _vm._l(_vm.products, function (product) {
+    return _c("li", {
+      key: product.id,
+      staticClass: "col-12 col-sm-6 col-lg-4"
+    }, [_c("div", {
+      staticClass: "card bg-dark text-white"
+    }, [_c("figure", {
+      staticClass: "img_wrapper"
+    }, [_c("img", {
+      attrs: {
+        src: "storage/".concat(product.image),
+        alt: ""
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("h5", {
+      staticClass: "card-title fw-bolder"
+    }, [_vm._v(_vm._s(product.product_name))]), _vm._v(" "), _c("p", {
+      staticClass: "card-text"
+    }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("p", {
+      staticClass: "card-text fs-5"
+    }, [_vm._v(_vm._s(product.price))])])])]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row services_wrapper"
   }, [_c("ul", {
     staticClass: "service_list d-flex flex-wrap justify-content-center"
   }, _vm._l(_vm.services, function (service, index) {
@@ -5482,7 +5524,7 @@ var render = function render() {
     }, [_c("h3", {
       staticClass: "text-uppercase"
     }, [_vm._v(_vm._s(service.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(service.text))])])]);
-  }), 0)])])])])]);
+  }), 0)])])])]);
 };
 
 var staticRenderFns = [];
@@ -10590,7 +10632,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".categories_wrapper[data-v-bb7a9770] {\n  margin-bottom: 80px;\n}\n.categories_wrapper .category_list[data-v-bb7a9770] {\n  -moz-column-gap: 50px;\n       column-gap: 50px;\n  row-gap: 30px;\n}\n.services_wrapper .service_list[data-v-bb7a9770] {\n  row-gap: 30px;\n}\n.services_wrapper .service_list li[data-v-bb7a9770] {\n  display: flex;\n  flex-direction: column;\n  row-gap: 20px;\n  align-items: center;\n  padding: 0 25px;\n}\n.services_wrapper .service_list li .icon[data-v-bb7a9770] {\n  width: 100px;\n  height: 100px;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".categories_wrapper[data-v-bb7a9770] {\n  padding: 40px 0;\n  border-bottom: 2px solid #292929;\n}\n.categories_wrapper .category_list[data-v-bb7a9770] {\n  -moz-column-gap: 50px;\n       column-gap: 50px;\n  row-gap: 30px;\n}\n.products_wrapper[data-v-bb7a9770] {\n  padding: 40px 0;\n  border-bottom: 2px solid #292929;\n}\n.products_wrapper .product_list[data-v-bb7a9770] {\n  row-gap: 45px;\n}\n.products_wrapper .product_list li[data-v-bb7a9770] {\n  padding: 0 25px;\n}\n.products_wrapper .product_list li .card[data-v-bb7a9770] {\n  height: 100%;\n  overflow: hidden;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}\n.products_wrapper .product_list li .card[data-v-bb7a9770]:hover {\n  transform: scale(1.03);\n  transition: all 300ms linear;\n}\n.products_wrapper .product_list li .card:hover img[data-v-bb7a9770] {\n  transform: scale(1.08);\n  transition: all 300ms linear;\n}\n.products_wrapper .product_list li .card .img_wrapper[data-v-bb7a9770] {\n  width: 100%;\n  height: 350px;\n  overflow: hidden;\n  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);\n}\n.products_wrapper .product_list li .card .img_wrapper img[data-v-bb7a9770] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.services_wrapper[data-v-bb7a9770] {\n  padding-top: 40px;\n}\n.services_wrapper .service_list[data-v-bb7a9770] {\n  row-gap: 30px;\n}\n.services_wrapper .service_list li[data-v-bb7a9770] {\n  display: flex;\n  flex-direction: column;\n  row-gap: 20px;\n  align-items: center;\n  padding: 0 25px;\n}\n.services_wrapper .service_list li .icon[data-v-bb7a9770] {\n  width: 100px;\n  height: 100px;\n  margin: 0;\n}", ""]);
 
 // exports
 
@@ -57593,7 +57635,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/delivery_truck_icon.svg?9e6e9271fd39adf84fec05eb35a464e0";
+module.exports = "/images/delivery_truck_icon.svg?2b5bb76638b2b8a023322135d0dc2700";
 
 /***/ }),
 
@@ -57604,7 +57646,7 @@ module.exports = "/images/delivery_truck_icon.svg?9e6e9271fd39adf84fec05eb35a464
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/exchange_icon.svg?9d2690de5afdfafee7305163271e39ee";
+module.exports = "/images/exchange_icon.svg?8eeea2672c4c6272913f1bbdca9d0071";
 
 /***/ }),
 
@@ -57615,7 +57657,7 @@ module.exports = "/images/exchange_icon.svg?9d2690de5afdfafee7305163271e39ee";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/secure_icon.svg?b607415c150c25e9b5627f6b2eade6c9";
+module.exports = "/images/secure_icon.svg?f4d0a6bd3df797d8093cf78f5956841d";
 
 /***/ }),
 
