@@ -15,7 +15,7 @@
                     </div>
 
                     <!-- Product_list -->
-                    <ul class="product_list d-flex flex-wrap justify-content-center mb-5">
+                    <ul class="product_list d-flex flex-wrap justify-content-center">
                         <li v-for="(product, index) in products" :key="index" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
@@ -30,10 +30,13 @@
                             </div>
                         </li>
                     </ul>
+                </div>
 
+                <!-- Row pages -->
+                <div class="row pages">
                     <!-- Pages -->
                     <ul class="pagination d-flex justify-content-center">
-                        <li class="page-item" @click="fetchProductsCategory(number)" :class="currentPage == number ? 'active' : ''" v-for="number in lastPage" :key="number">
+                        <li class="page-item" @click="fetchProductsCategory(number), AppScrollTop()" :class="currentPage == number ? 'active' : ''" v-for="number in lastPage" :key="number">
                             <p class="page-link">{{number}}</p>
                         </li>
                     </ul>
@@ -102,6 +105,15 @@ import layout from '../layouts/layout.vue';
                 .catch( err => {
                     console.warn(err);
                 })
+            },
+
+            // ScrollTop app
+            AppScrollTop() {
+                // recupero div app
+                const divApp = document.getElementById('app');
+
+                // div app scroll top
+                divApp.scrollTo({ top: 0, behavior: 'smooth' });
             }
         },
 
@@ -115,66 +127,74 @@ import layout from '../layouts/layout.vue';
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
 
-.products_wrapper {
-    padding: 40px 0;
-    border-bottom: 2px solid $gray-2;
+#products_category {
 
-    .title {
-
-        h3 {
-            max-width: max-content;
-            margin: 0 auto;
-            background-color: $blue-1;
-            padding: 8px 45px;
-            border-radius: 5px;
+    .products_wrapper {
+        padding-bottom: 40px;
+        border-bottom: 2px solid $gray-2;
+    
+        .title {
+    
+            h3 {
+                max-width: max-content;
+                margin: 0 auto;
+                background-color: $blue-1;
+                padding: 8px 45px;
+                border-radius: 5px;
+            }
         }
-    }
-
-    .product_list {
-        row-gap: 45px;
-
-        li {
-            padding: 0 25px;
-
-            .card {
-                height: 100%;
-                overflow: hidden;
-                border: none;
-                border-radius: 8px;
-                box-shadow:  0 1rem 3rem rgba($white, .175) inset;
-
-                &:hover {
-                    transform: scale(1.03);
-                    transition: all 300ms linear;
-
-                    img {
-                        transform: scale(1.08);
-                        transition: all 300ms linear;
-                    }
-                }
-
-                .img_wrapper {
-                    width: 100%;
-                    height: 350px;
+    
+        .product_list {
+            row-gap: 45px;
+    
+            li {
+                padding: 0 25px;
+    
+                .card {
+                    height: 100%;
                     overflow: hidden;
-                    box-shadow: 0 .5rem 1rem rgba($white, .15);
-
-                    img {
-                        object-fit: cover;
-                        object-position: center;
+                    border: none;
+                    border-radius: 8px;
+                    box-shadow:  0 1rem 3rem rgba($white, .175) inset;
+    
+                    &:hover {
+                        transform: scale(1.03);
+                        transition: all 300ms linear;
+    
+                        img {
+                            transform: scale(1.08);
+                            transition: all 300ms linear;
+                        }
                     }
+    
+                    .img_wrapper {
+                        width: 100%;
+                        height: 350px;
+                        overflow: hidden;
+                        box-shadow: 0 .5rem 1rem rgba($white, .15);
+    
+                        img {
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+    
                 }
-
             }
         }
     }
 
-    .pagination {
-        .page-link {
-            margin: 0;
-            cursor: pointer;
+    .pages {
+        padding-top: 40px;
+
+        .pagination {
+            .page-link {
+                margin: 0;
+                cursor: pointer;
+            }
         }
     }
 }
+
 
 </style>

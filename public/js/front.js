@@ -5370,6 +5370,16 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.warn(err);
       });
+    },
+    // ScrollTop app
+    AppScrollTop: function AppScrollTop() {
+      // recupero div app
+      var divApp = document.getElementById('app'); // div app scroll top
+
+      divApp.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   },
   beforeMount: function beforeMount() {
@@ -5791,7 +5801,7 @@ var render = function render() {
   }, [_c("h3", {
     staticClass: "text-white"
   }, [_vm._v(_vm._s(_vm.categorySelected))])]), _vm._v(" "), _c("ul", {
-    staticClass: "product_list d-flex flex-wrap justify-content-center mb-5"
+    staticClass: "product_list d-flex flex-wrap justify-content-center"
   }, _vm._l(_vm.products, function (product, index) {
     return _c("li", {
       key: index,
@@ -5814,7 +5824,9 @@ var render = function render() {
     }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("p", {
       staticClass: "card-text fs-5"
     }, [_vm._v(_vm._s(product.price) + " €")])])])]);
-  }), 0), _vm._v(" "), _c("ul", {
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "row pages"
+  }, [_c("ul", {
     staticClass: "pagination d-flex justify-content-center"
   }, _vm._l(_vm.lastPage, function (number) {
     return _c("li", {
@@ -5823,7 +5835,7 @@ var render = function render() {
       "class": _vm.currentPage == number ? "active" : "",
       on: {
         click: function click($event) {
-          return _vm.fetchProductsCategory(number);
+          _vm.fetchProductsCategory(number), _vm.AppScrollTop();
         }
       }
     }, [_c("p", {
@@ -10975,7 +10987,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".products_wrapper[data-v-d85eda2a] {\n  padding: 40px 0;\n  border-bottom: 2px solid #292929;\n}\n.products_wrapper .title h3[data-v-d85eda2a] {\n  max-width: -webkit-max-content;\n  max-width: -moz-max-content;\n  max-width: max-content;\n  margin: 0 auto;\n  background-color: #1e90ff;\n  padding: 8px 45px;\n  border-radius: 5px;\n}\n.products_wrapper .product_list[data-v-d85eda2a] {\n  row-gap: 45px;\n}\n.products_wrapper .product_list li[data-v-d85eda2a] {\n  padding: 0 25px;\n}\n.products_wrapper .product_list li .card[data-v-d85eda2a] {\n  height: 100%;\n  overflow: hidden;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}\n.products_wrapper .product_list li .card[data-v-d85eda2a]:hover {\n  transform: scale(1.03);\n  transition: all 300ms linear;\n}\n.products_wrapper .product_list li .card:hover img[data-v-d85eda2a] {\n  transform: scale(1.08);\n  transition: all 300ms linear;\n}\n.products_wrapper .product_list li .card .img_wrapper[data-v-d85eda2a] {\n  width: 100%;\n  height: 350px;\n  overflow: hidden;\n  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);\n}\n.products_wrapper .product_list li .card .img_wrapper img[data-v-d85eda2a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.products_wrapper .pagination .page-link[data-v-d85eda2a] {\n  margin: 0;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "#products_category .products_wrapper[data-v-d85eda2a] {\n  padding-bottom: 40px;\n  border-bottom: 2px solid #292929;\n}\n#products_category .products_wrapper .title h3[data-v-d85eda2a] {\n  max-width: -webkit-max-content;\n  max-width: -moz-max-content;\n  max-width: max-content;\n  margin: 0 auto;\n  background-color: #1e90ff;\n  padding: 8px 45px;\n  border-radius: 5px;\n}\n#products_category .products_wrapper .product_list[data-v-d85eda2a] {\n  row-gap: 45px;\n}\n#products_category .products_wrapper .product_list li[data-v-d85eda2a] {\n  padding: 0 25px;\n}\n#products_category .products_wrapper .product_list li .card[data-v-d85eda2a] {\n  height: 100%;\n  overflow: hidden;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}\n#products_category .products_wrapper .product_list li .card[data-v-d85eda2a]:hover {\n  transform: scale(1.03);\n  transition: all 300ms linear;\n}\n#products_category .products_wrapper .product_list li .card:hover img[data-v-d85eda2a] {\n  transform: scale(1.08);\n  transition: all 300ms linear;\n}\n#products_category .products_wrapper .product_list li .card .img_wrapper[data-v-d85eda2a] {\n  width: 100%;\n  height: 350px;\n  overflow: hidden;\n  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);\n}\n#products_category .products_wrapper .product_list li .card .img_wrapper img[data-v-d85eda2a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#products_category .pages[data-v-d85eda2a] {\n  padding-top: 40px;\n}\n#products_category .pages .pagination .page-link[data-v-d85eda2a] {\n  margin: 0;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
