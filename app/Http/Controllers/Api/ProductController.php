@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function showProducts()
     {
         // products
-        $products = Product::where('visibility', '=', 1)->orderBy('product_name', 'asc')->paginate(6);
+        $products = Product::where('visibility', '=', 1)->with('categories')->orderBy('product_name', 'asc')->paginate(6);
 
         // return response json 
         return response()->json([
