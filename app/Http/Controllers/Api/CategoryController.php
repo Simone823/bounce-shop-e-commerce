@@ -13,6 +13,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function showCategories()
+    {
+        // categories
+        $categories = Category::orderBy('category_name', 'asc')->get();
+
+        // return response json
+        return response()->json([
+            'categories' => $categories,
+            'success' => true
+        ]);
+    }
+
+    
     public function topCategories()
     {
         // categories
