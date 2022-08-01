@@ -5,7 +5,25 @@
 
         <!-- Home -->
         <section id="home">
+
+            <div class="container-fluid">
+                <!-- Row jumbotron -->
+                <div class="row jumbotron">
+                    <figure class="image_wrapper">
+                        <img :src="require('/public/img/jumbo_image.jpg')" alt="">
+                    </figure>
+
+                    <div class="description text-center">
+                        <h1 class="fs-1 fw-bold">
+                            Bounce Shop <br>
+                            Accessori e abbigliamento sportivo  
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
             <div class="container">
+
 
                 <!-- Row categories wrapper -->
                 <div class="row categories_wrapper">
@@ -156,80 +174,126 @@
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
 
-.categories_wrapper {
-    padding: 40px 0;
-    border-bottom: 2px solid $gray-2;
+#home {
+    padding-top: 0 !important;
 
-    .category_list {
-        column-gap: 50px;
-        row-gap: 30px;
+    .jumbotron {
+        position: relative;
+
+        .image_wrapper {
+            padding: 0;
+            margin: 0;
+            height: 550px;
+            position: relative;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: black;
+                opacity: 0.55;
+            }
+
+            img {
+                object-fit: cover;
+                object-position: center;
+                filter: saturate(40%);
+            }
+        }
+
+        .description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            h1 {
+                text-shadow: 0 0 10px black;
+                text-transform: uppercase;
+            }
+        }
     }
-}
 
-.products_wrapper {
-    padding: 40px 0;
-    border-bottom: 2px solid $gray-2;
+    .categories_wrapper {
+        padding: 40px 0;
+        border-bottom: 2px solid $gray-2;
 
-    .product_list {
-        row-gap: 45px;
+        .category_list {
+            column-gap: 50px;
+            row-gap: 30px;
+        }
+    }
 
-        li {
-            padding: 0 25px;
+    .products_wrapper {
+        padding: 40px 0;
+        border-bottom: 2px solid $gray-2;
 
-            .card {
-                height: 100%;
-                overflow: hidden;
-                border: none;
-                border-radius: 8px;
-                box-shadow:  0 1rem 3rem rgba($white, .175) inset;
+        .product_list {
+            row-gap: 45px;
 
-                &:hover {
-                    transform: scale(1.03);
-                    transition: all 300ms linear;
+            li {
+                padding: 0 25px;
 
-                    img {
-                        transform: scale(1.08);
-                        transition: all 300ms linear;
-                    }
-                }
-
-                .img_wrapper {
-                    width: 100%;
-                    height: 350px;
+                .card {
+                    height: 100%;
                     overflow: hidden;
-                    box-shadow: 0 .5rem 1rem rgba($white, .15);
+                    border: none;
+                    border-radius: 8px;
+                    box-shadow:  0 1rem 3rem rgba($white, .175) inset;
 
-                    img {
-                        object-fit: cover;
-                        object-position: center;
+                    &:hover {
+                        transform: scale(1.03);
+                        transition: all 300ms linear;
+
+                        img {
+                            transform: scale(1.08);
+                            transition: all 300ms linear;
+                        }
                     }
+
+                    .img_wrapper {
+                        width: 100%;
+                        height: 350px;
+                        overflow: hidden;
+                        box-shadow: 0 .5rem 1rem rgba($white, .15);
+
+                        img {
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+
                 }
+            }
+        }
+    }
 
+    .services_wrapper {
+        padding-top: 40px;
+
+        .service_list {
+            row-gap: 30px;
+
+            li {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                align-items: center;
+                padding: 0 25px;
+
+                .icon {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0;
+                }
             }
         }
     }
 }
 
-.services_wrapper {
-    padding-top: 40px;
-
-    .service_list {
-        row-gap: 30px;
-
-        li {
-            display: flex;
-            flex-direction: column;
-            row-gap: 20px;
-            align-items: center;
-            padding: 0 25px;
-
-            .icon {
-                width: 100px;
-                height: 100px;
-                margin: 0;
-            }
-        }
-    }
-}
 
 </style>
