@@ -47,7 +47,7 @@
 
                     <!-- Product_list -->
                     <ul class="product_list d-flex flex-wrap">
-                        <li v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
+                        <li v-for="product in latest_products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
                                     <img :src="`/storage/${product.image}`" alt="">
@@ -104,8 +104,8 @@
                 // array top categories
                 top_categories: [],
 
-                // array products
-                products: [],
+                // array latest products
+                latest_products: [],
 
                 // array services
                 services: [
@@ -146,11 +146,11 @@
 
             // fetch products
             fetchProducts() {
-                axios.get('/api/products')
+                axios.get('/api/latest-products')
                 .then( res => {
 
                     // array products res data products
-                    this.products = res.data.products;
+                    this.latest_products = res.data.latest_products;
                 })
                 .catch( err => {
                     console.warn(err);

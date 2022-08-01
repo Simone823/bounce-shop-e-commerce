@@ -13,14 +13,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showLatestProducts()
     {
-        // products
-        $products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(3)->get();
+        // latest products
+        $latest_products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(3)->get();
 
         // return response json
         return response()->json([
-            'products' => $products,
+            'latest_products' => $latest_products,
             'success' => true
         ]);
     }

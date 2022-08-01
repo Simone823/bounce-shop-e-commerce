@@ -5192,8 +5192,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // array top categories
       top_categories: [],
-      // array products
-      products: [],
+      // array latest products
+      latest_products: [],
       // array services
       services: [{
         icon: __webpack_require__(/*! /public/img/delivery_truck_icon.svg */ "./public/img/delivery_truck_icon.svg"),
@@ -5226,9 +5226,9 @@ __webpack_require__.r(__webpack_exports__);
     fetchProducts: function fetchProducts() {
       var _this2 = this;
 
-      axios.get('/api/products').then(function (res) {
+      axios.get('/api/latest-products').then(function (res) {
         // array products res data products
-        _this2.products = res.data.products;
+        _this2.latest_products = res.data.latest_products;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -5564,7 +5564,7 @@ var render = function render() {
     staticClass: "mb-0 text-uppercase"
   }, [_vm._v("Ultimi prodotti aggiunti")])]), _vm._v(" "), _c("ul", {
     staticClass: "product_list d-flex flex-wrap"
-  }, _vm._l(_vm.products, function (product) {
+  }, _vm._l(_vm.latest_products, function (product) {
     return _c("li", {
       key: product.id,
       staticClass: "col-12 col-sm-6 col-lg-4"
