@@ -6086,7 +6086,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "title text-center mb-5"
   }, [_c("h1", {
-    staticClass: "text-white text-uppercase mb-0"
+    staticClass: "text-white text-uppercase mb-0 fw-bold"
   }, [_vm._v("Prodotti")])]), _vm._v(" "), _c("ul", {
     staticClass: "product_list d-flex flex-wrap justify-content-center"
   }, _vm._l(_vm.products, function (product, index) {

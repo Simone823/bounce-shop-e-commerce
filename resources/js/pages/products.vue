@@ -11,7 +11,7 @@
                 <div class="row products_wrapper h-100">
                     <!-- title -->
                     <div class="title text-center mb-5">
-                        <h1 class="text-white text-uppercase mb-0">Prodotti</h1>
+                        <h1 class="text-white text-uppercase mb-0 fw-bold">Prodotti</h1>
                     </div>
 
                     <!-- Product_list -->
