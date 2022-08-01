@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link fs-5" aria-current="page" href="/products">Prodotti</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" aria-current="page" href="/contact">Contatti</a>
+                        </li>
                     </ul>
     
                     <div class="d-flex">
