@@ -5984,7 +5984,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "title mb-5 text-center"
   }, [_c("h2", {
-    staticClass: "mb-0 text-uppercase"
+    staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Categorie più selezionate")])]), _vm._v(" "), _c("ul", {
     staticClass: "category_list d-flex flex-wrap justify-content-center"
   }, _vm._l(_vm.top_categories, function (category) {
@@ -6006,7 +6006,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "title mb-5 text-center"
   }, [_c("h2", {
-    staticClass: "mb-0 text-uppercase"
+    staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Ultimi prodotti aggiunti")])]), _vm._v(" "), _c("ul", {
     staticClass: "product_list d-flex flex-wrap"
   }, _vm._l(_vm.latest_products, function (product) {
@@ -6049,7 +6049,7 @@ var render = function render() {
     })]), _vm._v(" "), _c("div", {
       staticClass: "description text-center"
     }, [_c("h3", {
-      staticClass: "text-uppercase"
+      staticClass: "text-uppercase fw-bold"
     }, [_vm._v(_vm._s(service.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(service.text))])])]);
   }), 0)])])])]);
 };
