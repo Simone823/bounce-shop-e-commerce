@@ -24,4 +24,19 @@ class ProductController extends Controller
             'success' => true
         ]);
     }
+
+    public function showCategory($id) 
+    {
+        // products
+        $products = Product::join('category_product', 'category_product.product_id', '=', 'products.id')
+            ->join('categories', 'categories.id', '=', 'category_product.category_id')
+            ->where('category_product.category_id', '=', $id)
+            ->get();
+
+        // return response json
+        return response()->json([
+            'products' => $products,
+            'success' => true
+        ]);
+    }
 }
