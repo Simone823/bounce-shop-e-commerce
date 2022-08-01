@@ -21,9 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route api
 Route::namespace('Api')->group(function () {
  
-    // Rotta categories
-    Route::get('/categories', 'CategoryController@index');
+    // Rotta top categories
+    Route::get('/top-categories', 'CategoryController@topCategories');
 
-    // Rotta products
-    Route::get('/products', 'ProductController@index');
+    // Rotta latest products
+    Route::get('/latest-products', 'ProductController@showLatestProducts');
+
+    // Rotta category products category
+    Route::get('/products-category/{category}', 'ProductController@showCategory');
 });
