@@ -153,7 +153,6 @@
 
                     // array products res data products
                     this.products = res.data.products;
-                    console.log(this.products);
                 })
                 .catch( err => {
                     console.warn(err);
