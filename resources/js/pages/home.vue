@@ -6,7 +6,7 @@
         <!-- Home -->
         <section id="home">
 
-            <div class="container-fluid">
+            <div class="container-fluid mb-4">
                 <!-- Row jumbotron -->
                 <div class="row jumbotron">
                     <figure class="image_wrapper">
@@ -14,10 +14,8 @@
                     </figure>
 
                     <div class="description text-center">
-                        <h1 class="fs-1 fw-bold">
-                            Bounce Shop <br>
-                            Accessori e abbigliamento sportivo  
-                        </h1>
+                        <h1>Bounce Shop </h1>
+                        <h3>Accessori e Abbigliamento sportivo</h3>
                     </div>
                 </div>
             </div>
@@ -34,7 +32,7 @@
                     
                     <!-- list category -->
                     <ul class="category_list d-flex flex-wrap justify-content-center">
-                        <router-link tag="li" to="" class="btn btn-primary text-white px-5" v-for="category in categories" :key="category.id">
+                        <router-link tag="li" :to="{ name: 'products-category', params: {id: category.id} }" class="btn btn-primary text-white px-5" v-for="category in top_categories" :key="category.id">
                             {{category.category_name}}
                         </router-link>
                     </ul>
@@ -49,10 +47,10 @@
 
                     <!-- Product_list -->
                     <ul class="product_list d-flex flex-wrap">
-                        <li v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
+                        <li v-for="product in latest_products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
-                                    <img :src="`storage/${product.image}`" alt="">
+                                    <img :src="`/storage/${product.image}`" alt="">
                                 </figure>
 
                                 <div class="card-body">
@@ -103,11 +101,11 @@
         data() {
             return {
 
-                // array categories
-                categories: [],
+                // array top categories
+                top_categories: [],
 
-                // array products
-                products: [],
+                // array latest products
+                latest_products: [],
 
                 // array services
                 services: [
@@ -135,11 +133,11 @@
         methods: {
             // Fetch categories
             fetchCategories() {
-                axios.get('/api/categories')
+                axios.get('/api/top-categories')
                 .then( res => {
                     
                     // array categories res data categories
-                    this.categories = res.data.categories;
+                    this.top_categories = res.data.top_categories;
                 })
                 .catch( err => {
                     console.warn(err);
@@ -148,12 +146,11 @@
 
             // fetch products
             fetchProducts() {
-                axios.get('/api/products')
+                axios.get('/api/latest-products')
                 .then( res => {
 
                     // array products res data products
-                    this.products = res.data.products;
-                    console.log(this.products);
+                    this.latest_products = res.data.latest_products;
                 })
                 .catch( err => {
                     console.warn(err);
@@ -179,6 +176,7 @@
 
     .jumbotron {
         position: relative;
+        box-shadow: 0 .5rem 1rem rgba($white, .15);
 
         .image_wrapper {
             padding: 0;
@@ -195,7 +193,7 @@
                 right: 0;
                 bottom: 0;
                 background-color: black;
-                opacity: 0.55;
+                opacity: 0.68;
             }
 
             img {
@@ -212,8 +210,21 @@
             transform: translateX(-50%) translateY(-50%);
 
             h1 {
-                text-shadow: 0 0 10px black;
+                text-shadow: 0 0 10px rgba(black, .45);
                 text-transform: uppercase;
+                font-size: 55px;
+                font-weight: 900;
+                letter-spacing: 2px;
+                word-wrap: break-word;
+                margin-bottom: 8px;
+            }
+
+            h3 {
+                text-shadow: 0 0 10px rgba(black, .45);
+                font-size: 28px;
+                font-weight: 400;
+                letter-spacing: 2px;
+                margin: 0;
             }
         }
     }

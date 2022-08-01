@@ -13,14 +13,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function topCategories()
     {
         // categories
-        $categories = Category::orderBy('category_name', 'asc')->limit(4)->get();
+        $top_categories = Category::orderBy('category_name', 'asc')->limit(4)->get();
 
         // return rsponse json
         return response()->json([
-            'categories' => $categories,
+            'top_categories' => $top_categories,
             'success' => true, 
         ]);
     }

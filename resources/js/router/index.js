@@ -8,6 +8,9 @@ Vue.use(VueRouter);
 // import pages home
 import home from "../pages/home.vue";
 
+// import pages products category
+import productsCategory from '../pages/productsCategory.vue';
+
 // array che rotte vue
 const routes = [
     {
@@ -15,6 +18,12 @@ const routes = [
         name: "home",
         component: home,
     },
+
+    {
+        path: '/products-category/:id',
+        name: 'products-category',
+        component: productsCategory,
+    }
 ];
 
 //istanza del router
