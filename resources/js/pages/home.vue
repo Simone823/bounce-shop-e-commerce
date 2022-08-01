@@ -52,7 +52,7 @@
                         <li v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
-                                    <img :src="`storage/${product.image}`" alt="">
+                                    <img :src="`/storage/${product.image}`" alt="">
                                 </figure>
 
                                 <div class="card-body">
