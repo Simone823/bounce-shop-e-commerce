@@ -24,6 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link fs-5" aria-current="page" href="/">Homepage</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" aria-current="page" href="/products">Prodotti</a>
+                        </li>
                     </ul>
     
                     <div class="d-flex">
