@@ -5190,8 +5190,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // array categories
-      categories: [],
+      // array top categories
+      top_categories: [],
       // array products
       products: [],
       // array services
@@ -5215,9 +5215,9 @@ __webpack_require__.r(__webpack_exports__);
     fetchCategories: function fetchCategories() {
       var _this = this;
 
-      axios.get('/api/categories').then(function (res) {
+      axios.get('/api/top-categories').then(function (res) {
         // array categories res data categories
-        _this.categories = res.data.categories;
+        _this.top_categories = res.data.top_categories;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -5542,7 +5542,7 @@ var render = function render() {
     staticClass: "mb-0 text-uppercase"
   }, [_vm._v("Categorie più selezionate")])]), _vm._v(" "), _c("ul", {
     staticClass: "category_list d-flex flex-wrap justify-content-center"
-  }, _vm._l(_vm.categories, function (category) {
+  }, _vm._l(_vm.top_categories, function (category) {
     return _c("router-link", {
       key: category.id,
       staticClass: "btn btn-primary text-white px-5",

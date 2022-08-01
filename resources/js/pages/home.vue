@@ -32,7 +32,7 @@
                     
                     <!-- list category -->
                     <ul class="category_list d-flex flex-wrap justify-content-center">
-                        <router-link tag="li" :to="{ name: 'products-category', params: {id: category.id} }" class="btn btn-primary text-white px-5" v-for="category in categories" :key="category.id">
+                        <router-link tag="li" :to="{ name: 'products-category', params: {id: category.id} }" class="btn btn-primary text-white px-5" v-for="category in top_categories" :key="category.id">
                             {{category.category_name}}
                         </router-link>
                     </ul>
@@ -101,8 +101,8 @@
         data() {
             return {
 
-                // array categories
-                categories: [],
+                // array top categories
+                top_categories: [],
 
                 // array products
                 products: [],
@@ -133,11 +133,11 @@
         methods: {
             // Fetch categories
             fetchCategories() {
-                axios.get('/api/categories')
+                axios.get('/api/top-categories')
                 .then( res => {
                     
                     // array categories res data categories
-                    this.categories = res.data.categories;
+                    this.top_categories = res.data.top_categories;
                 })
                 .catch( err => {
                     console.warn(err);
