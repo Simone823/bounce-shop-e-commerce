@@ -34,7 +34,7 @@
                     
                     <!-- list category -->
                     <ul class="category_list d-flex flex-wrap justify-content-center">
-                        <router-link tag="li" :to="{ name: 'products-category', params: {slug: category.slug, id: category.id} }" class="btn btn-primary text-white px-5" v-for="category in categories" :key="category.id">
+                        <router-link tag="li" :to="{ name: 'products-category', params: {id: category.id} }" class="btn btn-primary text-white px-5" v-for="category in categories" :key="category.id">
                             {{category.category_name}}
                         </router-link>
                     </ul>
