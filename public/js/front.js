@@ -5525,7 +5525,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "title mb-4"
   }, [_c("h4", {
-    staticClass: "mb-0 text-uppercase"
+    staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Servizi al cliente")])]), _vm._v(" "), _c("ul", {
     staticClass: "list_link list-unstyled"
   }, [_c("li", {
@@ -5557,7 +5557,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "title mb-4"
   }, [_c("h4", {
-    staticClass: "mb-0 text-uppercase"
+    staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Bounce Shop E-commerce")])]), _vm._v(" "), _c("ul", {
     staticClass: "detail_list list-unstyled"
   }, [_c("li", {
@@ -5590,7 +5590,7 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "title mb-4"
   }, [_c("h4", {
-    staticClass: "mb-0 text-uppercase"
+    staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Connetti con noi")])]);
 }, function () {
   var _vm = this,

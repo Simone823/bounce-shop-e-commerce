@@ -10,7 +10,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                     <!-- Title -->
                     <div class="title mb-4">
-                        <h4 class="mb-0 text-uppercase">Servizi al cliente</h4>
+                        <h4 class="mb-0 text-uppercase fw-bold">Servizi al cliente</h4>
                     </div>
 
                     <!-- links -->
@@ -31,7 +31,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                     <!-- Title -->
                     <div class="title mb-4">
-                        <h4 class="mb-0 text-uppercase">Bounce Shop E-commerce</h4>
+                        <h4 class="mb-0 text-uppercase fw-bold">Bounce Shop E-commerce</h4>
                     </div>
 
                     <!-- list detail -->
@@ -64,7 +64,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                     <!-- Title -->
                     <div class="title mb-4">
-                        <h4 class="mb-0 text-uppercase">Connetti con noi</h4>
+                        <h4 class="mb-0 text-uppercase fw-bold">Connetti con noi</h4>
                     </div>
 
                     <!-- list social -->
