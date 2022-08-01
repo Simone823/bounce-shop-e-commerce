@@ -33,7 +33,7 @@ class ProductController extends Controller
             ->where('category_product.category_id', '=', $id)
             ->where('products.visibility', '=', 1)
             ->orderBy('product_name', 'asc')
-            ->get();
+            ->paginate(6);
 
         // return response json
         return response()->json([
