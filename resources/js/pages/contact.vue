@@ -29,7 +29,10 @@
                             <validationProvider tag="div" class="col-12 col-sm-6 validation_provider mb-4" name="guest_name" rules="required|min:3|max:200|alpha_spaces" v-slot="{errors}">
                                 <div class="form-floating">
                                     <input v-model="form.guest_name" type="text" name="guest_name" class="form-control text-black bg-dark text-white border-0" id="guest_name" placeholder="Nome">
-                                    <label for="guest_name">Nome</label>
+                                    <label for="guest_name">
+                                        <i class="fa-solid fa-user"></i>
+                                        Nome
+                                    </label>
 
                                     <div class="error mt-2 text-primary">
                                         {{ errors.length ? errors[0] : ''}}
@@ -41,7 +44,10 @@
                             <validationProvider tag="div" class="col-12 col-sm-6 validation_provider mb-4" name="guest_email" rules="required|email|min:3" v-slot="{errors}">
                                 <div class="form-floating">
                                     <input v-model="form.guest_email" type="email" name="guest_email" class="form-control text-black bg-dark text-white border-0" id="guest_email" placeholder="Email">
-                                    <label for="guest_email">E-mail</label>
+                                    <label for="guest_email">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        E-mail
+                                    </label>
 
                                     <div class="error mt-2 text-primary">
                                         {{ errors.length ? errors[0] : ''}}
@@ -53,7 +59,10 @@
                             <validationProvider tag="div" class="col-12 col-sm-6 validation_provider mb-4" name="guest_address" rules="required|min:3|max:155" v-slot="{errors}">
                                 <div class="form-floating">
                                     <input v-model="form.guest_address" type="text" name="guest_address" class="form-control text-black bg-dark text-white border-0" id="guest_address" placeholder="Indirizzo">
-                                    <label for="guest_address">Indirizzo</label>
+                                    <label for="guest_address">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        Indirizzo
+                                    </label>
 
                                     <div class="error mt-2 text-primary">
                                         {{ errors.length ? errors[0] : ''}}
@@ -65,7 +74,10 @@
                             <validationProvider tag="div" class="col-12 col-sm-6 validation_provider mb-4" name="guest_phone" :rules="{required: true, regex:/^(32[^15]|33[^20]|34[0-9]|35[^2-46-9]|36[^45790]|37[^6]|38[^125-7]|39[^4-689])(\d){5,7}$/}" v-slot="{errors}">
                                 <div class="form-floating">
                                     <input v-model="form.guest_phone" type="phone" name="guest_phone" class="form-control text-black bg-dark text-white border-0" id="guest_phone" placeholder="Telefono">
-                                    <label for="guest_phone">Telefono</label>
+                                    <label for="guest_phone">
+                                        <i class="fa-solid fa-phone"></i>
+                                        Telefono
+                                    </label>
 
                                     <div class="error mt-2 text-primary">
                                         {{ errors.length ? errors[0] : ''}}
@@ -77,7 +89,10 @@
                             <validationProvider tag="div" class="col-12 validation_provider mb-4" name="guest_message" rules="required" v-slot="{errors}">
                                 <div class="form-floating">
                                     <textarea v-model="form.guest_message" class="form-control bg-dark border-0 text-white" placeholder="Messaggio" name="guest_message" id="guest_message" style="height: 200px"></textarea>
-                                    <label for="guest_message">Messaggio</label>
+                                    <label for="guest_message">
+                                        <i class="fa-solid fa-message"></i>
+                                        Messaggio
+                                    </label>
 
                                     <div class="error mt-2 text-primary">
                                         {{ errors.length ? errors[0] : ''}}

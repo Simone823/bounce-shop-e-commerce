@@ -5733,7 +5733,9 @@ var render = function render() {
           attrs: {
             "for": "guest_name"
           }
-        }, [_vm._v("Nome")]), _vm._v(" "), _c("div", {
+        }, [_c("i", {
+          staticClass: "fa-solid fa-user"
+        }), _vm._v("\n                                     Nome\n                                 ")]), _vm._v(" "), _c("div", {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                     " + _vm._s(errors.length ? errors[0] : "") + "\n                                 ")])])];
       }
@@ -5779,7 +5781,9 @@ var render = function render() {
           attrs: {
             "for": "guest_email"
           }
-        }, [_vm._v("E-mail")]), _vm._v(" "), _c("div", {
+        }, [_c("i", {
+          staticClass: "fa-solid fa-envelope"
+        }), _vm._v("\n                                     E-mail\n                                 ")]), _vm._v(" "), _c("div", {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                     " + _vm._s(errors.length ? errors[0] : "") + "\n                                 ")])])];
       }
@@ -5825,7 +5829,9 @@ var render = function render() {
           attrs: {
             "for": "guest_address"
           }
-        }, [_vm._v("Indirizzo")]), _vm._v(" "), _c("div", {
+        }, [_c("i", {
+          staticClass: "fa-solid fa-location-dot"
+        }), _vm._v("\n                                     Indirizzo\n                                 ")]), _vm._v(" "), _c("div", {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                     " + _vm._s(errors.length ? errors[0] : "") + "\n                                 ")])])];
       }
@@ -5874,7 +5880,9 @@ var render = function render() {
           attrs: {
             "for": "guest_phone"
           }
-        }, [_vm._v("Telefono")]), _vm._v(" "), _c("div", {
+        }, [_c("i", {
+          staticClass: "fa-solid fa-phone"
+        }), _vm._v("\n                                     Telefono\n                                 ")]), _vm._v(" "), _c("div", {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                     " + _vm._s(errors.length ? errors[0] : "") + "\n                                 ")])])];
       }
@@ -5922,7 +5930,9 @@ var render = function render() {
           attrs: {
             "for": "guest_message"
           }
-        }, [_vm._v("Messaggio")]), _vm._v(" "), _c("div", {
+        }, [_c("i", {
+          staticClass: "fa-solid fa-message"
+        }), _vm._v("\n                                     Messaggio\n                                 ")]), _vm._v(" "), _c("div", {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                     " + _vm._s(errors.length ? errors[0] : "") + "\n                                 ")])])];
       }
