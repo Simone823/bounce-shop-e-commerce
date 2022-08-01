@@ -22,7 +22,7 @@
                             <a class="link-light text-decoration-none" href="/register">Registrati</a>
                         </li>
                         <li>
-                            <a class="link-light text-decoration-none" href="">Contatti</a>
+                            <a class="link-light text-decoration-none" href="/contact">Contatti</a>
                         </li>
                     </ul>
                 </div>

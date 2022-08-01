@@ -5545,7 +5545,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("Registrati")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "link-light text-decoration-none",
     attrs: {
-      href: ""
+      href: "/contact"
     }
   }, [_vm._v("Contatti")])])])]);
 }, function () {
