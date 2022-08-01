@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         // products
-        $products = Product::orderBy('created_at', 'desc')->limit(3)->get();
+        $products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(3)->get();
 
         // return response json
         return response()->json([
@@ -31,6 +31,8 @@ class ProductController extends Controller
         $products = Product::join('category_product', 'category_product.product_id', '=', 'products.id')
             ->join('categories', 'categories.id', '=', 'category_product.category_id')
             ->where('category_product.category_id', '=', $id)
+            ->where('products.visibility', '=', 1)
+            ->orderBy('product_name', 'asc')
             ->get();
 
         // return response json
