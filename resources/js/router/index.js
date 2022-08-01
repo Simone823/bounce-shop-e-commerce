@@ -8,6 +8,9 @@ Vue.use(VueRouter);
 // import pages home
 import home from "../pages/home.vue";
 
+// import products pages
+import products from '../pages/products.vue';
+
 // import pages products category
 import productsCategory from '../pages/productsCategory.vue';
 
@@ -17,6 +20,12 @@ const routes = [
         path: "/",
         name: "home",
         component: home,
+    },
+
+    {
+        path: '/products',
+        name: 'products',
+        component: products,
     },
 
     {

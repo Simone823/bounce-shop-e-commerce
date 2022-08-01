@@ -1,3 +1,12 @@
+<?php
+    // use app category model
+    use App\Category;
+
+    // categories
+    $categories = Category::orderBy('category_name', 'asc')->get();
+?>
+
+{{-- Guest header --}}
 <header id="guest_header">
 
     <div class="container-fluid bg-dark">
@@ -23,6 +32,19 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link fs-5" aria-current="page" href="/">Homepage</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorie
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark overflow-auto" aria-labelledby="navbarDropdown">
+                                @foreach ($categories as $category)
+                                    <li><a class="dropdown-item" href="{{'/products-category/'.$category->id}}">{{$category->category_name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" aria-current="page" href="/products">Prodotti</a>
                         </li>
                     </ul>
     
@@ -95,5 +117,9 @@
         top: 0;
         left: 0;
         z-index: 999999;
+    }
+
+    .dropdown-menu {
+        max-height: 200px
     }
 </style>

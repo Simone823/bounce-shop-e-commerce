@@ -3,15 +3,15 @@
     <!-- layout -->
     <layout>
 
-        <!-- section products category -->
-        <section id="products_category">
+        <!-- section products -->
+        <section id="products">
             <div class="container">
 
-                <!-- Row products -->
-                <div class="row products_wrapper">
+                <!-- row products wrapper -->
+                <div class="row products_wrapper h-100">
                     <!-- title -->
                     <div class="title text-center mb-5">
-                        <h3 class="text-white">{{categorySelected}}</h3>
+                        <h1 class="text-white text-uppercase mb-0">Prodotti</h1>
                     </div>
 
                     <!-- Product_list -->
@@ -32,11 +32,11 @@
                     </ul>
                 </div>
 
-                <!-- Row pages -->
+                <!-- Row pages link -->
                 <div class="row pages">
                     <!-- Pages -->
                     <ul class="pagination d-flex justify-content-center">
-                        <li class="page-item" @click="fetchProductsCategory(number), AppScrollTop()" :class="currentPage == number ? 'active' : ''" v-for="number in lastPage" :key="number">
+                        <li class="page-item" @click="fetchProducts(number), AppScrollTop()" :class="currentPage == number ? 'active' : ''" v-for="number in lastPage" :key="number">
                             <p class="page-link">{{number}}</p>
                         </li>
                     </ul>
@@ -53,17 +53,13 @@
 import layout from '../layouts/layout.vue';
 
     export default {
-        name: 'productsCategory',
-
+        name: 'products',
         components: {
             layout,
         },
 
         data() {
             return {
-
-                // name category selected
-                categorySelected: '',
 
                 // array products
                 products: [],
@@ -77,9 +73,9 @@ import layout from '../layouts/layout.vue';
         },
 
         methods: {
-            // Fetch products category
-            fetchProductsCategory(page = 1) {
-                axios.get(`/api/products-category/${this.$route.params.id}`, {
+            // fetch products
+            fetchProducts(page = 1) {
+               axios.get(`/api/products`, {
                     params: {
                         page: page,
                     }
@@ -98,9 +94,6 @@ import layout from '../layouts/layout.vue';
 
                     // recupero i prodotti
                     this.products = data;
-
-                    // recupero il nome della categoria tramite prodotto indice 0
-                    this.categorySelected = this.products[0].category_name;
                 })
                 .catch( err => {
                     console.warn(err);
@@ -118,8 +111,8 @@ import layout from '../layouts/layout.vue';
         },
 
         beforeMount() {
-            // Richiamo funzione fetch products category
-            this.fetchProductsCategory();
+            // richiamo funzione fetch products
+            this.fetchProducts();
         }
     }
 </script>
@@ -127,58 +120,48 @@ import layout from '../layouts/layout.vue';
 <style lang="scss" scoped>
 @import '../../sass/_variables.scss';
 
-#products_category {
+#products {
 
     .products_wrapper {
         padding-bottom: 40px;
         border-bottom: 2px solid $gray-2;
-    
-        .title {
-    
-            h3 {
-                max-width: max-content;
-                margin: 0 auto;
-                background-color: $blue-1;
-                padding: 8px 45px;
-                border-radius: 5px;
-            }
-        }
-    
+
         .product_list {
             row-gap: 45px;
-    
+            min-height: 100%;
+
             li {
                 padding: 0 25px;
-    
+
                 .card {
                     height: 100%;
                     overflow: hidden;
                     border: none;
                     border-radius: 8px;
                     box-shadow:  0 1rem 3rem rgba($white, .175) inset;
-    
+
                     &:hover {
                         transform: scale(1.03);
                         transition: all 300ms linear;
-    
+
                         img {
                             transform: scale(1.08);
                             transition: all 300ms linear;
                         }
                     }
-    
+
                     .img_wrapper {
                         width: 100%;
                         height: 350px;
                         overflow: hidden;
                         box-shadow: 0 .5rem 1rem rgba($white, .15);
-    
+
                         img {
                             object-fit: cover;
                             object-position: center;
                         }
                     }
-    
+
                 }
             }
         }
@@ -194,7 +177,7 @@ import layout from '../layouts/layout.vue';
             }
         }
     }
-}
 
+}
 
 </style>

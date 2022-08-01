@@ -13,6 +13,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function showProducts()
+    {
+        // products
+        $products = Product::where('visibility', '=', 1)->with('categories')->orderBy('product_name', 'asc')->paginate(6);
+
+        // return response json 
+        return response()->json([
+            'products' => $products,
+            'success' => true
+        ]);
+    }
+
+
     public function showLatestProducts()
     {
         // latest products
