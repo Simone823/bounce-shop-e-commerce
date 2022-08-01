@@ -178,6 +178,7 @@
 
     .jumbotron {
         position: relative;
+        box-shadow: 0 .5rem 1rem rgba($white, .15);
 
         .image_wrapper {
             padding: 0;
