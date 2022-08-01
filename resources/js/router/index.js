@@ -20,7 +20,7 @@ const routes = [
     },
 
     {
-        path: '/products-category/:slug',
+        path: '/products-category/:id',
         name: 'products-category',
         component: productsCategory,
     }
