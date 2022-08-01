@@ -6,7 +6,7 @@
         <!-- Home -->
         <section id="home">
 
-            <div class="container-fluid">
+            <div class="container-fluid mb-4">
                 <!-- Row jumbotron -->
                 <div class="row jumbotron">
                     <figure class="image_wrapper">
@@ -14,10 +14,8 @@
                     </figure>
 
                     <div class="description text-center">
-                        <h1 class="fs-1 fw-bold">
-                            Bounce Shop <br>
-                            Accessori e abbigliamento sportivo  
-                        </h1>
+                        <h1>Bounce Shop </h1>
+                        <h3>Accessori e Abbigliamento sportivo</h3>
                     </div>
                 </div>
             </div>
@@ -195,7 +193,7 @@
                 right: 0;
                 bottom: 0;
                 background-color: black;
-                opacity: 0.55;
+                opacity: 0.68;
             }
 
             img {
@@ -212,8 +210,21 @@
             transform: translateX(-50%) translateY(-50%);
 
             h1 {
-                text-shadow: 0 0 10px black;
+                text-shadow: 0 0 10px rgba(black, .45);
                 text-transform: uppercase;
+                font-size: 55px;
+                font-weight: 900;
+                letter-spacing: 2px;
+                word-wrap: break-word;
+                margin-bottom: 8px;
+            }
+
+            h3 {
+                text-shadow: 0 0 10px rgba(black, .45);
+                font-size: 28px;
+                font-weight: 400;
+                letter-spacing: 2px;
+                margin: 0;
             }
         }
     }
