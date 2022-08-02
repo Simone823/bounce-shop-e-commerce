@@ -35,4 +35,7 @@ Route::namespace('Api')->group(function () {
 
     // Rotta category products category
     Route::get('/products-category/{category}', 'ProductController@showCategory');
+
+    // Rotta message create
+    Route::resource('/create-message', 'MessageController')->only('store');
 });

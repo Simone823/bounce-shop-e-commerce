@@ -27,7 +27,7 @@
                 <div class="row categories_wrapper">
                     <!-- title -->
                     <div class="title mb-5 text-center">
-                        <h2 class="mb-0 text-uppercase">Categorie più selezionate</h2>
+                        <h2 class="mb-0 text-uppercase fw-bold">Categorie più selezionate</h2>
                     </div>
                     
                     <!-- list category -->
@@ -42,7 +42,7 @@
                 <div class="row products_wrapper">
                     <!-- title -->
                     <div class="title mb-5 text-center">
-                        <h2 class="mb-0 text-uppercase">Ultimi prodotti aggiunti</h2>
+                        <h2 class="mb-0 text-uppercase fw-bold">Ultimi prodotti aggiunti</h2>
                     </div>
 
                     <!-- Product_list -->
@@ -73,7 +73,7 @@
                             </figure>
                             
                             <div class="description text-center">
-                                <h3 class="text-uppercase">{{service.title}}</h3>
+                                <h3 class="text-uppercase fw-bold">{{service.title}}</h3>
                                 <p>{{service.text}}</p>
                             </div>
                         </li>

@@ -14,6 +14,9 @@ import products from '../pages/products.vue';
 // import pages products category
 import productsCategory from '../pages/productsCategory.vue';
 
+// import pages contact
+import contact from '../pages/contact.vue';
+
 // array che rotte vue
 const routes = [
     {
@@ -32,6 +35,12 @@ const routes = [
         path: '/products-category/:id',
         name: 'products-category',
         component: productsCategory,
+    },
+
+    {
+        path: '/contact',
+        name: 'contact',
+        component: contact,
     }
 ];
 
