@@ -61499,11 +61499,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/App.vue */ "./resources/js/views/App.vue");
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
-/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
-/* harmony import */ var vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vee-validate/dist/locale/it.json */ "./node_modules/vee-validate/dist/locale/it.json");
-var vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_5___namespace = /*#__PURE__*/__webpack_require__.t(/*! vee-validate/dist/locale/it.json */ "./node_modules/vee-validate/dist/locale/it.json", 1);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vee-validate/dist/rules */ "./node_modules/vee-validate/dist/rules.js");
+/* harmony import */ var vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/locale/it.json */ "./node_modules/vee-validate/dist/locale/it.json");
+var vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! vee-validate/dist/locale/it.json */ "./node_modules/vee-validate/dist/locale/it.json", 1);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -61522,13 +61522,13 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-Object.keys(vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_4__).forEach(function (rule) {
-  Object(vee_validate__WEBPACK_IMPORTED_MODULE_3__["extend"])(rule, _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_4__[rule]), {}, {
-    message: vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_5__["messages"][rule]
+Object.keys(vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__).forEach(function (rule) {
+  Object(vee_validate__WEBPACK_IMPORTED_MODULE_1__["extend"])(rule, _objectSpread(_objectSpread({}, vee_validate_dist_rules__WEBPACK_IMPORTED_MODULE_2__[rule]), {}, {
+    message: vee_validate_dist_locale_it_json__WEBPACK_IMPORTED_MODULE_3__["messages"][rule]
   }));
 });
-Vue.component("ValidationProvider", vee_validate__WEBPACK_IMPORTED_MODULE_3__["ValidationProvider"]);
-Vue.component("ValidationObserver", vee_validate__WEBPACK_IMPORTED_MODULE_3__["ValidationObserver"]); //importo il router
+Vue.component("ValidationProvider", vee_validate__WEBPACK_IMPORTED_MODULE_1__["ValidationProvider"]);
+Vue.component("ValidationObserver", vee_validate__WEBPACK_IMPORTED_MODULE_1__["ValidationObserver"]); //importo il router
 
 
 var app = new Vue({
@@ -61536,7 +61536,7 @@ var app = new Vue({
   render: function render(h) {
     return h(_views_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
-  router: _router__WEBPACK_IMPORTED_MODULE_2__["default"]
+  router: _router__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
