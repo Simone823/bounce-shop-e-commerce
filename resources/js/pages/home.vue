@@ -55,7 +55,7 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title fw-bolder">{{product.product_name}}</h5>
-                                    <p class="card-text fs-5">{{product.price}}</p>
+                                    <p class="card-text fs-5">{{product.price}} &euro;</p>
                                 </div>
 
                                 <div class="btn-detaiil text-center mb-4">
