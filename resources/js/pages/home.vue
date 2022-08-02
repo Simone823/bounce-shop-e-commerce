@@ -58,6 +58,12 @@
                                     <p class="card-text">{{product.description}}</p>
                                     <p class="card-text fs-5">{{product.price}}</p>
                                 </div>
+
+                                <div class="btn-detaiil text-center mb-4">
+                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.id} }">
+                                        Dettagli
+                                    </router-link>
+                                </div>
                             </div>
                         </li>
                     </ul>
