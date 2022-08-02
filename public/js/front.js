@@ -5210,21 +5210,37 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.form.validate().then(function (success) {
         // if success
         if (success) {
-          // Resetting value form
-          _this.form.guest_name = _this.form.guest_surname = _this.form.guest_email = _this.form.guest_address = _this.form.guest_phone = _this.form.guest_message = ''; // refs form reset
+          axios.post('/api/create-message', {
+            form: _this.form
+          }).then(function (res) {
+            if (res.status == 200) {
+              // Resetting value form
+              _this.form.guest_name = _this.form.guest_surname = _this.form.guest_email = _this.form.guest_address = _this.form.guest_phone = _this.form.guest_message = ''; // refs form reset
 
-          _this.$nextTick(function () {
-            _this.$refs.form.reset();
-          }); // Set true status send message
+              _this.$nextTick(function () {
+                _this.$refs.form.reset();
+              }); // Set true status send message
 
 
-          setTimeout(function () {
-            _this.statusSendMessage = 'Grazie, Il tuo messaggio è stato inviato con successo, riceverai una risposta entro 24h!'; // set undefined statusSendMessage
+              setTimeout(function () {
+                _this.statusSendMessage = 'Grazie, Il tuo messaggio è stato inviato con successo, riceverai una risposta entro 24h!'; // set undefined statusSendMessage
+
+                setTimeout(function () {
+                  _this.statusSendMessage = '';
+                }, 5000);
+              }, 100);
+            }
+          })["catch"](function (err) {
+            console.warn(err); // Set true status send message
 
             setTimeout(function () {
-              _this.statusSendMessage = '';
-            }, 5000);
-          }, 100);
+              _this.statusSendMessage = 'OPS!, Qualcosa è andato storto, Controlla le caselle di testo'; // set undefined statusSendMessage
+
+              setTimeout(function () {
+                _this.statusSendMessage = '';
+              }, 5000);
+            }, 100);
+          });
         }
       });
     }
@@ -5684,6 +5700,9 @@ var render = function render() {
     ref: "form"
   }, [_c("form", {
     ref: "formgroup",
+    attrs: {
+      method: "post"
+    },
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -5944,8 +5963,8 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Invia")]), _vm._v(" "), _vm.statusSendMessage != "" ? _c("span", {
-    staticClass: "px-4"
+  }, [_vm._v("Invia")]), _vm._v(" "), _vm.statusSendMessage != "" ? _c("p", {
+    staticClass: "pt-4"
   }, [_vm._v(_vm._s(_vm.statusSendMessage))]) : _vm._e()])], 1)])])], 1)])]);
 };
 

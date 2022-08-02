@@ -21,7 +21,7 @@
 
                 <!-- form -->
                 <ValidationObserver ref="form">
-                    <form ref="formgroup" @submit.prevent="sendMessage()">
+                    <form ref="formgroup" @submit.prevent="sendMessage()" method="post">
                         <!-- row inputs -->
                         <div class="row inputs_wrapper">
 
@@ -103,7 +103,7 @@
                             <!-- btn send -->
                             <div class="col-12 btn-send">
                                 <button type="submit" class="btn btn-primary text-white px-5">Invia</button>
-                                <span class="px-4" v-if="statusSendMessage != ''">{{statusSendMessage}}</span>
+                                <p class="pt-4" v-if="statusSendMessage != ''">{{statusSendMessage}}</p>
                             </div>
                         </div>
                     </form>
@@ -149,23 +149,42 @@ import layout from '../layouts/layout.vue';
 
                     // if success
                     if(success) {
-                        // Resetting value form
-                        this.form.guest_name = this.form.guest_surname = this.form.guest_email = this.form.guest_address = this.form.guest_phone = this.form.guest_message = '';
-
-                        // refs form reset
-                        this.$nextTick( () => {
-                            this.$refs.form.reset();
-                        });
-
-                        // Set true status send message
-                        setTimeout(() => {
-                            this.statusSendMessage = 'Grazie, Il tuo messaggio è stato inviato con successo, riceverai una risposta entro 24h!';
-
-                            // set undefined statusSendMessage
+                        axios.post('/api/create-message', {
+                            form: this.form,
+                        })
+                        .then(res => {
+                            if(res.status == 200) {
+                                // Resetting value form
+                                this.form.guest_name = this.form.guest_surname = this.form.guest_email = this.form.guest_address = this.form.guest_phone = this.form.guest_message = '';
+        
+                                // refs form reset
+                                this.$nextTick( () => {
+                                    this.$refs.form.reset();
+                                });
+        
+                                // Set true status send message
+                                setTimeout(() => {
+                                    this.statusSendMessage = 'Grazie, Il tuo messaggio è stato inviato con successo, riceverai una risposta entro 24h!';
+        
+                                    // set undefined statusSendMessage
+                                    setTimeout(() => {
+                                        this.statusSendMessage = '';
+                                    }, 5000);
+                                }, 100);
+                            }
+                        })
+                        .catch(err => {
+                            console.warn(err);
+                            // Set true status send message
                             setTimeout(() => {
-                                this.statusSendMessage = '';
-                            }, 5000);
-                        }, 100);
+                                this.statusSendMessage = 'OPS!, Qualcosa è andato storto, Controlla le caselle di testo';
+    
+                                // set undefined statusSendMessage
+                                setTimeout(() => {
+                                    this.statusSendMessage = '';
+                                }, 5000);
+                            }, 100);
+                        }) 
                     }
                 });
             }
