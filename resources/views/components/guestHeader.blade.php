@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
                     {{-- Link menu --}}
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav mb-lg-0 d-flex flex-grow-1 justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link fs-5" aria-current="page" href="/">Homepage</a>
                         </li>
