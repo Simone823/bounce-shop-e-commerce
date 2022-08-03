@@ -14,6 +14,9 @@ import products from '../pages/products.vue';
 // import pages products category
 import productsCategory from '../pages/productsCategory.vue';
 
+// import product show
+import productShow from '../pages/productShow.vue';
+
 // import pages contact
 import contact from '../pages/contact.vue';
 
@@ -35,6 +38,12 @@ const routes = [
         path: '/products-category/:id',
         name: 'products-category',
         component: productsCategory,
+    },
+
+    {
+        path: '/product-show/:id',
+        name: 'product-show',
+        component: productShow,
     },
 
     {

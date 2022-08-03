@@ -24,8 +24,13 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title fw-bolder">{{product.product_name}}</h5>
-                                    <p class="card-text">{{product.description}}</p>
                                     <p class="card-text fs-5">{{product.price}} &euro;</p>
+                                </div>
+
+                                <div class="btn-detaiil text-center mb-4">
+                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.id} }">
+                                        Dettagli
+                                    </router-link>
                                 </div>
                             </div>
                         </li>
@@ -141,13 +146,8 @@ import layout from '../layouts/layout.vue';
                     box-shadow:  0 1rem 3rem rgba($white, .175) inset;
 
                     &:hover {
-                        transform: scale(1.03);
+                        transform: translateY(-10px);
                         transition: all 300ms linear;
-
-                        img {
-                            transform: scale(1.08);
-                            transition: all 300ms linear;
-                        }
                     }
 
                     .img_wrapper {
