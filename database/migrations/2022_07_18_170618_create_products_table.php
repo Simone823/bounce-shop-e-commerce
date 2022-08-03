@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('price', 5,2);
             $table->string('image')->nullable();
             $table->boolean('visibility')->default(1);
-            $table->tinyInteger('quantity')->default(0);
+            $table->tinyInteger('quantity')->default(1);
             $table->timestamps();
         });
     }

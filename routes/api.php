@@ -33,6 +33,9 @@ Route::namespace('Api')->group(function () {
     // Rotta latest products
     Route::get('/latest-products', 'ProductController@showLatestProducts');
 
+    // Rotta product show
+    Route::get('/product-show/{id}', 'ProductController@showProduct');
+
     // Rotta category products category
     Route::get('/products-category/{category}', 'ProductController@showCategory');
 
