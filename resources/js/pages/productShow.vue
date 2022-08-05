@@ -48,7 +48,7 @@
 
                                 <!-- Btn add to cart -->
                                 <div class="btn_add_to_cart mb-5 mb-md-0">
-                                    <button :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white">Aggiungi al carrello</button>
+                                    <button @click="addItemToCart(product);" :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white">Aggiungi al carrello</button>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +76,9 @@ import layout from '../layouts/layout.vue';
 
                 // array product
                 product: [],
+
+                // array cart shop
+                cart_shop: undefined,
             }
         },
 
@@ -87,6 +90,14 @@ import layout from '../layouts/layout.vue';
 
                     // product res data product
                     this.product = res.data.product;
+
+                    // if not set item cart_shop localStorage
+                    if(!localStorage.getItem("cart_shop")) {
+                        localStorage.setItem("cart_shop", "[]");
+                    }
+
+                    // cart shop json localStorage cart_shop
+                    this.cart_shop = JSON.parse(localStorage.getItem('cart_shop'));
                 })
                 .catch(err => {
                     console.warn(err);
@@ -100,7 +111,28 @@ import layout from '../layouts/layout.vue';
 
                 // return price
                 return price;
-            }
+            },
+
+            // Add item to cart shop
+            addItemToCart(product) {
+                // if cart shop lenth 0
+                if(this.cart_shop.length == 0) {
+
+                    // cart_shop push product 
+                    this.cart_shop.push(product);
+                } else {
+                    // cart shop product == product.id
+                    let product_find = this.cart_shop.find(element => element.id == product.id);
+
+                    // if product_find == undefined
+                    if(product_find == undefined) {
+                        this.cart_shop.push(product);
+                    }
+                }
+
+                // local storage set item cart_shop array cart_shop
+                localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
+            },
         },
 
         beforeMount() {

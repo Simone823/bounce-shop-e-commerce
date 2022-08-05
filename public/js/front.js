@@ -5341,7 +5341,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       // array product
-      product: []
+      product: [],
+      // array cart shop
+      cart_shop: undefined
     };
   },
   methods: {
@@ -5351,7 +5353,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/product-show/".concat(this.$route.params.id)).then(function (res) {
         // product res data product
-        _this.product = res.data.product;
+        _this.product = res.data.product; // if not set item cart_shop localStorage
+
+        if (!localStorage.getItem("cart_shop")) {
+          localStorage.setItem("cart_shop", "[]");
+        } // cart shop json localStorage cart_shop
+
+
+        _this.cart_shop = JSON.parse(localStorage.getItem('cart_shop'));
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -5362,6 +5371,26 @@ __webpack_require__.r(__webpack_exports__);
       var price = Math.round(product.price * product.quantity * 100) / 100; // return price
 
       return price;
+    },
+    // Add item to cart shop
+    addItemToCart: function addItemToCart(product) {
+      // if cart shop lenth 0
+      if (this.cart_shop.length == 0) {
+        // cart_shop push product 
+        this.cart_shop.push(product);
+      } else {
+        // cart shop product == product.id
+        var product_find = this.cart_shop.find(function (element) {
+          return element.id == product.id;
+        }); // if product_find == undefined
+
+        if (product_find == undefined) {
+          this.cart_shop.push(product);
+        }
+      } // local storage set item cart_shop array cart_shop
+
+
+      localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
     }
   },
   beforeMount: function beforeMount() {
@@ -6238,6 +6267,11 @@ var render = function render() {
       staticClass: "btn btn-primary text-white",
       attrs: {
         disabled: product.quantity == 0 ? true : false
+      },
+      on: {
+        click: function click($event) {
+          return _vm.addItemToCart(product);
+        }
       }
     }, [_vm._v("Aggiungi al carrello")])])])])]);
   }), 0)])])]);
