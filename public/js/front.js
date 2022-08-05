@@ -5357,6 +5357,8 @@ __webpack_require__.r(__webpack_exports__);
 
         if (!localStorage.getItem("cart_shop")) {
           localStorage.setItem("cart_shop", "[]");
+        } else if (!localStorage.getItem("total")) {
+          localStorage.setItem("total", 0);
         } // cart shop json localStorage cart_shop
 
 
@@ -5386,11 +5388,15 @@ __webpack_require__.r(__webpack_exports__);
 
         if (product_find == undefined) {
           this.cart_shop.push(product);
+        } else {
+          this.updateItemQuantity(product.id, product.quantity);
         }
       } // local storage set item cart_shop array cart_shop
 
 
-      localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
+      localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total function getTotalCartShop
+
+      localStorage.setItem("total", this.getTotalCartShop());
     },
     // update quantity product cart shop
     updateItemQuantity: function updateItemQuantity(product_id, quantity) {
@@ -5401,6 +5407,20 @@ __webpack_require__.r(__webpack_exports__);
           element.quantity = quantity;
         }
       });
+    },
+    // getTotal cart shop
+    getTotalCartShop: function getTotalCartShop() {
+      // item price
+      var item_price; // total cart shop
+
+      var total_cart_shop = 0; // foreach this.cart_shop
+
+      this.cart_shop.forEach(function (element) {
+        item_price = element.price * element.quantity;
+        total_cart_shop += item_price;
+      }); // return total cart shop
+
+      return total_cart_shop;
     }
   },
   beforeMount: function beforeMount() {
@@ -6274,9 +6294,7 @@ var render = function render() {
     },
     on: {
       click: function click($event) {
-        _vm.addItemToCart(_vm.product);
-
-        _vm.updateItemQuantity(_vm.product.id, _vm.product.quantity);
+        return _vm.addItemToCart(_vm.product);
       }
     }
   }, [_vm._v("Aggiungi al carrello")])])])]) : _vm._e()])])]);

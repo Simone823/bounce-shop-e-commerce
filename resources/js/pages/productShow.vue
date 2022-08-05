@@ -44,7 +44,7 @@
 
                         <!-- Btn add to cart -->
                         <div class="btn_add_to_cart mb-5 mb-md-0">
-                            <button @click="addItemToCart(product); updateItemQuantity(product.id, product.quantity)" :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white">Aggiungi al carrello</button>
+                            <button @click="addItemToCart(product)" :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white">Aggiungi al carrello</button>
                         </div>
                     </div>
 
@@ -88,6 +88,8 @@ import layout from '../layouts/layout.vue';
                     // if not set item cart_shop localStorage
                     if(!localStorage.getItem("cart_shop")) {
                         localStorage.setItem("cart_shop", "[]");
+                    } else if(!localStorage.getItem("total")) {
+                        localStorage.setItem("total", 0);
                     }
 
                     // cart shop json localStorage cart_shop
@@ -121,11 +123,16 @@ import layout from '../layouts/layout.vue';
                     // if product_find == undefined
                     if(product_find == undefined) {
                         this.cart_shop.push(product);
+                    } else {
+                        this.updateItemQuantity(product.id, product.quantity);
                     }
                 }
 
                 // local storage set item cart_shop array cart_shop
                 localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
+
+                // localStorage set item total function getTotalCartShop
+                localStorage.setItem("total", this.getTotalCartShop());
             },
 
             // update quantity product cart shop
@@ -137,6 +144,24 @@ import layout from '../layouts/layout.vue';
                         element.quantity = quantity;
                     }
                 });
+            },
+
+            // getTotal cart shop
+            getTotalCartShop() {
+                // item price
+                let item_price;
+
+                // total cart shop
+                let total_cart_shop = 0;
+
+                // foreach this.cart_shop
+                this.cart_shop.forEach(element => {
+                    item_price = element.price * element.quantity;
+                    total_cart_shop += item_price;
+                });
+
+                // return total cart shop
+                return total_cart_shop;
             }
         },
 
