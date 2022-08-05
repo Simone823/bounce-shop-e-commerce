@@ -6213,7 +6213,7 @@ var render = function render() {
   }, [_vm.product != undefined ? _c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col-12 col-md-5"
+    staticClass: "col-12 col-md-7 col-lg-6"
   }, [_c("figure", {
     staticClass: "image_wrapper mb-0"
   }, [_c("img", {
@@ -6222,7 +6222,7 @@ var render = function render() {
       alt: ""
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12 col-md-7 description_wrapper"
+    staticClass: "col-12 col-md-5 col-lg-6 description_wrapper"
   }, [_c("h2", {
     staticClass: "fw-bolder"
   }, [_vm._v(_vm._s(_vm.product.product_name))]), _vm._v(" "), _c("p", {

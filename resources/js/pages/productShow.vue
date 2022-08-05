@@ -9,14 +9,14 @@
                 <div v-if="product != undefined" class="row">
 
                     <!-- Image product -->
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-7 col-lg-6">
                         <figure class="image_wrapper mb-0">
                             <img :src="`/storage/${product.image}`" alt="">
                         </figure>
                     </div>
 
                     <!-- description -->
-                    <div class="col-12 col-md-7 description_wrapper">
+                    <div class="col-12 col-md-5 col-lg-6 description_wrapper">
                         <h2 class="fw-bolder">{{product.product_name}}</h2>
                         <p class="fw-bolder fs-5">{{product.price}} &euro;</p>
                         <p class="mb-5 fs-5">{{product.description}}</p>
