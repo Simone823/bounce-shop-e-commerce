@@ -51,11 +51,26 @@
                         </li>
                     </ul>
     
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center gap-4">
+
+                        {{-- Shopping cart --}}
+                        <div class="cart_shop">
+                            <figure class="icon">
+                                <img src="{{asset('img/cart_shop_icon.svg')}}" alt="">
+                            </figure>
+
+                            <div class="cart_length bg-danger">
+                                <h2 class="mb-0 text-white fs-6">0</h2>
+                            </div>
+
+                        </div>
+
                         {{-- If route login --}}
                         @if (Route::has('login'))
         
                             <div class="top-right links">
+
+
                                 @auth
                                     {{-- Dropdown tbn --}}
                                     <div class="dropdown">
@@ -124,5 +139,33 @@
 
     .dropdown-menu {
         max-height: 200px
+    }
+
+    .cart_shop {
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    .cart_shop > .icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cart_shop > .icon > img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .cart_shop > .cart_length {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        padding: 5px 5px;
+        border-radius: 999999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
