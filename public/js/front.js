@@ -5194,6 +5194,38 @@ __webpack_require__.r(__webpack_exports__);
       // total cart shop
       total_cart_shop: localStorage.getItem("total")
     };
+  },
+  methods: {
+    // update quantity product cart shop
+    updateItemQuantity: function updateItemQuantity(product_id, quantity) {
+      // foreach cart shop
+      this.cart_shop.forEach(function (element) {
+        // if element == product id 
+        if (element.id == product_id) {
+          element.quantity = quantity;
+        }
+      }); // localStorage set item cart shop
+
+      localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total cart shop
+
+      localStorage.setItem("total", this.getTotalCartShop());
+    },
+    // getTotal cart shop
+    getTotalCartShop: function getTotalCartShop() {
+      // item price
+      var item_price; // total cart shop
+
+      var total_cart_shop = 0; // foreach this.cart_shop
+
+      this.cart_shop.forEach(function (element) {
+        item_price = Math.round(element.price * element.quantity * 100) / 100;
+        total_cart_shop += item_price;
+      }); // fixed total_cart_shop 2 cifre dopo la virgola
+
+      total_cart_shop.toFixed(2); // return total cart shop
+
+      return total_cart_shop;
+    }
   }
 });
 
@@ -5444,9 +5476,11 @@ __webpack_require__.r(__webpack_exports__);
       var total_cart_shop = 0; // foreach this.cart_shop
 
       this.cart_shop.forEach(function (element) {
-        item_price = element.price * element.quantity;
+        item_price = Math.round(element.price * element.quantity * 100) / 100;
         total_cart_shop += item_price;
-      }); // return total cart shop
+      }); // fixed total_cart_shop 2 cifre dopo la virgola
+
+      total_cart_shop.toFixed(2); // return total cart shop
 
       return total_cart_shop;
     }
@@ -5695,12 +5729,19 @@ var staticRenderFns = [function () {
     attrs: {
       href: "/register"
     }
-  }, [_vm._v("Registrati")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Registrati")])]), _vm._v(" "), _c("li", {
+    staticClass: "mb-2"
+  }, [_c("a", {
     staticClass: "link-light text-decoration-none",
     attrs: {
       href: "/contact"
     }
-  }, [_vm._v("Contatti")])])])]);
+  }, [_vm._v("Contatti")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "link-light text-decoration-none",
+    attrs: {
+      href: "/cart-shop"
+    }
+  }, [_vm._v("Il tuo carrello")])])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5823,7 +5864,7 @@ var render = function render() {
     staticClass: "title text-center mb-5 col-12"
   }, [_c("h1", {
     staticClass: "mb-0 text-uppercase fw-bold"
-  }, [_vm._v("Il mio carrello")])]), _vm._v(" "), _vm.cart_shop.length ? _c("div", {
+  }, [_vm._v("Il mio carrello")])]), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
     staticClass: "col-12 col-sm-6 product_wrapper"
   }, [_c("ul", {
     staticClass: "product_list"
@@ -5855,7 +5896,7 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          product.quantity > 1 ? product.quantity-- : product.quantity = 1;
+          product.quantity > 1 ? product.quantity-- : product.quantity = 1, _vm.updateItemQuantity(product.id, product.quantity);
         }
       }
     }, [_c("i", {
@@ -5871,14 +5912,18 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          product.quantity++;
+          product.quantity++, _vm.updateItemQuantity(product.id, product.quantity);
         }
       }
     }, [_c("i", {
       staticClass: "fas fa-plus"
     })])])])]), _vm._v(" "), _c("div", {
       staticClass: "total_cart"
-    }, [_c("h5", [_vm._v("Totale: " + _vm._s(Math.round(product.price * product.quantity * 100) / 100) + " €")])])]);
+    }, [_c("h5", {
+      staticClass: "mb-4"
+    }, [_vm._v("Totale: " + _vm._s(Math.round(product.price * product.quantity * 100) / 100) + " €")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-primary text-white"
+    }, [_vm._v("Elimina")])])]);
   }), 0)]) : _c("div", {
     staticClass: "col-12 text-center"
   }, [_c("h1", [_vm._v("Il tuo carrello è vuoto")]), _vm._v(" "), _c("a", {
@@ -11710,7 +11755,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}", ""]);
+exports.push([module.i, "#cart_shop .product_wrapper .product_list[data-v-44c034c2] {\n  height: 565px;\n  overflow-y: auto;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar-thumb {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}", ""]);
 
 // exports
 

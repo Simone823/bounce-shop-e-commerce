@@ -13,7 +13,7 @@
                     </div>
 
                     <!-- Product wrapper -->
-                    <div v-if="cart_shop.length" class="col-12 col-sm-6 product_wrapper">
+                    <div v-if="cart_shop != null && cart_shop.length" class="col-12 col-sm-6 product_wrapper">
                         <!-- product list -->
                         <ul class="product_list">
                             <li class="mb-5" v-for="(product, index) in cart_shop" :key="index">
@@ -32,7 +32,7 @@
                                 <div class="quantity">
                                     <ul class="list_btn mb-4">
                                         <li>
-                                            <button class="btn_remove" :disabled="product.quantity == 1 ? true : false" @click="product.quantity > 1 ? product.quantity-- : product.quantity = 1">
+                                            <button class="btn_remove" :disabled="product.quantity == 1 ? true : false" @click="product.quantity > 1 ? product.quantity-- : product.quantity = 1, updateItemQuantity(product.id, product.quantity)">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                         </li>
@@ -40,7 +40,7 @@
                                             <p class="mb-0 fs-5">{{product.quantity}}</p>
                                         </li>
                                         <li>
-                                            <button class="btn_add" :disabled="product.quantity == 8 ? true : false" @click="product.quantity++">
+                                            <button class="btn_add" :disabled="product.quantity == 8 ? true : false" @click="product.quantity++, updateItemQuantity(product.id, product.quantity)">
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </li>
@@ -49,8 +49,10 @@
 
                                 <!-- total cart shop -->
                                 <div class="total_cart">
-                                    <h5>Totale: {{Math.round((product.price * product.quantity) * 100) / 100}} &euro;</h5>
+                                    <h5 class="mb-4">Totale: {{Math.round((product.price * product.quantity) * 100) / 100}} &euro;</h5>
+                                    <button class="btn btn-primary text-white">Elimina</button>
                                 </div>
+
                             </li>
                         </ul>
                     </div>
@@ -88,6 +90,46 @@ import layout from '../layouts/layout.vue';
                 total_cart_shop: localStorage.getItem("total"),
             }
         },
+
+        methods: {
+            // update quantity product cart shop
+            updateItemQuantity(product_id, quantity) {
+                // foreach cart shop
+                this.cart_shop.forEach(element => {
+                    // if element == product id 
+                    if(element.id == product_id) {
+                        element.quantity = quantity;
+                    }
+                });
+
+                // localStorage set item cart shop
+                localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
+
+                // localStorage set item total cart shop
+                localStorage.setItem("total", this.getTotalCartShop());
+            },
+
+            // getTotal cart shop
+            getTotalCartShop() {
+                // item price
+                let item_price;
+
+                // total cart shop
+                let total_cart_shop = 0;
+                
+                // foreach this.cart_shop
+                this.cart_shop.forEach(element => {
+                    item_price = Math.round((element.price * element.quantity) * 100) / 100;
+                    total_cart_shop += item_price;
+                });
+
+                // fixed total_cart_shop 2 cifre dopo la virgola
+                total_cart_shop.toFixed(2);
+
+                // return total cart shop
+                return total_cart_shop;
+            }
+        }
     }
 </script>
 
@@ -99,6 +141,16 @@ import layout from '../layouts/layout.vue';
     .product_wrapper {
 
         .product_list {
+            height: 565px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 2px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                width: 2px;
+            }
 
             li {
                 display: flex;
