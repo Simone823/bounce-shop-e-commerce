@@ -21,8 +21,11 @@
                         <li class="mb-2">
                             <a class="link-light text-decoration-none" href="/register">Registrati</a>
                         </li>
-                        <li>
+                        <li class="mb-2">
                             <a class="link-light text-decoration-none" href="/contact">Contatti</a>
+                        </li>
+                        <li>
+                            <a class="link-light text-decoration-none" href="/cart-shop">Il tuo carrello</a>
                         </li>
                     </ul>
                 </div>
