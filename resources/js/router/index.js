@@ -20,6 +20,9 @@ import productShow from '../pages/productShow.vue';
 // import pages contact
 import contact from '../pages/contact.vue';
 
+// import pages cart shop
+import cartShop from '../pages/cartShop.vue';
+
 // array che rotte vue
 const routes = [
     {
@@ -50,6 +53,12 @@ const routes = [
         path: '/contact',
         name: 'contact',
         component: contact,
+    }, 
+
+    {
+        path: '/cart-shop',
+        name: 'cart-shop',
+        component: cartShop,
     }
 ];
 

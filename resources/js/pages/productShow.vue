@@ -156,9 +156,12 @@ import layout from '../layouts/layout.vue';
 
                 // foreach this.cart_shop
                 this.cart_shop.forEach(element => {
-                    item_price = element.price * element.quantity;
+                    item_price = Math.round((element.price * element.quantity) * 100) / 100;
                     total_cart_shop += item_price;
                 });
+
+                // fixed total_cart_shop 2 cifre dopo la virgola
+                total_cart_shop.toFixed(2);
 
                 // return total cart shop
                 return total_cart_shop;
