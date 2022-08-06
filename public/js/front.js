@@ -5225,6 +5225,15 @@ __webpack_require__.r(__webpack_exports__);
       total_cart_shop.toFixed(2); // return total cart shop
 
       return total_cart_shop;
+    },
+    // remove item from cart shop
+    removeItemFromCartShop: function removeItemFromCartShop(product) {
+      // splice product cart_shop
+      this.cart_shop.splice(product, 1); // localStorage set item cart_shop
+
+      localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total
+
+      localStorage.setItem("total", this.getTotalCartShop());
     }
   }
 });
@@ -5885,7 +5894,7 @@ var render = function render() {
       staticClass: "mb-0 fw-bolder"
     }, [_vm._v(_vm._s(product.product_name))]), _vm._v(" "), _c("p", {
       staticClass: "mb-0 fs-5"
-    }, [_vm._v(_vm._s(product.price))])]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(product.price) + " €")])]), _vm._v(" "), _c("div", {
       staticClass: "quantity"
     }, [_c("ul", {
       staticClass: "list_btn mb-4"
@@ -5922,7 +5931,12 @@ var render = function render() {
     }, [_c("h5", {
       staticClass: "mb-4"
     }, [_vm._v("Totale: " + _vm._s(Math.round(product.price * product.quantity * 100) / 100) + " €")]), _vm._v(" "), _c("button", {
-      staticClass: "btn btn-primary text-white"
+      staticClass: "btn btn-primary text-white",
+      on: {
+        click: function click($event) {
+          return _vm.removeItemFromCartShop(product);
+        }
+      }
     }, [_vm._v("Elimina")])])]);
   }), 0)]) : _c("div", {
     staticClass: "col-12 text-center"

@@ -25,7 +25,7 @@
                                 <!-- description -->
                                 <div class="description">
                                     <h5 class="mb-0 fw-bolder">{{product.product_name}}</h5>
-                                    <p class="mb-0 fs-5">{{product.price}}</p>
+                                    <p class="mb-0 fs-5">{{product.price}} &euro;</p>
                                 </div>
 
                                 <!-- quantity -->
@@ -50,7 +50,7 @@
                                 <!-- total cart shop -->
                                 <div class="total_cart">
                                     <h5 class="mb-4">Totale: {{Math.round((product.price * product.quantity) * 100) / 100}} &euro;</h5>
-                                    <button class="btn btn-primary text-white">Elimina</button>
+                                    <button @click="removeItemFromCartShop(product)" class="btn btn-primary text-white">Elimina</button>
                                 </div>
 
                             </li>
@@ -128,6 +128,18 @@ import layout from '../layouts/layout.vue';
 
                 // return total cart shop
                 return total_cart_shop;
+            },
+
+            // remove item from cart shop
+            removeItemFromCartShop(product) {
+                // splice product cart_shop
+                this.cart_shop.splice(product, 1);
+
+                // localStorage set item cart_shop
+                localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
+
+                // localStorage set item total
+                localStorage.setItem("total", this.getTotalCartShop());
             }
         }
     }
