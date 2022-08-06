@@ -56,7 +56,9 @@
                         {{-- Shopping cart --}}
                         <div class="cart_shop">
                             <figure class="icon">
-                                <img src="{{asset('img/cart_shop_icon.svg')}}" alt="">
+                                <a href="/cart-shop">
+                                    <img src="{{asset('img/cart_shop_icon.svg')}}" alt="">
+                                </a>
                             </figure>
 
                             <div class="cart_length bg-danger">
@@ -145,6 +147,7 @@
         width: 40px;
         height: 40px;
         position: relative;
+        cursor: pointer;
     }
 
     .cart_shop > .icon {
@@ -152,7 +155,7 @@
         height: 40px;
     }
 
-    .cart_shop > .icon > img {
+    .cart_shop > .icon > a > img {
         width: 100%;
         height: 100%;
         display: block;
