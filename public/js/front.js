@@ -5227,9 +5227,11 @@ __webpack_require__.r(__webpack_exports__);
       return total_cart_shop;
     },
     // remove item from cart shop
-    removeItemFromCartShop: function removeItemFromCartShop(product) {
-      // splice product cart_shop
-      this.cart_shop.splice(product, 1); // localStorage set item cart_shop
+    removeItemFromCartShop: function removeItemFromCartShop(product_id) {
+      // filter cart shop
+      this.cart_shop = this.cart_shop.filter(function (product) {
+        return product.id != product_id;
+      }); // localStorage set item cart_shop
 
       localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total
 
@@ -5874,7 +5876,7 @@ var render = function render() {
   }, [_c("h1", {
     staticClass: "mb-0 text-uppercase fw-bold"
   }, [_vm._v("Il mio carrello")])]), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
-    staticClass: "col-12 col-sm-6 product_wrapper"
+    staticClass: "col-12 col-sm-6 product_wrapper mb-5 mb-sm-0"
   }, [_c("ul", {
     staticClass: "product_list"
   }, _vm._l(_vm.cart_shop, function (product, index) {
@@ -5934,11 +5936,46 @@ var render = function render() {
       staticClass: "btn btn-primary text-white",
       on: {
         click: function click($event) {
-          return _vm.removeItemFromCartShop(product);
+          return _vm.removeItemFromCartShop(product.id);
         }
       }
     }, [_vm._v("Elimina")])])]);
-  }), 0)]) : _c("div", {
+  }), 0)]) : _vm._e(), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
+    staticClass: "col-12 col-sm-6 total_cart_shop"
+  }, [_c("div", {
+    staticClass: "card py-3"
+  }, [_c("h2", {
+    staticClass: "mb-0 text-center"
+  }, [_vm._v("Sommario ordine")]), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("ul", {
+    staticClass: "detail_total mb-4"
+  }, [_c("li", {
+    staticClass: "d-flex justify-content-between mb-2 flex-wrap"
+  }, [_c("p", {
+    staticClass: "fs-5 mb-0"
+  }, [_vm._v("Sconto")]), _vm._v(" "), _c("p", {
+    staticClass: "fs-5 mb-0"
+  }, [_vm._v("0 €")])]), _vm._v(" "), _c("li", {
+    staticClass: "d-flex justify-content-between mb-2"
+  }, [_c("p", {
+    staticClass: "fs-5 mb-0"
+  }, [_vm._v("IVA")]), _vm._v(" "), _c("p", {
+    staticClass: "fs-5 mb-0"
+  }, [_vm._v("22%")])]), _vm._v(" "), _c("li", {
+    staticClass: "d-flex justify-content-between"
+  }, [_c("p", {
+    staticClass: "fs-5 mb-0 fw-bolder"
+  }, [_vm._v("Totale")]), _vm._v(" "), _c("p", {
+    staticClass: "fs-5 mb-0 fw-bolder"
+  }, [_vm._v(_vm._s(_vm.getTotalCartShop()) + " €")])])]), _vm._v(" "), _c("div", {
+    staticClass: "btn-pay"
+  }, [_c("a", {
+    staticClass: "btn btn-primary text-white w-100",
+    attrs: {
+      href: ""
+    }
+  }, [_vm._v("Vai al pagamento")])])])])]) : _c("div", {
     staticClass: "col-12 text-center"
   }, [_c("h1", [_vm._v("Il tuo carrello è vuoto")]), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary text-white",
@@ -11769,7 +11806,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#cart_shop .product_wrapper .product_list[data-v-44c034c2] {\n  height: 565px;\n  overflow-y: auto;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar-thumb {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}", ""]);
+exports.push([module.i, "#cart_shop .product_wrapper .product_list[data-v-44c034c2] {\n  max-height: 565px;\n  overflow-y: auto;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar-thumb {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}\n#cart_shop .total_cart_shop .card[data-v-44c034c2] {\n  background-color: #292929;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}", ""]);
 
 // exports
 

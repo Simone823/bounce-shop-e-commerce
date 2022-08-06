@@ -13,7 +13,7 @@
                     </div>
 
                     <!-- Product wrapper -->
-                    <div v-if="cart_shop != null && cart_shop.length" class="col-12 col-sm-6 product_wrapper">
+                    <div v-if="cart_shop != null && cart_shop.length" class="col-12 col-sm-6 product_wrapper mb-5 mb-sm-0">
                         <!-- product list -->
                         <ul class="product_list">
                             <li class="mb-5" v-for="(product, index) in cart_shop" :key="index">
@@ -50,11 +50,40 @@
                                 <!-- total cart shop -->
                                 <div class="total_cart">
                                     <h5 class="mb-4">Totale: {{Math.round((product.price * product.quantity) * 100) / 100}} &euro;</h5>
-                                    <button @click="removeItemFromCartShop(product)" class="btn btn-primary text-white">Elimina</button>
+                                    <button @click="removeItemFromCartShop(product.id)" class="btn btn-primary text-white">Elimina</button>
                                 </div>
 
                             </li>
                         </ul>
+                    </div>
+
+                    <!-- total cart shop -->
+                    <div v-if="cart_shop != null && cart_shop.length" class="col-12 col-sm-6 total_cart_shop">
+                        <div class="card py-3">
+                            <h2 class="mb-0 text-center">Sommario ordine</h2>
+
+                            <div class="card-body">
+                                <ul class="detail_total mb-4">
+                                    <li class="d-flex justify-content-between mb-2 flex-wrap">
+                                        <p class="fs-5 mb-0">Sconto</p>
+                                        <p class="fs-5 mb-0">0 &euro;</p>
+                                    </li>
+                                    <li class="d-flex justify-content-between mb-2">
+                                        <p class="fs-5 mb-0">IVA</p>
+                                        <p class="fs-5 mb-0">22%</p>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <p class="fs-5 mb-0 fw-bolder">Totale</p>
+                                        <p class="fs-5 mb-0 fw-bolder">{{getTotalCartShop()}} &euro;</p>
+                                    </li>
+                                </ul>
+
+                                <!-- button link pay page -->
+                                <div class="btn-pay">
+                                    <a class="btn btn-primary text-white w-100" href="">Vai al pagamento</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Carrello vuoto -->
@@ -131,9 +160,9 @@ import layout from '../layouts/layout.vue';
             },
 
             // remove item from cart shop
-            removeItemFromCartShop(product) {
-                // splice product cart_shop
-                this.cart_shop.splice(product, 1);
+            removeItemFromCartShop(product_id) {
+                // filter cart shop
+                this.cart_shop = this.cart_shop.filter(product => product.id  != product_id);
 
                 // localStorage set item cart_shop
                 localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop));
@@ -153,7 +182,7 @@ import layout from '../layouts/layout.vue';
     .product_wrapper {
 
         .product_list {
-            height: 565px;
+            max-height: 565px;
             overflow-y: auto;
 
             &::-webkit-scrollbar {
@@ -227,7 +256,16 @@ import layout from '../layouts/layout.vue';
                 }
             }
         }
+    }
 
+    .total_cart_shop {
+        
+        .card {
+            background-color: $gray-2;
+            border: none;
+            border-radius: 8px;
+            box-shadow:  0 1rem 3rem rgba($white, .175) inset;
+        }
     }
 }
 
