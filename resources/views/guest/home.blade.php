@@ -7,6 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- if auth user meta name user id  --}}
+    @if(Auth::user())
+        <meta name="user-id" content="{{ Auth::user()->id }}">
+
+        @else
+            <meta name="user-id" content="null">
+    @endif
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
