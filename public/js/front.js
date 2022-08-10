@@ -5192,7 +5192,9 @@ __webpack_require__.r(__webpack_exports__);
       // array cart shop
       cart_shop: JSON.parse(localStorage.getItem("cart_shop")),
       // total cart shop
-      total_cart_shop: localStorage.getItem("total")
+      total_cart_shop: localStorage.getItem("total"),
+      // Auth user id meta name user id guest blade php
+      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content')
     };
   },
   methods: {
@@ -5236,6 +5238,16 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total
 
       localStorage.setItem("total", this.getTotalCartShop());
+    },
+    // Send order if auth user != 'null'
+    sendOrder: function sendOrder() {
+      // if auth user == null
+      if (this.auth_user_id == 'null') {
+        // redirect url /login
+        window.location = '/login';
+      } else {
+        console.log(this.auth_user_id);
+      }
     }
   }
 });
@@ -5972,15 +5984,17 @@ var render = function render() {
     staticClass: "btn-pay"
   }, [_c("a", {
     staticClass: "btn btn-primary text-white w-100",
-    attrs: {
-      href: ""
+    on: {
+      click: function click($event) {
+        return _vm.sendOrder();
+      }
     }
   }, [_vm._v("Vai al pagamento")])])])])]) : _c("div", {
     staticClass: "col-12 text-center"
   }, [_c("h1", [_vm._v("Il tuo carrello è vuoto")]), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary text-white",
     attrs: {
-      href: "/products"
+      href: "/product"
     }
   }, [_vm._v("Vai alla pagina prodotti per acquistare")])])])])])]);
 };

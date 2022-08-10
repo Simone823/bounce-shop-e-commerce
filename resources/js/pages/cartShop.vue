@@ -80,7 +80,7 @@
 
                                 <!-- button link pay page -->
                                 <div class="btn-pay">
-                                    <a class="btn btn-primary text-white w-100" href="">Vai al pagamento</a>
+                                    <a @click="sendOrder()" class="btn btn-primary text-white w-100">Vai al pagamento</a>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                     <!-- Carrello vuoto -->
                     <div v-else class="col-12 text-center">
                         <h1>Il tuo carrello è vuoto</h1>
-                        <a class="btn btn-primary text-white" href="/products">Vai alla pagina prodotti per acquistare</a>
+                        <a class="btn btn-primary text-white" href="/product">Vai alla pagina prodotti per acquistare</a>
                     </div>
 
                 </div>
@@ -117,6 +117,9 @@ import layout from '../layouts/layout.vue';
 
                 // total cart shop
                 total_cart_shop: localStorage.getItem("total"),
+
+                // Auth user id meta name user id guest blade php
+                auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content'),
             }
         },
 
@@ -169,6 +172,19 @@ import layout from '../layouts/layout.vue';
 
                 // localStorage set item total
                 localStorage.setItem("total", this.getTotalCartShop());
+            },
+
+            // Send order if auth user != 'null'
+            sendOrder() {
+                
+                // if auth user == null
+                if(this.auth_user_id == 'null') {
+
+                    // redirect url /login
+                    window.location = '/login';
+                } else {
+                    console.log(this.auth_user_id);
+                }
             }
         }
     }
