@@ -89,7 +89,7 @@
                     <!-- Carrello vuoto -->
                     <div v-else class="col-12 text-center">
                         <h1>Il tuo carrello è vuoto</h1>
-                        <a class="btn btn-primary text-white" href="/product">Vai alla pagina prodotti per acquistare</a>
+                        <a class="btn btn-primary text-white" href="/products">Vai alla pagina prodotti per acquistare</a>
                     </div>
 
                 </div>
