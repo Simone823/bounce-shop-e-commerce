@@ -54,6 +54,16 @@ class OrderController extends Controller
         // new order save
         $new_order->save();
 
+        // attah products pivot
+        foreach ($data['cart_shop'] as $product) {
+            $new_order->products()->attach(
+                $product['id'],
+                [
+                    'quantity' => $product['quantity'],
+                ]
+            );
+        }
+
         // return response json
         return response()->json([
             'order' => $new_order,
