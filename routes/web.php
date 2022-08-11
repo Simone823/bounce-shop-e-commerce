@@ -47,6 +47,16 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
     Route::resource('/orders', 'OrderController');
 });
 
+// middleware auth 
+Route::middleware('auth')->group(function() {
+
+    // rotta credit card
+    Route::get('/credit-card', 'Auth\StripeController@creditCard');
+
+    // Rotta make payment
+    Route::post('/make-payment', 'Auth\StripeController@afterPayment')->name('make.payment');
+});
+
 // Creo una rotta di fallback che restiturà guest.home view
 route::get('{any}', function () {
     return view('guest.home');
