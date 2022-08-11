@@ -43,5 +43,5 @@ Route::namespace('Api')->group(function () {
     Route::resource('/create-message', 'MessageController')->only('store');
 
     // Rotta order create
-    Route::resource('/order-create', 'OrderController');
+    Route::resource('/order-create', 'OrderController')->only('store');
 });

@@ -183,7 +183,30 @@ import layout from '../layouts/layout.vue';
                     // redirect url /login
                     window.location = '/login';
                 } else {
-                    console.log(this.auth_user_id);
+                    // axios post order create api
+                    axios.post('/api/order-create', {
+                        cart_shop: this.cart_shop,
+                        total: this.total_cart_shop,
+                        user_id: this.auth_user_id,
+                    })
+                    .then( res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.warn(err);
+                    })
+
+                    // localStorage set item cart shop []
+                    localStorage.setItem('cart_shop', '[]');
+
+                    // localStorage set item total 0
+                    localStorage.setItem('total', 0);
+
+                    // array cart shop
+                    this.cart_shop = [];
+
+                    // redirect to url /credit card
+                    window.location = '/credit-card';
                 }
             }
         }
