@@ -131,7 +131,7 @@
                                             </validationProvider>
 
                                             <!-- address -->
-                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_address" rules="required|min:3|max:255|alpha_spaces" v-slot="{errors}">
+                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_address" rules="required|min:3|max:255|alpha_num" v-slot="{errors}">
                                                 <div class="form-floating">
                                                     <input v-model="form.user_address" type="text" name="user_address" class="form-control text-black bg-dark text-white border-0" id="user_address" placeholder="Indirizzo">
                                                     <label for="user_address">

@@ -6211,7 +6211,7 @@ var render = function render() {
     attrs: {
       tag: "div",
       name: "user_address",
-      rules: "required|min:3|max:255|alpha_spaces"
+      rules: "required|min:3|max:255|alpha_num"
     },
     scopedSlots: _vm._u([{
       key: "default",
