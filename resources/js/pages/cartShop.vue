@@ -307,9 +307,10 @@ import layout from '../layouts/layout.vue';
                                 cart_shop: this.cart_shop,
                                 total: this.total_cart_shop,
                                 user_id: this.auth_user_id,
-                                user_name: this.auth_user_name,
-                                user_surname: this.auth_user_surname,
-                                form: this.form,
+                                user_name: this.form.user_name,
+                                user_surname: this.form.user_surname,
+                                user_city: this.form.user_city,
+                                user_address: this.form.user_address,
                             })
                             .then( res => {
                                 console.log(res);

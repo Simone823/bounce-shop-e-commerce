@@ -5282,9 +5282,10 @@ __webpack_require__.r(__webpack_exports__);
               cart_shop: _this.cart_shop,
               total: _this.total_cart_shop,
               user_id: _this.auth_user_id,
-              user_name: _this.auth_user_name,
-              user_surname: _this.auth_user_surname,
-              form: _this.form
+              user_name: _this.form.user_name,
+              user_surname: _this.form.user_surname,
+              user_city: _this.form.user_city,
+              user_address: _this.form.user_address
             }).then(function (res) {
               console.log(res);
             })["catch"](function (err) {
