@@ -40,6 +40,7 @@
                                         <div class="description">
                                             <h5 class="card-title fw-bolder">Ordine n° {{$order->id}}</h5>
                                             <p class="card-text fs-5">Creato <span>{{\Carbon\Carbon::create($order->created_at)->diffForHumans()}}</span></p>
+                                            <p class="card-text fs-5">Effettuato da: {{$order->user_name}} {{$order->user_surname}}</p>
                                             <p class="card-text fs-5">{{$order->total_price}} &euro;</p>
 
                                             <div class="card-text d-flex flex-wrap gap-2">
@@ -50,7 +51,7 @@
 
                                         {{-- Btn --}}
                                         <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                            <a href="" class="btn btn-primary text-white">Visualizza</a>
+                                            <a href="{{route('admin.orders.show', $order->id)}}" class="btn btn-primary text-white">Visualizza</a>
                                         </div>
                                     </div>
 
