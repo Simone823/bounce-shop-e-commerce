@@ -54,4 +54,9 @@ class StripeController extends Controller
         // redirect to url /payment success
         return redirect()->to('/payment-success');
     }
+
+    public function success()
+    {
+        return view('stripe.payment-success');
+    }
 }
