@@ -6760,9 +6760,9 @@ var render = function render() {
     staticClass: "text-white"
   }, [_vm._v(_vm._s(_vm.categorySelected))])]), _vm._v(" "), _c("ul", {
     staticClass: "product_list d-flex flex-wrap justify-content-center"
-  }, _vm._l(_vm.products, function (product) {
+  }, _vm._l(_vm.products, function (product, index) {
     return _c("li", {
-      key: product.id,
+      key: index,
       staticClass: "col-12 col-sm-6 col-lg-4"
     }, [_c("div", {
       staticClass: "card bg-dark text-white"
