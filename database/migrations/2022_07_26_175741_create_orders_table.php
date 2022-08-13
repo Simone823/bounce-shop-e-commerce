@@ -15,6 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('user_name', 155);
+            $table->string('user_surname', 155);
+            $table->string('user_city', 100);
+            $table->string('user_address', 255);
             $table->bigInteger('user_id');
             $table->decimal('total_price', 10,2);
             $table->boolean('status')->default(0);
