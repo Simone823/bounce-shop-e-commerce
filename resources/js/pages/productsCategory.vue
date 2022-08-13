@@ -16,7 +16,7 @@
 
                     <!-- Product_list -->
                     <ul class="product_list d-flex flex-wrap justify-content-center">
-                        <li v-for="(product, index) in products" :key="index" class="col-12 col-sm-6 col-lg-4">
+                        <li v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
                                     <img :src="`/storage/${product.image}`" alt="">
@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="btn-detaiil text-center mb-4">
-                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.id} }">
+                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.product_id} }">
                                         Dettagli
                                     </router-link>
                                 </div>
