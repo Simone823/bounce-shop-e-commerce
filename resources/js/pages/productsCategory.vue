@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="btn-detaiil text-center mb-4">
-                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.id} }">
+                                    <router-link tag="a" class="btn btn-primary text-white" :to="{ name: 'product-show', params: {id: product.product_id} }">
                                         Dettagli
                                     </router-link>
                                 </div>

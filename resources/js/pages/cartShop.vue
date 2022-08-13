@@ -80,7 +80,7 @@
 
                                 <!-- button link pay page -->
                                 <div class="btn-pay">
-                                    <a class="btn btn-primary text-white w-100" href="">Vai al pagamento</a>
+                                    <a @click="sendOrder()" class="btn btn-primary text-white w-100">Vai al pagamento</a>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +117,9 @@ import layout from '../layouts/layout.vue';
 
                 // total cart shop
                 total_cart_shop: localStorage.getItem("total"),
+
+                // Auth user id meta name user id guest blade php
+                auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content'),
             }
         },
 
@@ -169,6 +172,42 @@ import layout from '../layouts/layout.vue';
 
                 // localStorage set item total
                 localStorage.setItem("total", this.getTotalCartShop());
+            },
+
+            // Send order if auth user != 'null'
+            sendOrder() {
+                
+                // if auth user == null
+                if(this.auth_user_id == 'null') {
+
+                    // redirect url /login
+                    window.location = '/login';
+                } else {
+                    // axios post order create api
+                    axios.post('/api/order-create', {
+                        cart_shop: this.cart_shop,
+                        total: this.total_cart_shop,
+                        user_id: this.auth_user_id,
+                    })
+                    .then( res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.warn(err);
+                    })
+
+                    // localStorage set item cart shop []
+                    localStorage.setItem('cart_shop', '[]');
+
+                    // localStorage set item total 0
+                    localStorage.setItem('total', 0);
+
+                    // array cart shop
+                    this.cart_shop = [];
+
+                    // redirect to url /credit card
+                    window.location = '/credit-card';
+                }
             }
         }
     }
