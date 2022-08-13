@@ -23,9 +23,6 @@ import contact from '../pages/contact.vue';
 // import pages cart shop
 import cartShop from '../pages/cartShop.vue';
 
-// import pages payment success
-import paymentSuccess from '../pages/paymentSuccess.vue';
-
 // array che rotte vue
 const routes = [
     {
@@ -63,12 +60,6 @@ const routes = [
         name: 'cart-shop',
         component: cartShop,
     },
-
-    {
-        path: '/payment-success',
-        name: 'payment-success',
-        component: paymentSuccess,
-    }
 ];
 
 //istanza del router
