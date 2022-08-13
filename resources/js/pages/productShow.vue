@@ -44,7 +44,8 @@
 
                         <!-- Btn add to cart -->
                         <div class="btn_add_to_cart mb-5 mb-md-0">
-                            <button @click="addItemToCart(product)" :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white">Aggiungi al carrello</button>
+                            <button @click="addItemToCart(product)" :disabled="product.quantity == 0 ? true : false" class="btn btn-primary text-white me-3">Aggiungi al carrello</button>
+                            <span id="msg_addItem" class=""></span>
                         </div>
                     </div>
 
@@ -111,6 +112,9 @@ import layout from '../layouts/layout.vue';
 
             // Add item to cart shop
             addItemToCart(product) {
+                // recupero il tag span msg item dal dom
+                const msg_addItem = document.querySelector('#msg_addItem');
+
                 // if cart shop lenth 0
                 if(this.cart_shop.length == 0) {
 
@@ -133,6 +137,16 @@ import layout from '../layouts/layout.vue';
 
                 // localStorage set item total function getTotalCartShop
                 localStorage.setItem("total", this.getTotalCartShop());
+
+                // Set inner html msg_addItem
+                setTimeout(() => {
+                    msg_addItem.innerHTML = 'Prodotto aggiunto al carrello!';
+
+                    // set ''
+                    setTimeout(() => {
+                        msg_addItem.innerHTML = '';
+                    }, 3000);
+                }, 100);
             },
 
             // update quantity product cart shop
