@@ -20,7 +20,7 @@ class OrderController extends Controller
         $user_auth = Auth::user();
 
         // orders
-        $orders = Order::orderBy('created_at', 'desc')->get();
+        $orders = Order::orderBy('created_at', 'desc')->paginate(6);
 
         // return view admin orders index
         return view('admin.orders.index', compact('user_auth', 'orders'));
