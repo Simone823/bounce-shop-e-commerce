@@ -59,7 +59,7 @@ const routes = [
         path: '/cart-shop',
         name: 'cart-shop',
         component: cartShop,
-    }
+    },
 ];
 
 //istanza del router

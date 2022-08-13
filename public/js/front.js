@@ -5192,7 +5192,9 @@ __webpack_require__.r(__webpack_exports__);
       // array cart shop
       cart_shop: JSON.parse(localStorage.getItem("cart_shop")),
       // total cart shop
-      total_cart_shop: localStorage.getItem("total")
+      total_cart_shop: localStorage.getItem("total"),
+      // Auth user id meta name user id guest blade php
+      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content')
     };
   },
   methods: {
@@ -5236,6 +5238,33 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total
 
       localStorage.setItem("total", this.getTotalCartShop());
+    },
+    // Send order if auth user != 'null'
+    sendOrder: function sendOrder() {
+      // if auth user == null
+      if (this.auth_user_id == 'null') {
+        // redirect url /login
+        window.location = '/login';
+      } else {
+        // axios post order create api
+        axios.post('/api/order-create', {
+          cart_shop: this.cart_shop,
+          total: this.total_cart_shop,
+          user_id: this.auth_user_id
+        }).then(function (res) {
+          console.log(res);
+        })["catch"](function (err) {
+          console.warn(err);
+        }); // localStorage set item cart shop []
+
+        localStorage.setItem('cart_shop', '[]'); // localStorage set item total 0
+
+        localStorage.setItem('total', 0); // array cart shop
+
+        this.cart_shop = []; // redirect to url /credit card
+
+        window.location = '/credit-card';
+      }
     }
   }
 });
@@ -5447,7 +5476,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Add item to cart shop
     addItemToCart: function addItemToCart(product) {
-      // if cart shop lenth 0
+      // recupero il tag span msg item dal dom
+      var msg_addItem = document.querySelector('#msg_addItem'); // if cart shop lenth 0
+
       if (this.cart_shop.length == 0) {
         // cart_shop push product 
         this.cart_shop.push(product);
@@ -5467,7 +5498,15 @@ __webpack_require__.r(__webpack_exports__);
 
       localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total function getTotalCartShop
 
-      localStorage.setItem("total", this.getTotalCartShop());
+      localStorage.setItem("total", this.getTotalCartShop()); // Set inner html msg_addItem
+
+      setTimeout(function () {
+        msg_addItem.innerHTML = 'Prodotto aggiunto al carrello!'; // set ''
+
+        setTimeout(function () {
+          msg_addItem.innerHTML = '';
+        }, 3000);
+      }, 100);
     },
     // update quantity product cart shop
     updateItemQuantity: function updateItemQuantity(product_id, quantity) {
@@ -5972,8 +6011,10 @@ var render = function render() {
     staticClass: "btn-pay"
   }, [_c("a", {
     staticClass: "btn btn-primary text-white w-100",
-    attrs: {
-      href: ""
+    on: {
+      click: function click($event) {
+        return _vm.sendOrder();
+      }
     }
   }, [_vm._v("Vai al pagamento")])])])])]) : _c("div", {
     staticClass: "col-12 text-center"
@@ -6511,7 +6552,7 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.priceXquantity(_vm.product)) + " €")])])]), _vm._v(" "), _c("div", {
     staticClass: "btn_add_to_cart mb-5 mb-md-0"
   }, [_c("button", {
-    staticClass: "btn btn-primary text-white",
+    staticClass: "btn btn-primary text-white me-3",
     attrs: {
       disabled: _vm.product.quantity == 0 ? true : false
     },
@@ -6520,7 +6561,11 @@ var render = function render() {
         return _vm.addItemToCart(_vm.product);
       }
     }
-  }, [_vm._v("Aggiungi al carrello")])])])]) : _vm._e()])])]);
+  }, [_vm._v("Aggiungi al carrello")]), _vm._v(" "), _c("span", {
+    attrs: {
+      id: "msg_addItem"
+    }
+  })])])]) : _vm._e()])])]);
 };
 
 var staticRenderFns = [];
@@ -6676,7 +6721,7 @@ var render = function render() {
         to: {
           name: "product-show",
           params: {
-            id: product.id
+            id: product.product_id
           }
         }
       }
