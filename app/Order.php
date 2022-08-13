@@ -10,4 +10,11 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Product');
     }
+
+    protected $fillable = [
+        'user_name',
+        'user_surname',
+        'user_city',
+        'user_address'
+    ];
 }
