@@ -12410,3 +12410,25 @@ section {
      object-position: center;
 }
 
+#order_show .card {
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#order_show .card .wrapper_image {
+  width: 100%;
+  height: 300px;
+}
+
+#order_show .card .wrapper_image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
