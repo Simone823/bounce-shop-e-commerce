@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function() {
 
     // Rotta make payment
     Route::post('/make-payment', 'Auth\StripeController@afterPayment')->name('make.payment');
+
+    // rotta payment success
+    Route::get('/payment-success', 'Auth\StripeController@success');
 });
 
 // Creo una rotta di fallback che restiturà guest.home view
