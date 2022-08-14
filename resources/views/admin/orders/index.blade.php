@@ -12,7 +12,7 @@
     <section id="orders_index">
 
         <div class="container h-100">
-            <div class="row h-100 align-items-center gy-5 gx-sm-5 gx-lg-5">
+            <div class="row h-100 align-items-center justify-content-center gy-5 gx-sm-5 gx-lg-5">
 
                 {{-- If orders lenght 0 --}}
                 @if(count($orders) < 1)
