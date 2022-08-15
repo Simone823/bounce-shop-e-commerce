@@ -62,7 +62,7 @@
                         <div class="card py-3">
                             <h2 class="mb-0 text-center">Sommario ordine</h2>
 
-                            <div class="card-body">
+                            <div class="card-body pb-0">
                                 <ul class="detail_total mb-4">
                                     <li class="d-flex justify-content-between mb-2 flex-wrap">
                                         <p class="fs-5 mb-0">Sconto</p>
@@ -78,11 +78,90 @@
                                     </li>
                                 </ul>
 
-                                <!-- button link pay page -->
-                                <div class="btn-pay">
-                                    <a @click="sendOrder()" class="btn btn-primary text-white w-100">Vai al pagamento</a>
+                                <!-- user detail -->
+                                <div class="user_detail mb-4" v-if="auth_user_id != 'null'">
+                                    <h2 class="mb-3 text-center">Dettagli Spedizione</h2>
+
+                                    <ValidationObserver ref="form">
+                                        <form ref="formgroup" @submit.prevent="sendOrder()" method="post">
+
+                                            <!-- Name -->
+                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_name" rules="required|min:3|max:100|alpha_spaces" v-slot="{errors}">
+                                                <div class="form-floating">
+                                                    <input disabled v-model="form.user_name" type="text" name="user_name" class="form-control text-black bg-dark text-white border-0" id="user_name" placeholder="Nome">
+                                                    <label for="user_name">
+                                                        <i class="fa-solid fa-user"></i>
+                                                        Nome
+                                                    </label>
+
+                                                    <div class="error mt-2 text-primary">
+                                                        {{ errors.length ? errors[0] : ''}}
+                                                    </div>
+                                                </div>
+                                            </validationProvider>
+
+                                            <!-- Surname -->
+                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_surname" rules="required|min:3|max:100|alpha_spaces" v-slot="{errors}">
+                                                <div class="form-floating">
+                                                    <input disabled v-model="form.user_surname" type="text" name="user_surname" class="form-control text-black bg-dark text-white border-0" id="user_surname" placeholder="Cognome">
+                                                    <label for="user_surname">
+                                                        <i class="fa-solid fa-user"></i>
+                                                        Cognome
+                                                    </label>
+
+                                                    <div class="error mt-2 text-primary">
+                                                        {{ errors.length ? errors[0] : ''}}
+                                                    </div>
+                                                </div>
+                                            </validationProvider>
+
+                                            <!-- city -->
+                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_city" rules="required|min:3|max:100|alpha_spaces" v-slot="{errors}">
+                                                <div class="form-floating">
+                                                    <input v-model="form.user_city" type="text" name="user_city" class="form-control text-black bg-dark text-white border-0" id="user_city" placeholder="Città">
+                                                    <label for="user_city">
+                                                        <i class="fa-solid fa-city"></i>
+                                                        Città
+                                                    </label>
+
+                                                    <div class="error mt-2 text-primary">
+                                                        {{ errors.length ? errors[0] : ''}}
+                                                    </div>
+                                                </div>
+                                            </validationProvider>
+
+                                            <!-- address -->
+                                            <validationProvider tag="div" class="col-12 validation_provider mb-4" name="user_address" rules="required|min:3|max:255|alpha_num" v-slot="{errors}">
+                                                <div class="form-floating">
+                                                    <input v-model="form.user_address" type="text" name="user_address" class="form-control text-black bg-dark text-white border-0" id="user_address" placeholder="Indirizzo">
+                                                    <label for="user_address">
+                                                        <i class="fa-solid fa-location-dot"></i>
+                                                        Indirizzo
+                                                    </label>
+
+                                                    <div class="error mt-2 text-primary">
+                                                        {{ errors.length ? errors[0] : ''}}
+                                                    </div>
+                                                </div>
+                                            </validationProvider>
+
+                                            <!-- button link pay page -->
+                                            <div class="btn-pay">
+                                                <button type="submit" class="btn btn-primary text-white w-100">
+                                                    Vai al pagamento
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </ValidationObserver>
+                                </div>
+
+                                <!-- btn sign in  -->
+                                <div v-else class="register_btn">
+                                    <a href="/login" class="btn btn-primary text-white w-100">Accedi o Registrati per effettuare un'ordine</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -120,7 +199,41 @@ import layout from '../layouts/layout.vue';
 
                 // Auth user id meta name user id guest blade php
                 auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content'),
+
+                // auth user name
+                auth_user_name: document.querySelector("meta[name='user-name']").getAttribute('content'),
+
+                // auth user surname
+                auth_user_surname: document.querySelector("meta[name='user-surname']").getAttribute('content'),
+
+                // auth user city
+                auth_user_city: document.querySelector("meta[name='user-city']").getAttribute('content'),
+
+                // auth user city
+                auth_user_address: document.querySelector("meta[name='user-address']").getAttribute('content'),
+
+                // form input user detail
+                form: {
+                    user_name: '',
+                    user_surname: '',
+                    user_city: '',
+                    user_address: ''
+                },
             }
+        },
+
+        beforeMount() {
+            // form user name
+            this.form.user_name = this.auth_user_name;
+
+            // form user surname
+            this.form.user_surname = this.auth_user_surname;
+
+            // form user city
+            this.form.user_city = this.auth_user_city;
+
+            // form user address
+            this.form.user_address = this.auth_user_address;
         },
 
         methods: {
@@ -183,30 +296,42 @@ import layout from '../layouts/layout.vue';
                     // redirect url /login
                     window.location = '/login';
                 } else {
-                    // axios post order create api
-                    axios.post('/api/order-create', {
-                        cart_shop: this.cart_shop,
-                        total: this.total_cart_shop,
-                        user_id: this.auth_user_id,
-                    })
-                    .then( res => {
-                        console.log(res);
-                    })
-                    .catch(err => {
-                        console.warn(err);
-                    })
+                    // then success validation form
+                    this.$refs.form.validate().then(success => {
 
-                    // localStorage set item cart shop []
-                    localStorage.setItem('cart_shop', '[]');
+                        // if success
+                        if(success) {
+                            
+                            // axios post order create api
+                            axios.post('/api/order-create', {
+                                cart_shop: this.cart_shop,
+                                total: this.total_cart_shop,
+                                user_id: this.auth_user_id,
+                                user_name: this.form.user_name,
+                                user_surname: this.form.user_surname,
+                                user_city: this.form.user_city,
+                                user_address: this.form.user_address,
+                            })
+                            .then( res => {
+                                console.log(res);
+                            })
+                            .catch(err => {
+                                console.warn(err);
+                            })
+        
+                            // redirect to url /credit card
+                            window.location = '/credit-card';
 
-                    // localStorage set item total 0
-                    localStorage.setItem('total', 0);
-
-                    // array cart shop
-                    this.cart_shop = [];
-
-                    // redirect to url /credit card
-                    window.location = '/credit-card';
+                            // localStorage set item cart shop []
+                            localStorage.setItem('cart_shop', '[]');
+        
+                            // localStorage set item total 0
+                            localStorage.setItem('total', 0);
+        
+                            // array cart shop
+                            this.cart_shop = [];
+                        }
+                    });
                 }
             }
         }
@@ -304,6 +429,17 @@ import layout from '../layouts/layout.vue';
             border: none;
             border-radius: 8px;
             box-shadow:  0 1rem 3rem rgba($white, .175) inset;
+
+            .user_detail {
+                
+                input {
+                    box-shadow:  0 1rem 3rem rgba(white, .175) inset;
+
+                    &:disabled {
+                        opacity: 0.68;
+                    }
+                }
+            }
         }
     }
 }

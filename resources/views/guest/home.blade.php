@@ -10,9 +10,17 @@
     {{-- if auth user meta name user id  --}}
     @if(Auth::user())
         <meta name="user-id" content="{{ Auth::user()->id }}">
+        <meta name="user-name" content="{{ Auth::user()->name }}">
+        <meta name="user-surname" content="{{ Auth::user()->surname }}">
+        <meta name="user-city" content="{{ Auth::user()->city }}">
+        <meta name="user-address" content="{{ Auth::user()->address }}">
 
         @else
             <meta name="user-id" content="null">
+            <meta name="user-name" content="null">
+            <meta name="user-surname" content="null">
+            <meta name="user-city" content="null">
+            <meta name="user-address" content="null">
     @endif
 
     <!-- Fonts -->

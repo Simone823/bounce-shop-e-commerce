@@ -32,6 +32,6 @@ class Product extends Model
     // relazione tabella orders
     public function orders()
     {
-        return $this->belongsToMany('App\Order');
+        return $this->belongsToMany('App\Order')->withPivot(['quantity']);
     }
 }
