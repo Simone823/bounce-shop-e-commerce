@@ -36,20 +36,37 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        // request validate form 
+        $request->validate([
+            'user_name' => 'required|string|min:3|max:155',
+            'user_surname' => 'required|string|min:3|max:155',
+            'user_city' => 'required|min:3|max:100|string',
+            'user_address' => 'required|string|min:3|max:255'
+        ]);
+
         // data request all
         $data = $request->all();
 
-        // total cart shop
-        $total = $data['total'];
-            
         // new order
         $new_order = new Order();
 
+        // new order user name
+        $new_order->user_name = $data['user_name'];
+
+        // new order user surname
+        $new_order->user_surname = $data['user_surname'];
+
+        // new order user city
+        $new_order->user_city = $data['user_city'];
+
+        // new order user address
+        $new_order->user_address = $data['user_address'];
+
         // user id
         $new_order->user_id = $data['user_id'];
-
+        
         // total cart shop new order
-        $new_order->total_price = $total;
+        $new_order->total_price = $data['total'];
 
         // new order save
         $new_order->save();

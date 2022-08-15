@@ -5194,8 +5194,33 @@ __webpack_require__.r(__webpack_exports__);
       // total cart shop
       total_cart_shop: localStorage.getItem("total"),
       // Auth user id meta name user id guest blade php
-      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content')
+      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content'),
+      // auth user name
+      auth_user_name: document.querySelector("meta[name='user-name']").getAttribute('content'),
+      // auth user surname
+      auth_user_surname: document.querySelector("meta[name='user-surname']").getAttribute('content'),
+      // auth user city
+      auth_user_city: document.querySelector("meta[name='user-city']").getAttribute('content'),
+      // auth user city
+      auth_user_address: document.querySelector("meta[name='user-address']").getAttribute('content'),
+      // form input user detail
+      form: {
+        user_name: '',
+        user_surname: '',
+        user_city: '',
+        user_address: ''
+      }
     };
+  },
+  beforeMount: function beforeMount() {
+    // form user name
+    this.form.user_name = this.auth_user_name; // form user surname
+
+    this.form.user_surname = this.auth_user_surname; // form user city
+
+    this.form.user_city = this.auth_user_city; // form user address
+
+    this.form.user_address = this.auth_user_address;
   },
   methods: {
     // update quantity product cart shop
@@ -5241,29 +5266,41 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Send order if auth user != 'null'
     sendOrder: function sendOrder() {
+      var _this = this;
+
       // if auth user == null
       if (this.auth_user_id == 'null') {
         // redirect url /login
         window.location = '/login';
       } else {
-        // axios post order create api
-        axios.post('/api/order-create', {
-          cart_shop: this.cart_shop,
-          total: this.total_cart_shop,
-          user_id: this.auth_user_id
-        }).then(function (res) {
-          console.log(res);
-        })["catch"](function (err) {
-          console.warn(err);
-        }); // localStorage set item cart shop []
+        // then success validation form
+        this.$refs.form.validate().then(function (success) {
+          // if success
+          if (success) {
+            // axios post order create api
+            axios.post('/api/order-create', {
+              cart_shop: _this.cart_shop,
+              total: _this.total_cart_shop,
+              user_id: _this.auth_user_id,
+              user_name: _this.form.user_name,
+              user_surname: _this.form.user_surname,
+              user_city: _this.form.user_city,
+              user_address: _this.form.user_address
+            }).then(function (res) {
+              console.log(res);
+            })["catch"](function (err) {
+              console.warn(err);
+            }); // redirect to url /credit card
 
-        localStorage.setItem('cart_shop', '[]'); // localStorage set item total 0
+            window.location = '/credit-card'; // localStorage set item cart shop []
 
-        localStorage.setItem('total', 0); // array cart shop
+            localStorage.setItem('cart_shop', '[]'); // localStorage set item total 0
 
-        this.cart_shop = []; // redirect to url /credit card
+            localStorage.setItem('total', 0); // array cart shop
 
-        window.location = '/credit-card';
+            _this.cart_shop = [];
+          }
+        });
       }
     }
   }
@@ -5986,7 +6023,7 @@ var render = function render() {
   }, [_c("h2", {
     staticClass: "mb-0 text-center"
   }, [_vm._v("Sommario ordine")]), _vm._v(" "), _c("div", {
-    staticClass: "card-body"
+    staticClass: "card-body pb-0"
   }, [_c("ul", {
     staticClass: "detail_total mb-4"
   }, [_c("li", {
@@ -6007,16 +6044,232 @@ var render = function render() {
     staticClass: "fs-5 mb-0 fw-bolder"
   }, [_vm._v("Totale")]), _vm._v(" "), _c("p", {
     staticClass: "fs-5 mb-0 fw-bolder"
-  }, [_vm._v(_vm._s(_vm.getTotalCartShop()) + " €")])])]), _vm._v(" "), _c("div", {
-    staticClass: "btn-pay"
-  }, [_c("a", {
-    staticClass: "btn btn-primary text-white w-100",
+  }, [_vm._v(_vm._s(_vm.getTotalCartShop()) + " €")])])]), _vm._v(" "), _vm.auth_user_id != "null" ? _c("div", {
+    staticClass: "user_detail mb-4"
+  }, [_c("h2", {
+    staticClass: "mb-3 text-center"
+  }, [_vm._v("Dettagli Spedizione")]), _vm._v(" "), _c("ValidationObserver", {
+    ref: "form"
+  }, [_c("form", {
+    ref: "formgroup",
+    attrs: {
+      method: "post"
+    },
     on: {
-      click: function click($event) {
+      submit: function submit($event) {
+        $event.preventDefault();
         return _vm.sendOrder();
       }
     }
-  }, [_vm._v("Vai al pagamento")])])])])]) : _c("div", {
+  }, [_c("validationProvider", {
+    staticClass: "col-12 validation_provider mb-4",
+    attrs: {
+      tag: "div",
+      name: "user_name",
+      rules: "required|min:3|max:100|alpha_spaces"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function fn(_ref) {
+        var errors = _ref.errors;
+        return [_c("div", {
+          staticClass: "form-floating"
+        }, [_c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.user_name,
+            expression: "form.user_name"
+          }],
+          staticClass: "form-control text-black bg-dark text-white border-0",
+          attrs: {
+            disabled: "",
+            type: "text",
+            name: "user_name",
+            id: "user_name",
+            placeholder: "Nome"
+          },
+          domProps: {
+            value: _vm.form.user_name
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+
+              _vm.$set(_vm.form, "user_name", $event.target.value);
+            }
+          }
+        }), _vm._v(" "), _c("label", {
+          attrs: {
+            "for": "user_name"
+          }
+        }, [_c("i", {
+          staticClass: "fa-solid fa-user"
+        }), _vm._v("\n                                                    Nome\n                                                ")]), _vm._v(" "), _c("div", {
+          staticClass: "error mt-2 text-primary"
+        }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
+      }
+    }], null, false, 2296815604)
+  }), _vm._v(" "), _c("validationProvider", {
+    staticClass: "col-12 validation_provider mb-4",
+    attrs: {
+      tag: "div",
+      name: "user_surname",
+      rules: "required|min:3|max:100|alpha_spaces"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function fn(_ref2) {
+        var errors = _ref2.errors;
+        return [_c("div", {
+          staticClass: "form-floating"
+        }, [_c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.user_surname,
+            expression: "form.user_surname"
+          }],
+          staticClass: "form-control text-black bg-dark text-white border-0",
+          attrs: {
+            disabled: "",
+            type: "text",
+            name: "user_surname",
+            id: "user_surname",
+            placeholder: "Cognome"
+          },
+          domProps: {
+            value: _vm.form.user_surname
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+
+              _vm.$set(_vm.form, "user_surname", $event.target.value);
+            }
+          }
+        }), _vm._v(" "), _c("label", {
+          attrs: {
+            "for": "user_surname"
+          }
+        }, [_c("i", {
+          staticClass: "fa-solid fa-user"
+        }), _vm._v("\n                                                    Cognome\n                                                ")]), _vm._v(" "), _c("div", {
+          staticClass: "error mt-2 text-primary"
+        }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
+      }
+    }], null, false, 3376634752)
+  }), _vm._v(" "), _c("validationProvider", {
+    staticClass: "col-12 validation_provider mb-4",
+    attrs: {
+      tag: "div",
+      name: "user_city",
+      rules: "required|min:3|max:100|alpha_spaces"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function fn(_ref3) {
+        var errors = _ref3.errors;
+        return [_c("div", {
+          staticClass: "form-floating"
+        }, [_c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.user_city,
+            expression: "form.user_city"
+          }],
+          staticClass: "form-control text-black bg-dark text-white border-0",
+          attrs: {
+            type: "text",
+            name: "user_city",
+            id: "user_city",
+            placeholder: "Città"
+          },
+          domProps: {
+            value: _vm.form.user_city
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+
+              _vm.$set(_vm.form, "user_city", $event.target.value);
+            }
+          }
+        }), _vm._v(" "), _c("label", {
+          attrs: {
+            "for": "user_city"
+          }
+        }, [_c("i", {
+          staticClass: "fa-solid fa-city"
+        }), _vm._v("\n                                                    Città\n                                                ")]), _vm._v(" "), _c("div", {
+          staticClass: "error mt-2 text-primary"
+        }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
+      }
+    }], null, false, 1114735268)
+  }), _vm._v(" "), _c("validationProvider", {
+    staticClass: "col-12 validation_provider mb-4",
+    attrs: {
+      tag: "div",
+      name: "user_address",
+      rules: "required|min:3|max:255|alpha_num"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function fn(_ref4) {
+        var errors = _ref4.errors;
+        return [_c("div", {
+          staticClass: "form-floating"
+        }, [_c("input", {
+          directives: [{
+            name: "model",
+            rawName: "v-model",
+            value: _vm.form.user_address,
+            expression: "form.user_address"
+          }],
+          staticClass: "form-control text-black bg-dark text-white border-0",
+          attrs: {
+            type: "text",
+            name: "user_address",
+            id: "user_address",
+            placeholder: "Indirizzo"
+          },
+          domProps: {
+            value: _vm.form.user_address
+          },
+          on: {
+            input: function input($event) {
+              if ($event.target.composing) return;
+
+              _vm.$set(_vm.form, "user_address", $event.target.value);
+            }
+          }
+        }), _vm._v(" "), _c("label", {
+          attrs: {
+            "for": "user_address"
+          }
+        }, [_c("i", {
+          staticClass: "fa-solid fa-location-dot"
+        }), _vm._v("\n                                                    Indirizzo\n                                                ")]), _vm._v(" "), _c("div", {
+          staticClass: "error mt-2 text-primary"
+        }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
+      }
+    }], null, false, 2853454653)
+  }), _vm._v(" "), _c("div", {
+    staticClass: "btn-pay"
+  }, [_c("button", {
+    staticClass: "btn btn-primary text-white w-100",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("\n                                                Vai al pagamento\n                                            ")])])], 1)])], 1) : _c("div", {
+    staticClass: "register_btn"
+  }, [_c("a", {
+    staticClass: "btn btn-primary text-white w-100",
+    attrs: {
+      href: "/login"
+    }
+  }, [_vm._v("Accedi o Registrati per effettuare un'ordine")])])])])]) : _c("div", {
     staticClass: "col-12 text-center"
   }, [_c("h1", [_vm._v("Il tuo carrello è vuoto")]), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary text-white",
@@ -11851,7 +12104,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#cart_shop .product_wrapper .product_list[data-v-44c034c2] {\n  max-height: 565px;\n  overflow-y: auto;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar-thumb {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}\n#cart_shop .total_cart_shop .card[data-v-44c034c2] {\n  background-color: #292929;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}", ""]);
+exports.push([module.i, "#cart_shop .product_wrapper .product_list[data-v-44c034c2] {\n  max-height: 565px;\n  overflow-y: auto;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list[data-v-44c034c2]::-webkit-scrollbar-thumb {\n  width: 2px;\n}\n#cart_shop .product_wrapper .product_list li[data-v-44c034c2] {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 18px;\n  border-bottom: 2px solid #292929;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper[data-v-44c034c2] {\n  width: 120px;\n  height: 120px;\n}\n#cart_shop .product_wrapper .product_list .img_wrapper img[data-v-44c034c2] {\n  width: 100%;\n  height: 100%;\n  display: block;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n#cart_shop .product_wrapper .product_list .description[data-v-44c034c2] {\n  width: 190px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn[data-v-44c034c2] {\n  display: flex;\n  align-items: center;\n  gap: 18px;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn li[data-v-44c034c2] {\n  border-bottom: none;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2],\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2] {\n  width: 42px;\n  height: 42px;\n  aspect-ratio: 1/1;\n  background-color: transparent;\n  color: white;\n  border: 2px solid #1e90ff;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:disabled,\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:disabled {\n  opacity: 0.65;\n  cursor: not-allowed;\n}\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_remove[data-v-44c034c2]:hover:not(:disabled),\n#cart_shop .product_wrapper .product_list .quantity .list_btn .btn_add[data-v-44c034c2]:hover:not(:disabled) {\n  border: 2px solid white;\n  background-color: #1e90ff;\n  transition: all 300ms linear;\n}\n#cart_shop .total_cart_shop .card[data-v-44c034c2] {\n  background-color: #292929;\n  border: none;\n  border-radius: 8px;\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}\n#cart_shop .total_cart_shop .card .user_detail input[data-v-44c034c2] {\n  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;\n}\n#cart_shop .total_cart_shop .card .user_detail input[data-v-44c034c2]:disabled {\n  opacity: 0.68;\n}", ""]);
 
 // exports
 
