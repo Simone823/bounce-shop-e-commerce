@@ -29,11 +29,6 @@
                         @foreach ($orders as $order)
                             <div class="col-12 col-sm-6 col-md-4">
                                 <div class="card h-100">
-
-                                    <figure class="wrapper_image shadow bg-dark">
-                                        <img src="{{asset('img/bounce_shop_logo.png')}}" alt="">
-                                    </figure>
-
                                     <div class="card-body d-flex flex-column justify-content-between gap-3">
 
                                         {{-- Description --}}
