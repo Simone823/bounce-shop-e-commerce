@@ -23,7 +23,10 @@
                     {{-- Link menu --}}
                     <ul class="navbar-nav mb-lg-0 d-flex flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link fs-5" aria-current="page" href="/user/home">Dashboard</a>
+                            <a class="nav-link fs-5" aria-current="page" href="{{route('user.home')}}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" aria-current="page" href="{{route('user.orders.index')}}">Ordini</a>
                         </li>
                     </ul>
 
