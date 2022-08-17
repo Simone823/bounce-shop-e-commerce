@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('metaTitle', '| Registrazione')
+
+@section('header')
+    @include('components.guestHeader')
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
