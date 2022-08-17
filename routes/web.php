@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes(['verify' => true]);
 
 // Middleware auth role user
@@ -26,6 +22,9 @@ Route::middleware(['auth' ,'role:user'])->namespace('User')->prefix('user')->nam
 
     // Rotta home
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // rotta resource orders
+    Route::resource('/orders', 'OrderController')->only('index', 'show');
 });
 
 // Middleware auth  role superadminstrator
