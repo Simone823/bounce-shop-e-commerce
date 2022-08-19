@@ -22,7 +22,7 @@
                     @else
                     {{-- Title --}}
                     <div class="col-12 title text-center text-white">
-                        <h1 class="text-white text-uppercase mb-0 fw-bold">I tuoi Ordini</h1>
+                        <h1 class="text-white text-uppercase mb-0 fw-bold">I miei Ordini</h1>
                     </div>
 
                     @foreach ($orders as $order)
