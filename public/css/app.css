@@ -12531,11 +12531,14 @@ section {
 
 #user_order_show .card .products_wrapper .list_products li {
   text-align: start;
+  margin-bottom: 15px;
+}
+
+#user_order_show .card .products_wrapper .list_products li a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
-  margin-bottom: 15px;
 }
 
 #user_order_show .card .products_wrapper .list_products .product_icon {

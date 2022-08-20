@@ -39,11 +39,14 @@
 
                 li {
                     text-align: start;
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    gap: 12px;
                     margin-bottom: 15px;
+
+                    a {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: 12px;
+                    }
                 }
 
                 .product_icon {
