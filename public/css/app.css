@@ -12231,6 +12231,17 @@ section {
      object-position: center;
 }
 
+#page_403 .danger_icon {
+  width: 200px;
+  height: 200px;
+}
+
+#page_403 .danger_icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 #users_index .card {
   background-color: #efefef;
 }
