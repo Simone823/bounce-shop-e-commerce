@@ -12231,6 +12231,17 @@ section {
      object-position: center;
 }
 
+#page_403 .danger_icon {
+  width: 200px;
+  height: 200px;
+}
+
+#page_403 .danger_icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 #users_index .card {
   background-color: #efefef;
 }
@@ -12479,5 +12490,71 @@ section {
   border: none;
   border-radius: 8px;
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
+#user_order_show .card {
+  overflow: hidden;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
+#user_order_show .card .user_wrapper .detail_user {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  margin: 0 auto;
+}
+
+#user_order_show .card .user_wrapper .detail_user li {
+  text-align: start;
+  margin-bottom: 5px;
+}
+
+#user_order_show .card .user_wrapper .detail_user li p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  gap: 4px;
+}
+
+#user_order_show .card .products_wrapper .list_products {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  margin: 0 auto;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 0 5px;
+}
+
+#user_order_show .card .products_wrapper .list_products li {
+  text-align: start;
+  margin-bottom: 15px;
+}
+
+#user_order_show .card .products_wrapper .list_products li a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+#user_order_show .card .products_wrapper .list_products .product_icon {
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+#user_order_show .card .products_wrapper .list_products .product_icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
