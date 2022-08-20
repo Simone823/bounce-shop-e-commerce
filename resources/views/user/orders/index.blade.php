@@ -45,7 +45,7 @@
 
                                     {{-- Btn --}}
                                     <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                        <a href="" class="btn btn-primary text-white w-100">Visualizza</a>
+                                        <a href="{{route('user.orders.show', $order->id)}}" class="btn btn-primary text-white w-100">Visualizza</a>
                                     </div>
                                 </div>
 
