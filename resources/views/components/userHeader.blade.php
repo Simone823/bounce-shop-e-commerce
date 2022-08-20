@@ -1,5 +1,5 @@
-{{-- Guest header --}}
-<header id="guest_header">
+{{-- user header --}}
+<header id="user_header">
 
     <div class="container-fluid bg-dark">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
@@ -23,10 +23,10 @@
                     {{-- Link menu --}}
                     <ul class="navbar-nav mb-lg-0 d-flex flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link fs-5" aria-current="page" href="{{route('user.home')}}">Dashboard</a>
+                            <a class="nav-link fs-5 @if(Route::is('user.home'))active @endif" aria-current="page" href="{{route('user.home')}}">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-5" aria-current="page" href="{{route('user.orders.index')}}">Ordini</a>
+                            <a class="nav-link fs-5 @if(Route::is('user.orders.index'))active @endif" aria-current="page" href="{{route('user.orders.index')}}">Ordini</a>
                         </li>
                     </ul>
 
