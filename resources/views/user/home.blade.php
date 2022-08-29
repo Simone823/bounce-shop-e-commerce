@@ -1,29 +1,25 @@
 @extends('layouts.app')
 
-@section('header')
-    
-    @include('components.userHeader');
+@section('metaTitle', '| Dashboard')
 
+@section('header')
+    @include('components.userHeader');
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard User') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    {{-- section user home --}}
+    <section id="user_home">
+        <div class="container">
+            <div class="row">
 
-                    {{ __('You are logged in! as User') }}
+                {{-- Title --}}
+                <div class="col-12 title text-center text-white">
+                    <h1 class="text-white text-uppercase mb-0 fw-bold">Il tuo profilo</h1>
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection
