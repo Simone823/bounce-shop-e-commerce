@@ -5183,7 +5183,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layouts_layout_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../layouts/layout.vue */ "./resources/js/layouts/layout.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'cartShop',
+  name: "cartShop",
   components: {
     layout: _layouts_layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -5191,24 +5191,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // array cart shop
       cart_shop: JSON.parse(localStorage.getItem("cart_shop")),
-      // total cart shop
-      total_cart_shop: localStorage.getItem("total"),
       // Auth user id meta name user id guest blade php
-      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute('content'),
+      auth_user_id: document.querySelector("meta[name='user-id']").getAttribute("content"),
       // auth user name
-      auth_user_name: document.querySelector("meta[name='user-name']").getAttribute('content'),
+      auth_user_name: document.querySelector("meta[name='user-name']").getAttribute("content"),
       // auth user surname
-      auth_user_surname: document.querySelector("meta[name='user-surname']").getAttribute('content'),
+      auth_user_surname: document.querySelector("meta[name='user-surname']").getAttribute("content"),
       // auth user city
-      auth_user_city: document.querySelector("meta[name='user-city']").getAttribute('content'),
+      auth_user_city: document.querySelector("meta[name='user-city']").getAttribute("content"),
       // auth user city
-      auth_user_address: document.querySelector("meta[name='user-address']").getAttribute('content'),
+      auth_user_address: document.querySelector("meta[name='user-address']").getAttribute("content"),
       // form input user detail
       form: {
-        user_name: '',
-        user_surname: '',
-        user_city: '',
-        user_address: ''
+        user_name: "",
+        user_surname: "",
+        user_city: "",
+        user_address: ""
       }
     };
   },
@@ -5227,7 +5225,7 @@ __webpack_require__.r(__webpack_exports__);
     updateItemQuantity: function updateItemQuantity(product_id, quantity) {
       // foreach cart shop
       this.cart_shop.forEach(function (element) {
-        // if element == product id 
+        // if element == product id
         if (element.id == product_id) {
           element.quantity = quantity;
         }
@@ -5269,18 +5267,18 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // if auth user == null
-      if (this.auth_user_id == 'null') {
+      if (this.auth_user_id == "null") {
         // redirect url /login
-        window.location = '/login';
+        window.location = "/login";
       } else {
         // then success validation form
         this.$refs.form.validate().then(function (success) {
           // if success
           if (success) {
             // axios post order create api
-            axios.post('/api/order-create', {
+            axios.post("/api/order-create", {
               cart_shop: _this.cart_shop,
-              total: _this.total_cart_shop,
+              total: localStorage.getItem("total"),
               user_id: _this.auth_user_id,
               user_name: _this.form.user_name,
               user_surname: _this.form.user_surname,
@@ -5292,11 +5290,11 @@ __webpack_require__.r(__webpack_exports__);
               console.warn(err);
             }); // redirect to url /credit card
 
-            window.location = '/credit-card'; // localStorage set item cart shop []
+            window.location = "/credit-card"; // localStorage set item cart shop []
 
-            localStorage.setItem('cart_shop', '[]'); // localStorage set item total 0
+            localStorage.setItem("cart_shop", "[]"); // localStorage set item total 0
 
-            localStorage.setItem('total', 0); // array cart shop
+            localStorage.setItem("total", 0); // array cart shop
 
             _this.cart_shop = [];
           }
@@ -5951,7 +5949,7 @@ var render = function render() {
     staticClass: "title text-center mb-5 col-12"
   }, [_c("h1", {
     staticClass: "mb-0 text-uppercase fw-bold"
-  }, [_vm._v("Il mio carrello")])]), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
+  }, [_vm._v("\n                        Il mio carrello\n                    ")])]), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
     staticClass: "col-12 col-sm-6 product_wrapper mb-5 mb-sm-0"
   }, [_c("ul", {
     staticClass: "product_list"
@@ -5970,9 +5968,9 @@ var render = function render() {
       staticClass: "description"
     }, [_c("h5", {
       staticClass: "mb-0 fw-bolder"
-    }, [_vm._v(_vm._s(product.product_name))]), _vm._v(" "), _c("p", {
+    }, [_vm._v("\n                                    " + _vm._s(product.product_name) + "\n                                ")]), _vm._v(" "), _c("p", {
       staticClass: "mb-0 fs-5"
-    }, [_vm._v(_vm._s(product.price) + " €")])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("\n                                    " + _vm._s(product.price) + " €\n                                ")])]), _vm._v(" "), _c("div", {
       staticClass: "quantity"
     }, [_c("ul", {
       staticClass: "list_btn mb-4"
@@ -5992,7 +5990,7 @@ var render = function render() {
       staticClass: "price"
     }, [_c("p", {
       staticClass: "mb-0 fs-5"
-    }, [_vm._v(_vm._s(product.quantity))])]), _vm._v(" "), _c("li", [_c("button", {
+    }, [_vm._v("\n                                            " + _vm._s(product.quantity) + "\n                                        ")])]), _vm._v(" "), _c("li", [_c("button", {
       staticClass: "btn_add",
       attrs: {
         disabled: product.quantity == 8 ? true : false
@@ -6008,14 +6006,14 @@ var render = function render() {
       staticClass: "total_cart"
     }, [_c("h5", {
       staticClass: "mb-4"
-    }, [_vm._v("Totale: " + _vm._s(Math.round(product.price * product.quantity * 100) / 100) + " €")]), _vm._v(" "), _c("button", {
+    }, [_vm._v("\n                                    Totale:\n                                    " + _vm._s(Math.round(product.price * product.quantity * 100) / 100) + "\n                                    €\n                                ")]), _vm._v(" "), _c("button", {
       staticClass: "btn btn-primary text-white",
       on: {
         click: function click($event) {
           return _vm.removeItemFromCartShop(product.id);
         }
       }
-    }, [_vm._v("Elimina")])])]);
+    }, [_vm._v("\n                                    Elimina\n                                ")])])]);
   }), 0)]) : _vm._e(), _vm._v(" "), _vm.cart_shop != null && _vm.cart_shop.length ? _c("div", {
     staticClass: "col-12 col-sm-6 total_cart_shop"
   }, [_c("div", {
@@ -6042,13 +6040,13 @@ var render = function render() {
     staticClass: "d-flex justify-content-between"
   }, [_c("p", {
     staticClass: "fs-5 mb-0 fw-bolder"
-  }, [_vm._v("Totale")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("\n                                        Totale\n                                    ")]), _vm._v(" "), _c("p", {
     staticClass: "fs-5 mb-0 fw-bolder"
-  }, [_vm._v(_vm._s(_vm.getTotalCartShop()) + " €")])])]), _vm._v(" "), _vm.auth_user_id != "null" ? _c("div", {
+  }, [_vm._v("\n                                        " + _vm._s(_vm.getTotalCartShop()) + " €\n                                    ")])])]), _vm._v(" "), _vm.auth_user_id != "null" ? _c("div", {
     staticClass: "user_detail mb-4"
   }, [_c("h2", {
     staticClass: "mb-3 text-center"
-  }, [_vm._v("Dettagli Spedizione")]), _vm._v(" "), _c("ValidationObserver", {
+  }, [_vm._v("\n                                    Dettagli Spedizione\n                                ")]), _vm._v(" "), _c("ValidationObserver", {
     ref: "form"
   }, [_c("form", {
     ref: "formgroup",
@@ -6109,7 +6107,7 @@ var render = function render() {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
       }
-    }], null, false, 2296815604)
+    }], null, false, 4087917812)
   }), _vm._v(" "), _c("validationProvider", {
     staticClass: "col-12 validation_provider mb-4",
     attrs: {
@@ -6128,7 +6126,7 @@ var render = function render() {
             name: "model",
             rawName: "v-model",
             value: _vm.form.user_surname,
-            expression: "form.user_surname"
+            expression: "\n                                                        form.user_surname\n                                                    "
           }],
           staticClass: "form-control text-black bg-dark text-white border-0",
           attrs: {
@@ -6158,7 +6156,7 @@ var render = function render() {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
       }
-    }], null, false, 3376634752)
+    }], null, false, 2041526592)
   }), _vm._v(" "), _c("validationProvider", {
     staticClass: "col-12 validation_provider mb-4",
     attrs: {
@@ -6206,7 +6204,7 @@ var render = function render() {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
       }
-    }], null, false, 1114735268)
+    }], null, false, 1748938020)
   }), _vm._v(" "), _c("validationProvider", {
     staticClass: "col-12 validation_provider mb-4",
     attrs: {
@@ -6225,7 +6223,7 @@ var render = function render() {
             name: "model",
             rawName: "v-model",
             value: _vm.form.user_address,
-            expression: "form.user_address"
+            expression: "\n                                                        form.user_address\n                                                    "
           }],
           staticClass: "form-control text-black bg-dark text-white border-0",
           attrs: {
@@ -6254,7 +6252,7 @@ var render = function render() {
           staticClass: "error mt-2 text-primary"
         }, [_vm._v("\n                                                    " + _vm._s(errors.length ? errors[0] : "") + "\n                                                ")])])];
       }
-    }], null, false, 2853454653)
+    }], null, false, 3768381245)
   }), _vm._v(" "), _c("div", {
     staticClass: "btn-pay"
   }, [_c("button", {
@@ -6269,7 +6267,7 @@ var render = function render() {
     attrs: {
       href: "/login"
     }
-  }, [_vm._v("Accedi o Registrati per effettuare un'ordine")])])])])]) : _c("div", {
+  }, [_vm._v("Accedi o Registrati per effettuare\n                                    un'ordine")])])])])]) : _c("div", {
     staticClass: "col-12 text-center"
   }, [_c("h1", [_vm._v("Il tuo carrello è vuoto")]), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary text-white",
