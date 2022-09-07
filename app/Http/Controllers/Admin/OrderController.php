@@ -59,8 +59,11 @@ class OrderController extends Controller
         // User auth
         $user_auth = Auth::user();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin orders show
-        return view('admin.orders.show', compact('user_auth', 'order'));
+        return view('admin.orders.show', compact('user_auth', 'order', 'url_referer_to_current_page'));
     }
 
     /**

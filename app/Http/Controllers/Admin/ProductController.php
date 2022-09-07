@@ -138,8 +138,11 @@ class ProductController extends Controller
         // User auth
         $user_auth = Auth::user();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin products show
-        return view('admin.products.show', compact('user_auth', 'product'));
+        return view('admin.products.show', compact('user_auth', 'product', 'url_referer_to_current_page'));
 
     }
 
