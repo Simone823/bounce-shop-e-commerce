@@ -12161,6 +12161,10 @@ fieldset:disabled .btn {
   overflow: hidden;
 }
 
+#login_page .card input {
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
 #app {
   height: 100vh;
 }
