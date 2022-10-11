@@ -1,7 +1,12 @@
 // section admin home
 #admin_home {
 
-    #userChart {
+    .row:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    #userChart,
+    #orderChart {
         background-color: $gray-1;
     }
 }
