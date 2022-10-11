@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Chart;
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,7 @@ class HomeController extends Controller
             ->pluck('count');
 
         // months by user
-        $months = User::select(DB::raw('Month(created_at) AS month'))
+        $months_user = User::select(DB::raw('Month(created_at) AS month'))
             ->whereYear('created_at', Carbon::now()->format('Y'))
             ->groupBy(DB::raw('Month(created_at)'))
             ->pluck('month');
@@ -51,7 +52,7 @@ class HomeController extends Controller
         $users_total_month = array(0,0,0,0,0,0,0,0,0,0,0,0);
 
         // foreach months
-        foreach ($months as $key => $month) {
+        foreach ($months_user as $key => $month) {
             $users_total_month[$month -1] = $users[$key];
         }
 
@@ -61,8 +62,38 @@ class HomeController extends Controller
         $user_chart->dataset = $users_total_month;
         $user_chart->colours = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'purple', 'pink', 'silver', 'gold', 'brown'];
 
+
+        // orders by month
+        $orders = Order::select(DB::raw('COUNT(*) AS count'))
+            ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->where('status', '=', 1)
+            ->groupBy(DB::raw('Month(created_at)'))
+            ->pluck('count');
+
+        // months by orders
+        $months_order = Order::select(DB::raw('Month(created_at) AS month'))
+            ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->where('status', '=', 1)
+            ->groupBy(DB::raw('Month(created_at)'))
+            ->pluck('month');
+
+        // orders total month
+        $orders_total_month = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+        // foreach months order
+        foreach ($months_order as $key => $month) {
+            $orders_total_month[$month -1] = $orders[$key];
+        }
+
+        // Prepare the data for returning with the view
+        $order_chart = new Chart();
+        $order_chart->labels = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+        $order_chart->dataset = $orders_total_month;
+        $order_chart->colours = ['coral', 'gray', 'lightblue', 'chocolate', 'brown', 'crimson', 'lightgreen', 'gold', 'indigo', 'wheat', 'magenta', 'yellowgreen'];
+
+
         // return view admin home 
-        return view('admin.home', compact('user_auth', 'user_chart'));
+        return view('admin.home', compact('user_auth', 'user_chart', 'order_chart'));
     }
 
     /**
