@@ -12247,12 +12247,12 @@ section {
 }
 
 #admin_home .row:not(:last-child) {
-  margin-bottom: 50px;
+  margin-bottom: 75px;
 }
 
 #admin_home #userChart,
 #admin_home #orderChart {
-  background-color: #efefef;
+  background-color: transparent;
 }
 
 #users_index .card {

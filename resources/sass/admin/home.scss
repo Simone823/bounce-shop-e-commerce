@@ -2,11 +2,11 @@
 #admin_home {
 
     .row:not(:last-child) {
-        margin-bottom: 50px;
+        margin-bottom: 75px;
     }
 
     #userChart,
     #orderChart {
-        background-color: $gray-1;
+        background-color: transparent;
     }
 }

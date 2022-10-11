@@ -13,18 +13,40 @@
         <div class="container">
 
             {{-- row 1 user chart --}}
-            <div class="row justify-content-center">
+            <div class="row">
                 {{-- user chart bar --}}
                 <div class="col-12">
-                    <canvas id="userChart" class="rounded"></canvas>
+                    <div class="wrapper bg-white rounded">
+                        {{-- title --}}
+                        <div class="title text-center py-3">
+                            <h2 class="fw-bold fs-4">
+                                <i class="fa-solid fa-user"></i>
+                                Utenti registrati
+                            </h2>
+                        </div>
+
+                        {{-- canva user chart --}}
+                        <canvas id="userChart" class="rounded"></canvas>
+                    </div>
                 </div>
             </div>
 
             {{-- row 2 order chart --}}
-            <div class="row justify-content-center">
-                {{-- user chart bar --}}
+            <div class="row">
+                {{-- order chart bar --}}
                 <div class="col-12">
-                    <canvas id="orderChart" class="rounded"></canvas>
+                    <div class="wrapper bg-white rounded">
+                        {{-- title --}}
+                        <div class="title text-center py-3">
+                            <h2 class="fw-bold fs-4">
+                                <i class="fa-solid fa-box-open"></i>
+                                Ordini effettuati e pagati
+                            </h2>
+                        </div>
+
+                        {{-- Canva order chart --}}
+                        <canvas id="orderChart" class="rounded"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -49,12 +71,6 @@
             },
             // Configuration options go here
             options: {
-                title: {
-                    display: true,
-                    text: 'Utenti registrati al mese',
-                    fontSize: 20,
-                    padding: 15
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -99,12 +115,6 @@
             },
             // Configuration options go here
             options: {
-                title: {
-                    display: true,
-                    text: 'Ordini effettuati al mese',
-                    fontSize: 20,
-                    padding: 15
-                },
                 scales: {
                     yAxes: [{
                         ticks: {
