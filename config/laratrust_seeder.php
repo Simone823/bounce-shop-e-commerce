@@ -6,10 +6,8 @@ return [
             'users' => 'c,r,u,d',
             'category' => 'c,r,u,d',
             'products' => 'c,r,u,d',
-            'orders' => 'r,u'
-        ],
-        'administrator' => [
-            'users' => 'c,r,u,d',
+            'orders' => 'r,u',
+            'messages' => 'r,u',
             'profile' => 'r,u'
         ],
         'user' => [
