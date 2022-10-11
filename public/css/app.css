@@ -12246,7 +12246,12 @@ section {
   display: block;
 }
 
-#admin_home #userChart {
+#admin_home .row:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+#admin_home #userChart,
+#admin_home #orderChart {
   background-color: #efefef;
 }
 
