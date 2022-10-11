@@ -12246,6 +12246,10 @@ section {
   display: block;
 }
 
+#admin_home #userChart {
+  background-color: #efefef;
+}
+
 #users_index .card {
   background-color: #efefef;
 }

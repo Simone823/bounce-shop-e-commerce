@@ -41198,9 +41198,9 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Simone\Desktop\Progetti\bounce-shop-e-commerce\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Simone\Desktop\Progetti\bounce-shop-e-commerce\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Simone\Desktop\Progetti\bounce-shop-e-commerce\resources\sass\front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! D:\Progetti\bounce-shop-e-commerce\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\Progetti\bounce-shop-e-commerce\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\Progetti\bounce-shop-e-commerce\resources\sass\front.scss */"./resources/sass/front.scss");
 
 
 /***/ })
