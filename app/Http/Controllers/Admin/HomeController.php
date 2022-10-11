@@ -36,6 +36,9 @@ class HomeController extends Controller
         // Auth user
         $user_auth = Auth::user();
 
+        // months name
+        $months_name = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+
         // users by month
         $users = User::select(DB::raw('COUNT(*) AS count'))
             ->whereYear('created_at', Carbon::now()->format('Y'))
@@ -58,7 +61,7 @@ class HomeController extends Controller
 
         // Prepare the data for returning with the view
         $user_chart = new Chart();
-        $user_chart->labels = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+        $user_chart->labels = $months_name;
         $user_chart->dataset = $users_total_month;
         $user_chart->colours = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'purple', 'pink', 'silver', 'gold', 'brown'];
 
@@ -87,7 +90,7 @@ class HomeController extends Controller
 
         // Prepare the data for returning with the view
         $order_chart = new Chart();
-        $order_chart->labels = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+        $order_chart->labels = $months_name;
         $order_chart->dataset = $orders_total_month;
         $order_chart->colours = ['coral', 'gray', 'lightblue', 'chocolate', 'brown', 'crimson', 'lightgreen', 'gold', 'indigo', 'wheat', 'magenta', 'yellowgreen'];
 
