@@ -16,13 +16,168 @@ class UserSeeder extends Seeder
         // array user super admin
         $users = [
             [
-                'name' => 'Simone',
-                'surname' => 'Daglio',
-                'city' => 'Sale (AL)',
+                'name' => 'Matteo',
+                'surname' => 'Pane',
+                'city' => 'Milano (MI)',
                 'address' => 'Via Dante',
-                'email' => 'simone.daglio823@outlook.com',
+                'email' => 'matteo.pa@test.com',
                 'password' => 'prova1234',
-                'role' => 'superadministrator'
+                'role' => 'user',
+                'created_at' => '2022-01-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Giacomo',
+                'surname' => 'Testa',
+                'city' => 'Seveso (MI)',
+                'address' => 'Via Cava',
+                'email' => 'giacomo.te@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-01-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Alessio',
+                'surname' => 'Misa',
+                'city' => 'Salerno (SA)',
+                'address' => 'Via Struzzo',
+                'email' => 'alessio.misa@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-02-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Matteo',
+                'surname' => 'Conti',
+                'city' => 'Milano (MI)',
+                'address' => 'Via Garba',
+                'email' => 'matteo.co@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-03-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Simone',
+                'surname' => 'Allegri',
+                'city' => 'Torino (TO)',
+                'address' => 'Via Dante',
+                'email' => 'simone.a@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-03-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Ilenia',
+                'surname' => 'Zicca',
+                'city' => 'Rimini',
+                'address' => 'Via Dante',
+                'email' => 'ilenia.zi@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-03-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Silvia',
+                'surname' => 'Stusi',
+                'city' => 'Torino (TO)',
+                'address' => 'Via Vernia',
+                'email' => 'silvia.stusi@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-04-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Andrea',
+                'surname' => 'Faggio',
+                'city' => 'Monza (MB)',
+                'address' => 'Via Dante',
+                'email' => 'andrea.faggio@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-05-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Alberto',
+                'surname' => 'Pane',
+                'city' => 'Milano (MI)',
+                'address' => 'Via Dante',
+                'email' => 'alberto.pa@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-05-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Stefano',
+                'surname' => 'Naso',
+                'city' => 'Milano (MI)',
+                'address' => 'Via Dante',
+                'email' => 'stefano.nas@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-06-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Giada',
+                'surname' => 'Rea',
+                'city' => 'Sassari (SS)',
+                'address' => 'Via Merlo',
+                'email' => 'giada.rea@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-07-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Michele',
+                'surname' => 'Fattori',
+                'city' => 'Palermo (PA)',
+                'address' => 'Via Sussu',
+                'email' => 'michele.fattori@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-07-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Gigi',
+                'surname' => 'Pierlo',
+                'city' => 'Torino (TO)',
+                'address' => 'Via Madda',
+                'email' => 'gigi.pierlo@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-08-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Beatrice',
+                'surname' => 'Campa',
+                'city' => 'Pisa (PI)',
+                'address' => 'Via Bruni',
+                'email' => 'beatrice.campa@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-09-11 15:46:44'
+            ],
+
+            [
+                'name' => 'Livio',
+                'surname' => 'Dazio',
+                'city' => 'Pisa (PI)',
+                'address' => 'Via Fresca',
+                'email' => 'livio.dazio@test.com',
+                'password' => 'prova1234',
+                'role' => 'user',
+                'created_at' => '2022-12-11 15:46:44'
             ]
         ];
 
@@ -40,6 +195,7 @@ class UserSeeder extends Seeder
             $new_user->email = $user['email'];
             $new_user->password = Hash::make($user['password']);
             $new_user->image = 'uploads/user_logo.svg';
+            $new_user->created_at = $user['created_at'];
 
             // Save user
             $new_user->save();
