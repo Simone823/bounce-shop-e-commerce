@@ -12247,7 +12247,7 @@ section {
 }
 
 #admin_home .row:not(:last-child) {
-  margin-bottom: 50px;
+  margin-bottom: 75px;
 }
 
 #admin_home #userChart,
