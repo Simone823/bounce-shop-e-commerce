@@ -2,7 +2,6 @@
 
     <!-- layout -->
     <layout>
-
         <!-- Home -->
         <section id="home">
 
@@ -21,8 +20,6 @@
             </div>
 
             <div class="container">
-
-
                 <!-- Row categories wrapper -->
                 <div class="row categories_wrapper">
                     <!-- title -->
@@ -38,16 +35,16 @@
                     </ul>
                 </div>
 
-                <!-- Row products -->
-                <div class="row products_wrapper">
+                <!-- Row products most order -->
+                <div v-if="products_most_order.length > 0" class="row products_wrapper">
                     <!-- title -->
                     <div class="title mb-5 text-center">
-                        <h2 class="mb-0 text-uppercase fw-bold">Ultimi prodotti aggiunti</h2>
+                        <h2 class="mb-0 text-uppercase fw-bold">I Prodotti più ordinati</h2>
                     </div>
 
                     <!-- Product_list -->
-                    <ul class="product_list d-flex flex-wrap">
-                        <li v-for="product in latest_products" :key="product.id" class="col-12 col-sm-6 col-lg-4">
+                    <ul class="product_list d-flex flex-wrap justify-content-center">
+                        <li v-for="product in products_most_order" :key="product.id" class="col-12 col-sm-6 col-lg-4">
                             <div class="card bg-dark text-white">
                                 <figure class="img_wrapper">
                                     <img :src="`/storage/${product.image}`" alt="">
@@ -84,10 +81,9 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
-        </section>
 
+        </section>
     </layout>
 
 </template>
@@ -109,8 +105,8 @@
                 // array top categories
                 top_categories: [],
 
-                // array latest products
-                latest_products: [],
+                // array products most order
+                products_most_order: [],
 
                 // array services
                 services: [
@@ -150,12 +146,12 @@
             },
 
             // fetch products
-            fetchProducts() {
+            fetchProductsMostOrder() {
                 axios.get('/api/latest-products')
                 .then( res => {
 
                     // array products res data products
-                    this.latest_products = res.data.latest_products;
+                    this.products_most_order = res.data.products_most_order;
                 })
                 .catch( err => {
                     console.warn(err);
@@ -168,7 +164,7 @@
             this.fetchCategories();
 
             // Richiamo funzione fetch products
-            this.fetchProducts();
+            this.fetchProductsMostOrder();
         }
     }
 </script>

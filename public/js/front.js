@@ -5405,8 +5405,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // array top categories
       top_categories: [],
-      // array latest products
-      latest_products: [],
+      // array products most order
+      products_most_order: [],
       // array services
       services: [{
         icon: __webpack_require__(/*! /public/img/delivery_truck_icon.svg */ "./public/img/delivery_truck_icon.svg"),
@@ -5436,12 +5436,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     // fetch products
-    fetchProducts: function fetchProducts() {
+    fetchProductsMostOrder: function fetchProductsMostOrder() {
       var _this2 = this;
 
       axios.get('/api/latest-products').then(function (res) {
         // array products res data products
-        _this2.latest_products = res.data.latest_products;
+        _this2.products_most_order = res.data.products_most_order;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -5451,7 +5451,7 @@ __webpack_require__.r(__webpack_exports__);
     // Richiamo funzione fetch categories
     this.fetchCategories(); // Richiamo funzione fetch products
 
-    this.fetchProducts();
+    this.fetchProductsMostOrder();
   }
 });
 
@@ -6654,15 +6654,15 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                        " + _vm._s(category.category_name) + "\n                    ")]);
-  }), 1)]), _vm._v(" "), _c("div", {
+  }), 1)]), _vm._v(" "), _vm.products_most_order.length > 0 ? _c("div", {
     staticClass: "row products_wrapper"
   }, [_c("div", {
     staticClass: "title mb-5 text-center"
   }, [_c("h2", {
     staticClass: "mb-0 text-uppercase fw-bold"
-  }, [_vm._v("Ultimi prodotti aggiunti")])]), _vm._v(" "), _c("ul", {
-    staticClass: "product_list d-flex flex-wrap"
-  }, _vm._l(_vm.latest_products, function (product) {
+  }, [_vm._v("I Prodotti più ordinati")])]), _vm._v(" "), _c("ul", {
+    staticClass: "product_list d-flex flex-wrap justify-content-center"
+  }, _vm._l(_vm.products_most_order, function (product) {
     return _c("li", {
       key: product.id,
       staticClass: "col-12 col-sm-6 col-lg-4"
@@ -6695,7 +6695,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                                    Dettagli\n                                ")])], 1)])]);
-  }), 0)]), _vm._v(" "), _c("div", {
+  }), 0)]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "row services_wrapper"
   }, [_c("ul", {
     staticClass: "service_list d-flex flex-wrap justify-content-center"
