@@ -31,13 +31,7 @@ import MyFooter from '../components/MyFooter.vue';
 
 // App vue
 #app {
-    height: calc(100vh - 75px);
-    background: url('/img/background_dark.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: white;
-    overflow-y: auto;
 
     ul,
     ol {
@@ -55,7 +49,11 @@ import MyFooter from '../components/MyFooter.vue';
     // main
     main {
         width: 100%;
-        min-height: 100%;
+        min-height: 100vh;
+        background: url('/img/background_dark.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
 
         // section
         section {

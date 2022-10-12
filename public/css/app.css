@@ -12165,35 +12165,29 @@ fieldset:disabled .btn {
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
 }
 
-#app {
-  height: 100vh;
-}
-
 header {
   width: 100%;
   height: 75px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999999;
 }
 
 main {
+  padding-top: 75px;
   width: 100%;
-  height: calc(100% - 75px);
+  min-height: 100vh;
   background: url("/img/background_dark.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  overflow: hidden;
 }
 
 section {
   width: 100%;
   height: 100%;
   padding: 24px 0;
-  overflow-y: auto;
 }
 
 ::-webkit-scrollbar {

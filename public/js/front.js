@@ -12083,7 +12083,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#app[data-v-69ee9924] {\n  height: calc(100vh - 75px);\n  background: url(\"/img/background_dark.jpg\");\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n  color: white;\n  overflow-y: auto;\n}\n#app ul[data-v-69ee9924],\n#app ol[data-v-69ee9924] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n#app img[data-v-69ee9924] {\n  width: 100%;\n  height: 100%;\n  display: block;\n}\n#app main[data-v-69ee9924] {\n  width: 100%;\n  min-height: 100%;\n}\n#app main section[data-v-69ee9924] {\n  width: 100%;\n  height: 100%;\n  padding: 24px 0;\n}", ""]);
+exports.push([module.i, "#app[data-v-69ee9924] {\n  color: white;\n}\n#app ul[data-v-69ee9924],\n#app ol[data-v-69ee9924] {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n#app img[data-v-69ee9924] {\n  width: 100%;\n  height: 100%;\n  display: block;\n}\n#app main[data-v-69ee9924] {\n  width: 100%;\n  min-height: 100vh;\n  background: url(\"/img/background_dark.jpg\");\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: cover;\n}\n#app main section[data-v-69ee9924] {\n  width: 100%;\n  height: 100%;\n  padding: 24px 0;\n}", ""]);
 
 // exports
 
