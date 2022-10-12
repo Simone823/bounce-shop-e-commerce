@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -27,14 +28,25 @@ class ProductController extends Controller
     }
 
 
-    public function showLatestProducts()
+    public function showProductsMostOrder()
     {
-        // latest products
-        $latest_products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(6)->get();
+        // products most order
+        $products_most_order = Product::select([
+            'products.*',
+            DB::raw('SUM(order_product.quantity) as total_sales'),
+        ])
+            ->join('order_product', 'order_product.product_id', '=', 'products.id')
+            ->join('orders', 'order_product.order_id', '=', 'orders.id')
+            ->where('orders.status', 1)
+            ->groupBy('products.id')
+            ->orderByDesc('total_sales')
+            ->limit(6)
+            ->get();
+
 
         // return response json
         return response()->json([
-            'latest_products' => $latest_products,
+            'products_most_order' => $products_most_order,
             'success' => true
         ]);
     }
