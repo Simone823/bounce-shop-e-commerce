@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function showLatestProducts()
     {
         // latest products
-        $latest_products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(3)->get();
+        $latest_products = Product::where('visibility', '=', 1)->orderBy('created_at', 'desc')->limit(6)->get();
 
         // return response json
         return response()->json([
