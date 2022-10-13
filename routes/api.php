@@ -30,7 +30,7 @@ Route::namespace('Api')->group(function () {
     // Rotta products
     Route::get('/products', 'ProductController@showProducts');
 
-    // Rotta latest products
+    // Rotta products most order
     Route::get('/products-most-order', 'ProductController@showProductsMostOrder');
 
     // Rotta product show
