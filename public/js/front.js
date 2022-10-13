@@ -5439,7 +5439,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchProductsMostOrder: function fetchProductsMostOrder() {
       var _this2 = this;
 
-      axios.get('/api/latest-products').then(function (res) {
+      axios.get('/api/products-most-order').then(function (res) {
         // array products res data products
         _this2.products_most_order = res.data.products_most_order;
       })["catch"](function (err) {
