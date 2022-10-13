@@ -12165,6 +12165,17 @@ fieldset:disabled .btn {
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
 }
 
+#register_page .card {
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#register_page .card input {
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
 header {
   width: 100%;
   height: 75px;
