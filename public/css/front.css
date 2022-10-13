@@ -12178,6 +12178,20 @@ fieldset:disabled .btn {
   height: 35px;
 }
 
+.nav-item {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
+.dropdown-menu {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
 #image_preview {
   width: 100%;
   height: 300px;
