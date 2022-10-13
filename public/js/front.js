@@ -6665,7 +6665,7 @@ var render = function render() {
   }, _vm._l(_vm.products_most_order, function (product) {
     return _c("li", {
       key: product.id,
-      staticClass: "col-12 col-sm-6 col-lg-4"
+      staticClass: "col-12 col-md-6 col-lg-4"
     }, [_c("div", {
       staticClass: "card bg-dark text-white"
     }, [_c("figure", {
@@ -6857,7 +6857,7 @@ var render = function render() {
   }, _vm._l(_vm.products, function (product, index) {
     return _c("li", {
       key: index,
-      staticClass: "col-12 col-sm-6 col-lg-4"
+      staticClass: "col-12 col-md-6 col-lg-4"
     }, [_c("div", {
       staticClass: "card bg-dark text-white"
     }, [_c("figure", {
@@ -6945,7 +6945,7 @@ var render = function render() {
   }, _vm._l(_vm.products, function (product, index) {
     return _c("li", {
       key: index,
-      staticClass: "col-12 col-sm-6 col-lg-4"
+      staticClass: "col-12 col-md-6 col-lg-4"
     }, [_c("div", {
       staticClass: "card bg-dark text-white"
     }, [_c("figure", {

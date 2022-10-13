@@ -12240,6 +12240,10 @@ section {
   display: block;
 }
 
+.shadow-inset-1 {
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
 #admin_home .row:not(:last-child) {
   margin-bottom: 75px;
 }

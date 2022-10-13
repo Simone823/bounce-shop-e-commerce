@@ -63,3 +63,9 @@
     }
 }
 // ---------------------------------------
+
+
+// SHADOW
+.shadow-inset-1 {
+    box-shadow: 0 1rem 3rem rgba($white, .175) inset;
+}
