@@ -10,7 +10,7 @@
 
     {{-- section register --}}
     <section id="register_page">
-        <div class="container">
+        <div class="container pt-3">
             <div class="row justify-content-center flex-column align-items-center">
 
                 {{-- link page login --}}
