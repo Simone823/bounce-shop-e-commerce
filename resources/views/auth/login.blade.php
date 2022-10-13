@@ -19,7 +19,7 @@
                     {{-- Link pagina registrazione --}}
                     <div class="text-end">
                         <a href="{{route('register')}}" class="text-decoration-none link-light">
-                            <span>Vai alla pagina di registrazione &#x21fe;</span>
+                            <span>Vai alla pagina di registrazione <i class="fa-solid fa-arrow-right"></i></span>
                         </a>
                     </div>
                 </div>
