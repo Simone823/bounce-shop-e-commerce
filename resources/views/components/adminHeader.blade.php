@@ -1,5 +1,5 @@
 <div class="container-fluid bg-dark">
-    <nav class="navbar navbar-expand-xxl navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
 
             {{-- nav brand icon --}}
@@ -18,26 +18,75 @@
 
                 {{-- Links --}}
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{-- dashboard --}}
                     <li class="nav-item">
                         <a class="nav-link @if(Route::is('admin.home'))active @endif fs-5" aria-current="page" href="{{route('admin.home')}}">Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.users.index'))active @endif" href="{{route('admin.users.index')}}">Utenti</a>
+
+                    {{-- dropdown utenti --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Utenti
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.users.index'))active @endif" href="{{route('admin.users.index')}}">Lista Utenti</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.categories.index'))active @endif" href="{{route('admin.categories.index')}}">Categorie</a>
+
+                    {{-- dropdown categorie --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorie
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.categories.index'))active @endif" href="{{route('admin.categories.index')}}">Lista Categorie</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Prodotti</a>
+
+                    {{-- dropdown prodotti --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Prodotti
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.products.index'))active @endif" href="{{route('admin.products.index')}}">Lista Prodotti</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.products.create'))active @endif" href="{{route('admin.products.create')}}">Aggiungi Prodotto</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.orders.index'))active @endif" href="{{route('admin.orders.index')}}">Ordini</a>
+
+                    {{-- dropdown ordini --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ordini
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item @if(Route::is('admin.orders.index'))active @endif" href="{{route('admin.orders.index')}}">Lista Ordini</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.categories.create'))active @endif" href="{{route('admin.categories.create')}}">Aggiungi Categoria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 @if(Route::is('admin.products.create'))active @endif" href="{{route('admin.products.create')}}">Aggiungi Prodotto</a>
+
+                    {{-- dropdown messaggi --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fs-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Messaggi
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li>
+                                {{-- <a class="dropdown-item @if(Route::is('admin.messages.index'))active @endif" href="{{route('admin.messages.index')}}">Lista Messaggi</a> --}}
+                            </li>
+                        </ul>
                     </li>
                 </ul>
 
