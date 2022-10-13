@@ -50,6 +50,25 @@
                 </div>
             </div>
 
+            {{-- row 3 total price orders month --}}
+            <div class="row">
+                {{-- total price order chart bar --}}
+                <div class="col-12">
+                    <div class="wrapper bg-white rounded">
+                        {{-- title --}}
+                        <div class="title text-center py-3">
+                            <h2 class="fw-bold fs-4">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                Totale incasso
+                            </h2>
+                        </div>
+
+                        {{-- Canva total price orders chart --}}
+                        <canvas id="totalPriceOrders" class="rounded"></canvas>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -111,6 +130,50 @@
                     label: 'Ordini effettuati',
                     backgroundColor: {!!json_encode($order_chart->colours)!!},
                     data: {!!json_encode($order_chart->dataset)!!},
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            callback: function(value) {
+                                if (value % 1 === 0) {
+                                    return value;
+                                }
+                            }
+                        },
+                        scaleLabel: {
+                            display: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 0,
+                        bottom: 10
+                    }
+                }
+            }
+        });
+
+        var canva_total_price_orders = document.getElementById('totalPriceOrders').getContext('2d');
+        var total_price_orders_chart = new Chart(canva_total_price_orders, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: {!!json_encode($total_price_order_chart->labels)!!},
+                datasets: [{
+                    label: 'Totale incasso €',
+                    backgroundColor: {!!json_encode($total_price_order_chart->colours)!!},
+                    data: {!!json_encode($total_price_order_chart->dataset)!!},
                 }]
             },
             // Configuration options go here

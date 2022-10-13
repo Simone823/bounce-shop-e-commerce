@@ -12204,3 +12204,7 @@ fieldset:disabled .btn {
   display: block;
 }
 
+.shadow-inset-1 {
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+

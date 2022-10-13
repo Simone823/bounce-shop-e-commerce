@@ -15,7 +15,7 @@
             <div class="row justify-content-center flex-column align-items-center">
 
                 {{-- link page register --}}
-                <div class="col-12 col-sm-8 col-md-5 mb-4">
+                <div class="col-12 col-md-6 mb-4">
                     {{-- Link pagina registrazione --}}
                     <div class="text-end">
                         <a href="{{route('register')}}" class="text-decoration-none link-light">
@@ -25,9 +25,9 @@
                 </div>
 
                 {{-- login form --}}
-                <div class="col-12 col-sm-8 col-md-5">
+                <div class="col-12 col-md-6">
                     {{-- Card --}}
-                    <div class="card bg-dark text-white">
+                    <div class="card bg-dark text-white shadow-inset-1">
                         <div class="card-header text-center border-0 shadow mb-3">
                             <h3 class="mb-0">Accedi</h3>
                         </div>
