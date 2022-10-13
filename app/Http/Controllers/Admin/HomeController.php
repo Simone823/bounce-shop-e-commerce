@@ -73,6 +73,13 @@ class HomeController extends Controller
             ->groupBy(DB::raw('Month(created_at)'))
             ->pluck('count');
 
+        // total price order by month
+        $orders_total_price = Order::select(DB::raw('SUM(total_price) AS total_price'))
+            ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->where('status', 1)
+            ->groupBy(DB::raw('Month(created_at)'))
+            ->pluck('total_price');
+
         // months by orders
         $months_order = Order::select(DB::raw('Month(created_at) AS month'))
             ->whereYear('created_at', Carbon::now()->format('Y'))
@@ -83,20 +90,32 @@ class HomeController extends Controller
         // orders total month
         $orders_total_month = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
+        // total price month
+        $total_price_month = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
         // foreach months order
         foreach ($months_order as $key => $month) {
+            // orders total moonth
             $orders_total_month[$month -1] = $orders[$key];
+            
+            // total pirce month
+            $total_price_month[$month -1] = $orders_total_price[$key];
         }
 
-        // Prepare the data for returning with the view
+        // create orders month chart
         $order_chart = new Chart();
         $order_chart->labels = $months_name;
         $order_chart->dataset = $orders_total_month;
         $order_chart->colours = ['coral', 'gray', 'lightblue', 'chocolate', 'brown', 'crimson', 'lightgreen', 'gold', 'indigo', 'wheat', 'magenta', 'yellowgreen'];
 
-
+        // create total price month chart
+        $total_price_order_chart = new Chart();
+        $total_price_order_chart->labels = $months_name;
+        $total_price_order_chart->dataset = $total_price_month;
+        $total_price_order_chart->colours = ['paleturquoise', 'roaylblue', 'sienna', 'tan', 'tomato', 'moccasin', 'palegreen', 'navy', 'lightgray', 'chartreuse', 'darkred', 'brown'];
+        
         // return view admin home 
-        return view('admin.home', compact('user_auth', 'user_chart', 'order_chart'));
+        return view('admin.home', compact('user_auth', 'user_chart', 'order_chart', 'total_price_order_chart'));
     }
 
     /**
