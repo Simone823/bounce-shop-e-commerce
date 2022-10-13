@@ -30,6 +30,21 @@
 // ---------------------------
 
 
+// Nav item
+.nav-item {
+    max-width: max-content;
+}
+// ---------------------
+
+
+// Dropdown menu
+.dropdown-menu {
+    max-width: max-content;
+    max-height: 150px;
+    overflow-y: auto;
+}
+// ------------------------------
+
 
 // box image preview file input
 #image_preview {
