@@ -263,6 +263,27 @@ export default {
     },
 
     methods: {
+        // getTotal cart shop
+        getTotalCartShop() {
+            // item price
+            let item_price;
+
+            // total cart shop
+            let total_cart_shop = 0;
+
+            // foreach this.cart_shop
+            this.cart_shop.forEach((element) => {
+                item_price = Math.round(element.price * element.quantity * 100) / 100;
+                total_cart_shop += item_price;
+                
+                // fixed total_cart_shop 2 cifre dopo la virgola
+                total_cart_shop.toFixed(2);
+            });
+
+            // return total cart shop
+            return total_cart_shop;
+        },
+
         // update quantity product cart shop
         updateItemQuantity(product_id, quantity) {
             // foreach cart shop
@@ -278,27 +299,6 @@ export default {
 
             // localStorage set item total cart shop
             localStorage.setItem("total", this.getTotalCartShop());
-        },
-
-        // getTotal cart shop
-        getTotalCartShop() {
-            // item price
-            let item_price;
-
-            // total cart shop
-            let total_cart_shop = 0;
-
-            // foreach this.cart_shop
-            this.cart_shop.forEach((element) => {
-                item_price = Math.round(element.price * element.quantity * 100) / 100;
-                total_cart_shop += item_price;
-            });
-
-            // fixed total_cart_shop 2 cifre dopo la virgola
-            total_cart_shop.toFixed(2);
-
-            // return total cart shop
-            return total_cart_shop;
         },
 
         // remove item from cart shop
@@ -340,19 +340,19 @@ export default {
                             // console.log(res);
                             // redirect to url /credit card
                             window.location = "/credit-card";
+
+                            // localStorage set item cart shop []
+                            localStorage.setItem("cart_shop", "[]");
+
+                            // localStorage set item total 0
+                            localStorage.setItem("total", 0);
+
+                            // array cart shop
+                            this.cart_shop = [];
                         })
                         .catch((err) => {
                             console.warn(err);
                         });
-
-                        // localStorage set item cart shop []
-                        localStorage.setItem("cart_shop", "[]");
-
-                        // localStorage set item total 0
-                        localStorage.setItem("total", 0);
-
-                        // array cart shop
-                        this.cart_shop = [];
                     }
                 });
             }

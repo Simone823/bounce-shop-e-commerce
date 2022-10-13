@@ -5221,6 +5221,22 @@ __webpack_require__.r(__webpack_exports__);
     this.form.user_address = this.auth_user_address;
   },
   methods: {
+    // getTotal cart shop
+    getTotalCartShop: function getTotalCartShop() {
+      // item price
+      var item_price; // total cart shop
+
+      var total_cart_shop = 0; // foreach this.cart_shop
+
+      this.cart_shop.forEach(function (element) {
+        item_price = Math.round(element.price * element.quantity * 100) / 100;
+        total_cart_shop += item_price; // fixed total_cart_shop 2 cifre dopo la virgola
+
+        total_cart_shop.toFixed(2);
+      }); // return total cart shop
+
+      return total_cart_shop;
+    },
     // update quantity product cart shop
     updateItemQuantity: function updateItemQuantity(product_id, quantity) {
       // foreach cart shop
@@ -5234,22 +5250,6 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem("cart_shop", JSON.stringify(this.cart_shop)); // localStorage set item total cart shop
 
       localStorage.setItem("total", this.getTotalCartShop());
-    },
-    // getTotal cart shop
-    getTotalCartShop: function getTotalCartShop() {
-      // item price
-      var item_price; // total cart shop
-
-      var total_cart_shop = 0; // foreach this.cart_shop
-
-      this.cart_shop.forEach(function (element) {
-        item_price = Math.round(element.price * element.quantity * 100) / 100;
-        total_cart_shop += item_price;
-      }); // fixed total_cart_shop 2 cifre dopo la virgola
-
-      total_cart_shop.toFixed(2); // return total cart shop
-
-      return total_cart_shop;
     },
     // remove item from cart shop
     removeItemFromCartShop: function removeItemFromCartShop(product_id) {
@@ -5287,16 +5287,16 @@ __webpack_require__.r(__webpack_exports__);
             }).then(function (res) {
               // console.log(res);
               // redirect to url /credit card
-              window.location = "/credit-card";
+              window.location = "/credit-card"; // localStorage set item cart shop []
+
+              localStorage.setItem("cart_shop", "[]"); // localStorage set item total 0
+
+              localStorage.setItem("total", 0); // array cart shop
+
+              _this.cart_shop = [];
             })["catch"](function (err) {
               console.warn(err);
-            }); // localStorage set item cart shop []
-
-            localStorage.setItem("cart_shop", "[]"); // localStorage set item total 0
-
-            localStorage.setItem("total", 0); // array cart shop
-
-            _this.cart_shop = [];
+            });
           }
         });
       }
