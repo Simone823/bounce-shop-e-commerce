@@ -15,11 +15,11 @@
 
                 <div class="col-mb-4">
                     <!-- wrapper -->
-                    <div class="wrapper bg-dark p-5 text-center">
+                    <div class="wrapper bg-dark p-5 text-center shadow-inset-1 rounded">
                         <figure class="icon mb-4">
                             <img src="{{asset('images/success_icon.svg')}}" alt="">
                         </figure>
-                        <h2 class="text-uppercase mb-3">Pagamento effettuato con successo!</h2>
+                        <h3 class="text-uppercase mb-3">Pagamento effettuato con successo!</h3>
                         <p class="mb-4 fs-5">
                             Grazie per aver acquistato i nostri prodotti<br>
                             Il tuo ordine verrà spedito entro 24h, <br>
@@ -35,8 +35,12 @@
     </section>
 
     <style>
+        #payment-success {
+            padding-top: 65px;
+        }
+
         .icon {
-            max-width: 250px;
+            max-width: 200px;
             aspect-ratio: 1/1;
             margin: 0 auto;
         }
