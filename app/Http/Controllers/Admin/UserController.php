@@ -21,7 +21,7 @@ class UserController extends Controller
         $user_auth = Auth::user();
 
         // All users
-        $users = User::orderBy('created_at', 'desc')->paginate(6);
+        $users = User::with('roles')->sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin users index
         return view('admin.users.index', compact('user_auth', 'users'));
