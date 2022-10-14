@@ -60,8 +60,11 @@ class UserController extends Controller
         // User auth
         $user_auth = Auth::user();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin users show
-        return view('admin.users.show', compact('user_auth', 'user'));
+        return view('admin.users.show', compact('user_auth', 'user', 'url_referer_to_current_page'));
     }
 
     /**
@@ -78,8 +81,11 @@ class UserController extends Controller
         // Roles
         $roles = Role::orderBy('name', 'asc')->get();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin users edit
-        return view('admin.users.edit', compact('user_auth', 'user', 'roles'));
+        return view('admin.users.edit', compact('user_auth', 'user', 'roles', 'url_referer_to_current_page'));
     }
 
     /**
