@@ -1,7 +1,14 @@
 // section admin users index
 #users_index {
 
-    .card {
-        background-color: $gray-1;
+    td {
+        a {
+            display: inline-block;
+        }
+    }
+
+    form {
+        max-width: max-content;
+        display: inline-block;
     }
 }
