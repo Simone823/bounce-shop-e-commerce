@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-dark table-striped table-bordered">
+                        <table class="table table-dark table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Azioni</th>
@@ -46,7 +46,7 @@
                                             <a href="{{route('admin.users.show', $user->id)}}" class="btn btn-secondary mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Visualizza">
                                                 <i class="fas fa-search"></i>
                                             </a>
-                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-warning mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Modifica">
+                                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-warning mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Modifica Ruolo">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form action="{{route('admin.users.destroy', $user->id)}}" method="POST">

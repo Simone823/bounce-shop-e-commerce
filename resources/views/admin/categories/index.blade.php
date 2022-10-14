@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-dark table-striped table-bordered">
+                        <table class="table table-dark table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Azioni</th>

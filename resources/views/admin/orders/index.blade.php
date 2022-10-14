@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table class="table table-dark table-striped table-bordered">
+                        <table class="table table-dark table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Azioni</th>
@@ -55,8 +55,8 @@
                                     <td>{{ $order->user_city }}</td>
                                     <td>{{ $order->user_address }}</td>
                                     <td>{{ $order->user_id }}</td>
-                                    <td>{{ $order->total_price }}</td>
-                                    <td>
+                                    <td style="text-align: right;">{{ $order->total_price }}</td>
+                                    <td style="text-align: center;">
                                         @if ($order->status == 1)
                                             <p class="badge bg-success fs-6 fw-light text-uppercase {{$order->status == 1 ? 'opacity-100' : 'opacity-25'}}">Pagato</p>
                                             @else
