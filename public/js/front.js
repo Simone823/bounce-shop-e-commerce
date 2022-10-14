@@ -6268,7 +6268,7 @@ var render = function render() {
       href: "/login"
     }
   }, [_vm._v("Accedi o Registrati per effettuare un'ordine")])])])])])]) : _c("div", {
-    staticClass: "row align-items-center justify-content-center h-100"
+    staticClass: "row align-items-center justify-content-center h-100 pt-5"
   }, [_c("div", {
     staticClass: "col-12 col-md-8"
   }, [_c("div", {

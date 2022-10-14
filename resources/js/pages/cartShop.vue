@@ -182,7 +182,7 @@
                 </div>
 
                 <!-- row 2 -->
-                <div v-else class="row align-items-center justify-content-center h-100">
+                <div v-else class="row align-items-center justify-content-center h-100 pt-5">
                     <div class="col-12 col-md-8">
                         <div class="cart_empty bg-dark shadow-inset-1 text-center">
                             <figure>
