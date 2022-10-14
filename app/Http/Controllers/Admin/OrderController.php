@@ -21,7 +21,7 @@ class OrderController extends Controller
         $user_auth = Auth::user();
 
         // orders
-        $orders = Order::orderBy('created_at', 'desc')->paginate(6);
+        $orders = Order::sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin orders index
         return view('admin.orders.index', compact('user_auth', 'orders'));
