@@ -111,8 +111,11 @@ class CategoryController extends Controller
         //user auth
         $user_auth = Auth::user();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin categories edit
-        return view('admin.categories.edit', compact('user_auth', 'category'));
+        return view('admin.categories.edit', compact('user_auth', 'category', 'url_referer_to_current_page'));
     }
 
     /**
