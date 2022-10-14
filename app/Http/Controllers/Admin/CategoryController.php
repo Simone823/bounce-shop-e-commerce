@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $user_auth = Auth::user();
 
         // Categories
-        $categories = Category::orderBy('category_name', 'asc')->paginate(6);
+        $categories = Category::sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin categories index
         return view('admin.categories.index', compact('user_auth', 'categories'));

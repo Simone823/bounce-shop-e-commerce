@@ -12297,12 +12297,11 @@ section {
   background-color: #efefef;
 }
 
-#categories_index .card {
-  background-color: #efefef;
-  background-color: #efefef;
-  border: none;
-  border-radius: 5px;
-  overflow: hidden;
+#categories_index form {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  display: inline-block;
 }
 
 #category_edit .card {
