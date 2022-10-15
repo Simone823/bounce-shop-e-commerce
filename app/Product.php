@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
+    use Sortable;
+
     // fillable
     protected $fillable = [
         'product_name',
@@ -15,6 +18,11 @@ class Product extends Model
         'visibility',
         'image',
         'user_id'
+    ];
+
+    // sortable table
+    public $sortable = [
+        'id', 'product_name', 'description', 'price', 'visibility', 'user_id', 'created_at', 'updated_at',
     ];
 
     // Funzione relazione tabella user
