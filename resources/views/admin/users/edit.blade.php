@@ -20,7 +20,7 @@
 
                     {{-- Link pagina lista utenti --}}
                     <div class="mb-4">
-                        <a href="{{route('admin.users.index')}}" class="text-decoration-none link-light">
+                        <a href="{{$url_referer_to_current_page}}" class="text-decoration-none link-light">
                             <span>&#x21fd; Torna alla lista utenti</span>
                         </a>
                     </div>

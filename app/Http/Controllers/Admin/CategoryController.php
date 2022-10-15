@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $user_auth = Auth::user();
 
         // Categories
-        $categories = Category::orderBy('category_name', 'asc')->paginate(6);
+        $categories = Category::sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin categories index
         return view('admin.categories.index', compact('user_auth', 'categories'));
@@ -111,8 +111,11 @@ class CategoryController extends Controller
         //user auth
         $user_auth = Auth::user();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin categories edit
-        return view('admin.categories.edit', compact('user_auth', 'category'));
+        return view('admin.categories.edit', compact('user_auth', 'category', 'url_referer_to_current_page'));
     }
 
     /**

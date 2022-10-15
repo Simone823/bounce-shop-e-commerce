@@ -10,59 +10,77 @@
 
     {{-- section orders index --}}
     <section id="orders_index">
+        <div class="container">
 
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center gy-5 gx-sm-5 gx-lg-5">
+            {{-- row 1 --}}
+            <div class="row mb-5">
+                {{-- Title --}}
+                <div class="col-12 title text-center text-white">
+                    <h1 class="mb-0">Lista Ordini</h1>
+                </div>
+            </div>
 
-                {{-- If orders lenght 0 --}}
-                @if(count($orders) < 1)
-                    <div class="no_orders text-center text-white">
-                        <h1>Al momento non ci sono ordini</h1>
+            {{-- row 2 --}}
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Azioni</th>
+                                    <th>@sortablelink('id', 'id')</th>
+                                    <th>@sortablelink('user_name', 'Nome')</th>
+                                    <th>@sortablelink('user_surname', 'Cognome')</th>
+                                    <th>@sortablelink('user_city', 'Città')</th>
+                                    <th>@sortablelink('user_address', 'Indirizzo')</th>
+                                    <th>@sortablelink('user_id', 'ID Utente')</th>
+                                    <th>@sortablelink('total_price', 'Totale prezzo')</th>
+                                    <th>@sortablelink('status', 'Stato pagamento')</th>
+                                    <th>@sortablelink('created_at', 'Creato il')</th>
+                                    <th>@sortablelink('updated_at', 'Modificato il')</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if($orders->count())
+                                @foreach($orders as $key => $order)
+                                <tr>
+                                    <td>
+                                        <a href="{{route('admin.orders.show', $order->id)}}" class="btn btn-secondary mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Visualizza">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </td>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->user_name }}</td>
+                                    <td>{{ $order->user_surname }}</td>
+                                    <td>{{ $order->user_city }}</td>
+                                    <td>{{ $order->user_address }}</td>
+                                    <td>{{ $order->user_id }}</td>
+                                    <td style="text-align: right;">{{ $order->total_price }} &euro;</td>
+                                    <td style="text-align: center;">
+                                        @if ($order->status == 1)
+                                            <p class="badge bg-success fs-6 fw-light text-uppercase {{$order->status == 1 ? 'opacity-100' : 'opacity-25'}}">Pagato</p>
+                                            @else
+                                                <p class="badge bg-danger fs-6 fw-light text-uppercase {{$order->status == 0 ? 'opacity-100' : 'opacity-25'}}">Non Pagato</p>
+                                        @endif
+                                    </td>
+
+                                    <td>{{ $order->created_at->format('d-m-Y') }}</td>
+                                    <td>{{ $order->updated_at->format('d-m-Y') }}</td>
+                                </tr>
+                                @endforeach
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
 
-                    @else
-                       {{-- Title --}}
-                       <div class="col-12 title text-center text-white">
-                           <h1 class="mb-0">Lista Ordini</h1>
-                       </div>
-
-                        @foreach ($orders as $order)
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="card h-100">
-                                    <div class="card-body d-flex flex-column justify-content-between gap-3">
-
-                                        {{-- Description --}}
-                                        <div class="description">
-                                            <h5 class="card-title fw-bolder">Ordine n° {{$order->id}}</h5>
-                                            <p class="card-text fs-5">Creato <span>{{\Carbon\Carbon::create($order->created_at)->diffForHumans()}}</span></p>
-                                            <p class="card-text fs-5">Effettuato da: {{$order->user_name}} {{$order->user_surname}}</p>
-                                            <p class="card-text fs-5">{{$order->total_price}} &euro;</p>
-
-                                            <div class="card-text d-flex flex-wrap gap-2">
-                                                <p class="badge bg-success fs-6 fw-light text-uppercase {{$order->status == 1 ? 'opacity-100' : 'opacity-25'}}">Pagato</p>
-                                                <p class="badge bg-danger fs-6 fw-light text-uppercase {{$order->status == 0 ? 'opacity-100' : 'opacity-25'}}">Non Pagato</p>
-                                            </div>
-                                        </div>
-
-                                        {{-- Btn --}}
-                                        <div class="buttons d-flex flex-wrap justify-content-center gap-3">
-                                            <a href="{{route('admin.orders.show', $order->id)}}" class="btn btn-primary text-white">Visualizza</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        @endforeach
-
-                        {{-- Link paginate --}}
-                        <div class="link_paginate col-12 d-flex justify-content-center">
-                            {{$orders->links()}}
-                        </div>
-                @endif
-
+                    {{-- Links paginate --}}
+                    <div class="link_paginate col-12 d-flex justify-content-center mt-4">
+                        {!! $orders->appends(\Request::except('page'))->render() !!}
+                    </div>
+                </div>
             </div>
-        </div>
 
+        </div>
     </section>
     
 @endsection
