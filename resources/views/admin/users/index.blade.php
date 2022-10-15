@@ -58,6 +58,26 @@
                                                     <button type="button" class="btn btn-danger text-white mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
+
+                                                    <!-- Modal confirm delete user-->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content shadow-lg">
+                                                                <div class="modal-header bg-danger border-0 text-white">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>
+                                                                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body bg-dark border-0 text-white">
+                                                                    Sei sicuro di voler ELIMINARE questo utente? <br>
+                                                                    Una volta confermata questa azione non si potrà tornare indietro!
+                                                                </div>
+                                                                <div class="modal-footer justify-content-center bg-dark border-0">
+                                                                    <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Chiudi</button>
+                                                                    <button type="submit" class="btn btn-primary text-white">Conferma</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
 
                                             </div>
@@ -83,26 +103,6 @@
                     {{-- Links paginate --}}
                     <div class="link_paginate col-12 d-flex justify-content-center mt-4">
                         {!! $users->appends(\Request::except('page'))->render() !!}
-                    </div>
-                </div>
-
-                <!-- Modal confirm delete user-->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content shadow-lg">
-                            <div class="modal-header bg-danger border-0 text-white">
-                                <h5 class="modal-title" id="exampleModalLabel">Conferma elimina utente</h5>
-                                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body bg-dark border-0 text-white">
-                                Sei sicuro di voler ELIMINARE questo utente? <br>
-                                Una volta confermata questa azione non si potrà tornare indietro!
-                            </div>
-                            <div class="modal-footer justify-content-center bg-dark border-0">
-                                <button type="button" class="btn btn-primary text-white" data-bs-dismiss="modal">Chiudi</button>
-                                <button type="submit" class="btn btn-primary text-white">Conferma</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
