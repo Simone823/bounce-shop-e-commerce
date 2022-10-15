@@ -50,13 +50,13 @@ Route::middleware(['auth' , 'role:superadministrator'])->namespace('Admin')->pre
 Route::middleware('auth')->group(function() {
 
     // rotta credit card
-    Route::get('/credit-card', 'Auth\StripeController@creditCard');
+    Route::get('/credit-card', 'User\StripeController@creditCard');
 
     // Rotta make payment
-    Route::post('/make-payment', 'Auth\StripeController@afterPayment')->name('make.payment');
+    Route::post('/make-payment', 'User\StripeController@afterPayment')->name('make.payment');
 
     // rotta payment success
-    Route::get('/payment-success', 'Auth\StripeController@success');
+    Route::get('/payment-success', 'User\StripeController@success');
 });
 
 // Creo una rotta di fallback che restiturà guest.home view
