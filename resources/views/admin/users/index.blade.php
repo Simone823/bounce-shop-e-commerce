@@ -42,7 +42,7 @@
                                 @if($users->count())
                                     @foreach($users as $key => $user)
                                     <tr>
-                                        <td>
+                                        <td data-label="Azioni">
                                             <a href="{{route('admin.users.show', $user->id)}}" class="btn btn-secondary mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Visualizza">
                                                 <i class="fas fa-search"></i>
                                             </a>
@@ -79,17 +79,17 @@
                                                 </div>
                                             </form>
                                         </td>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->surname }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->city }}</td>
-                                        <td>{{ $user->address }}</td>
+                                        <td data-label="id">{{ $user->id }}</td>
+                                        <td data-label="name">{{ $user->name }}</td>
+                                        <td data-label="surname">{{ $user->surname }}</td>
+                                        <td data-label="email">{{ $user->email }}</td>
+                                        <td data-label="city">{{ $user->city }}</td>
+                                        <td data-label="address">{{ $user->address }}</td>
                                         {{-- Foreach user role --}}
                                         @foreach ($user->roles as $role)
-                                            <td>{{ $role->display_name }}</td>
+                                            <td data-label="role">{{ $role->display_name }}</td>
                                         @endforeach
-                                        <td>{{ $user->created_at->format('d-m-Y') }}</td>
+                                        <td data-label="created_at">{{ $user->created_at->format('d-m-Y') }}</td>
                                     </tr>
                                     @endforeach
                                 @endif
