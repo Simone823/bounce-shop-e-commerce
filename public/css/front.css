@@ -12164,6 +12164,12 @@ fieldset:disabled .btn {
   border-radius: 8px;
 }
 
+.table td .wrapper {
+  max-width: 280px;
+  max-height: 50px;
+  overflow-y: auto;
+}
+
 .logo_nav {
   width: 95px;
 }
