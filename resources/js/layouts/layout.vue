@@ -48,6 +48,7 @@ import MyFooter from '../components/MyFooter.vue';
 
     // main
     main {
+        padding-top: 75px;
         width: 100%;
         min-height: 100vh;
         background: url('/img/background_dark.jpg');

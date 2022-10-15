@@ -12165,6 +12165,17 @@ fieldset:disabled .btn {
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
 }
 
+#register_page .card {
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#register_page .card input {
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) inset;
+}
+
 header {
   width: 100%;
   height: 75px;
@@ -12267,8 +12278,15 @@ section {
   background-color: transparent;
 }
 
-#users_index .card {
-  background-color: #efefef;
+#users_index td a {
+  display: inline-block;
+}
+
+#users_index form {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  display: inline-block;
 }
 
 #user_show .card {
@@ -12279,12 +12297,11 @@ section {
   background-color: #efefef;
 }
 
-#categories_index .card {
-  background-color: #efefef;
-  background-color: #efefef;
-  border: none;
-  border-radius: 5px;
-  overflow: hidden;
+#categories_index form {
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  display: inline-block;
 }
 
 #category_edit .card {

@@ -147,7 +147,7 @@
 
             // fetch products
             fetchProductsMostOrder() {
-                axios.get('/api/latest-products')
+                axios.get('/api/products-most-order')
                 .then( res => {
 
                     // array products res data products
