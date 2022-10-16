@@ -24,7 +24,7 @@ class ProductController extends Controller
         $user_auth = Auth::user();
 
         // Products
-        $products = Product::sortable(['created_at' => 'desc'])->paginate(10);
+        $products = Product::with('categories')->sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin products index
         return view('admin.products.index', compact('user_auth', 'products'));

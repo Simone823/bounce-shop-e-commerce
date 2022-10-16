@@ -22,7 +22,7 @@ class Product extends Model
 
     // sortable table
     public $sortable = [
-        'id', 'product_name', 'description', 'price', 'visibility', 'user_id', 'created_at', 'updated_at',
+        'id', 'product_name', 'description', 'price', 'categories','visibility', 'user_id', 'created_at', 'updated_at',
     ];
 
     // Funzione relazione tabella user
