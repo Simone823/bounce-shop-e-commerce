@@ -1,23 +1,14 @@
 // section id products index
 #products_index {
 
-    .card {
-        background-color: $gray-1;
-        border: none;
-        border-radius: 5px;
-        overflow: hidden;
-
-        .wrapper_image {
-            width: 100%;
-            height: 300px;
-    
-            img {
-                width: 100%;
-                height: 100%;
-                display: block;
-                object-fit: cover;
-                object-position: center;
-            }
+    td {
+        a {
+            display: inline-block;
         }
+    }
+    
+    form {
+        max-width: max-content;
+        display: inline-block;
     }
 }
