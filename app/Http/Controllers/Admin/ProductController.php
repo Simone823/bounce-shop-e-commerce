@@ -24,7 +24,7 @@ class ProductController extends Controller
         $user_auth = Auth::user();
 
         // Products
-        $products = Product::orderBy('created_at', 'desc')->paginate(6);
+        $products = Product::with('categories')->sortable(['created_at' => 'desc'])->paginate(10);
 
         // return view admin products index
         return view('admin.products.index', compact('user_auth', 'products'));
@@ -160,8 +160,11 @@ class ProductController extends Controller
         // Categories
         $categories = Category::orderBy('category_name', 'asc')->get();
 
+        // url che porta alla pagina corrente
+        $url_referer_to_current_page = $_SERVER['HTTP_REFERER'];
+
         // return view admin porducts edit
-        return view('admin.products.edit', compact('user_auth', 'product', 'categories'));
+        return view('admin.products.edit', compact('user_auth', 'product', 'categories', 'url_referer_to_current_page'));
     }
 
     /**

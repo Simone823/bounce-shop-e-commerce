@@ -45,9 +45,11 @@
                                 @foreach($orders as $key => $order)
                                 <tr>
                                     <td>
-                                        <a href="{{route('admin.orders.show', $order->id)}}" class="btn btn-secondary mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Visualizza">
-                                            <i class="fas fa-search"></i>
-                                        </a>
+                                        <div class="wrapper">
+                                            <a href="{{route('admin.orders.show', $order->id)}}" class="btn btn-secondary mb-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Visualizza">
+                                                <i class="fas fa-search"></i>
+                                            </a>
+                                        </div>
                                     </td>
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $order->user_name }}</td>
